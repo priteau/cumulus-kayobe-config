@@ -4,7 +4,29 @@
 
 # List of users to create. This should be in a format accepted by the
 # singleplatform-eng.users role.
-#users_default:
+users_default:
+  - username: stack
+    name: Kayobe deployment user
+    append: True
+    ssh_key:
+      - "{{ lookup('file', kayobe_config_path ~ '/ssh-keys/id_rsa_jmfg2.pub') }}"
+      - "{{ lookup('file', kayobe_config_path ~ '/ssh-keys/id_rsa_pfb29.pub') }}"
+
+  - username: jmfg2
+    name: John Garbutt
+    groups:
+      - wheel
+    append: True
+    ssh_key:
+      - "{{ lookup('file', kayobe_config_path ~ '/ssh-keys/id_rsa_jmfg2.pub') }}"
+
+  - username: pfb29
+    name: Paul Browne
+    groups:
+      - wheel
+    append: True
+    ssh_key:
+      - "{{ lookup('file', kayobe_config_path ~ '/ssh-keys/id_rsa_pfb29.pub') }}"
 
 ###############################################################################
 # Dummy variable to allow Ansible to accept this file.
