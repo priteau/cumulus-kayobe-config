@@ -64,7 +64,7 @@
 #kolla_docker_registry:
 
 # Docker namespace to use for Kolla images.
-#kolla_docker_namespace:
+kolla_docker_namespace: cam
 
 # Username to use to access a docker registry.
 #kolla_docker_registry_username:
@@ -189,20 +189,20 @@
 #kolla_enable_heat:
 #kolla_enable_horizon:
 #kolla_enable_influxdb:
-#kolla_enable_ironic:
+kolla_enable_ironic: True
 #kolla_enable_ironic_ipxe:
 #kolla_enable_ironic_pxe_uefi:
 #kolla_enable_iscsid:
 #kolla_enable_karbor:
 #kolla_enable_kuryr:
-#kolla_enable_magnum:
-#kolla_enable_manila:
+kolla_enable_magnum: True
+kolla_enable_manila: True
 #kolla_enable_manila_backend_generic:
 #kolla_enable_manila_backend_hnas:
 #kolla_enable_manila_backend_cephfs_native:
-#kolla_enable_manila_backend_cephfs_nfs:
+kolla_enable_manila_backend_cephfs_nfs: True
 #kolla_enable_mistral:
-#kolla_enable_monasca:
+kolla_enable_monasca: True
 #kolla_enable_mongodb:
 #kolla_enable_multipathd:
 #kolla_enable_murano:
@@ -211,12 +211,12 @@
 #kolla_enable_neutron_dvr:
 #kolla_enable_neutron_fwaas:
 #kolla_enable_neutron_lbaas:
-#kolla_enable_neutron_provider_networks:
+kolla_enable_neutron_provider_networks: True
 #kolla_enable_neutron_qos:
 #kolla_enable_neutron_segments:
 #kolla_enable_neutron_sriov:
 #kolla_enable_neutron_vpnaas:
-#kolla_enable_nova_serialconsole_proxy:
+kolla_enable_nova_serialconsole_proxy: True
 #kolla_enable_octavia:
 #kolla_enable_osprofiler:
 #kolla_enable_panko:
