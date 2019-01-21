@@ -1,5 +1,5 @@
 oob_oc_net_ips:
-  culumus-seed: 10.202.0.1
+  cumulus-seed: 10.202.0.0
 provision_oc_net_ips:
-  culumus-seed: 10.201.0.1
+  cumulus-seed: 10.201.0.1
 workaround_ansible_issue_8743: true
