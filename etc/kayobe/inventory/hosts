@@ -12,10 +12,23 @@ localhost ansible_connection=local
 [seed]
 # Add a seed node here if required. This host will provide the Bifrost
 # undercloud.
+culumus-seed
 
 [controllers]
 # Add controller nodes here if required. These hosts will provide the
 # OpenStack overcloud.
+ctrl1
+ctrl2
+ctrl3
+
+[compute]
+# use network nodes as hypervisors, for now!
+net1
+net2
+
+[monitoring]
+mon1
+mon2
 
 [baremetal-compute]
 # Add baremetal compute nodes here if required.
