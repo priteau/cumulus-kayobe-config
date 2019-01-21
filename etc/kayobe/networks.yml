@@ -120,7 +120,7 @@ internal_net_vlan: 205
 internal_net_cidr: "10.{{ internal_net_vlan }}.0.0/16"
 internal_net_allocation_pool_start: "10.{{ internal_net_vlan }}.1.0"
 internal_net_allocation_pool_end: "10.{{ internal_net_vlan }}.3.255"
- internal_net_gateway: "10.{{ internal_net_vlan }}.0.1"
+internal_net_gateway: "10.{{ internal_net_vlan }}.0.1"
 # internal_net_mtu:
 # internal_net_routes:
 
