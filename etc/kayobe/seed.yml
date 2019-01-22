@@ -17,7 +17,11 @@ seed_bootstrap_user: stack
 #seed_default_network_interfaces:
 
 # List of extra networks to which seed nodes are attached.
-#seed_extra_network_interfaces:
+# because currently seed will be the gateway out via iLab
+seed_extra_network_interfaces:
+  - internal_net
+  - external_net
+  - storage_mgmt_net
 
 ###############################################################################
 # LVM configuration.
