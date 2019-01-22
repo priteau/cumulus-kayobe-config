@@ -27,8 +27,14 @@ inspection_net_interface: "{{ provision_oc_net_interface }}.{{ inspection_net_vl
 # Internal network IP information.
 internal_net_interface: "{{ provision_oc_net_interface }}.{{ internal_net_vlan }}"
 
+# Tunnel network IP information.
+tunnel_net_interface: "{{ provision_oc_net_interface }}.{{ tunnel_net_vlan }}"
+
 # External network IP information.
 external_net_interface: "{{ provision_oc_net_interface }}.{{ external_net_vlan }}"
+
+# Public network IP information.
+public_net_interface: "{{ provision_oc_net_interface }}.{{ public_net_vlan }}"
 
 # Storage network IP information.
 storage_net_interface: "{{ provision_oc_net_interface }}.{{ storage_net_vlan }}"
