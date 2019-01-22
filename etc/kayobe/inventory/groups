@@ -20,10 +20,8 @@ seed
 [controllers]
 # Empty group to provide declaration of controllers group.
 
-[network:children]
-# Add controllers to network group by default for backwards compatibility,
-# although they could be separate hosts.
-controllers
+[network]
+# Empty group to provide declaration of network group.
 
 [monitoring]
 # Empty group to provide declaration of monitoring group.
@@ -50,7 +48,8 @@ seed
 controllers
 network
 monitoring
-storage
+# storage doesn't need docker, as we using ceph-ansible
+# storage
 compute
 
 ###############################################################################

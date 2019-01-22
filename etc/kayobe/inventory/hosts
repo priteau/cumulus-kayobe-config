@@ -21,10 +21,14 @@ ctrl1
 ctrl2
 ctrl3
 
+[network:children]
+# using network nodes as hypervisors
+# so use controllers as network for now
+controllers
+
 [compute]
-# use network nodes as hypervisors, for now!
-net1
-net2
+cpupoc1
+cpupoc2
 
 [monitoring]
 mon1
