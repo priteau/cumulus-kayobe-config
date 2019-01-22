@@ -37,7 +37,7 @@
 #public_net_name:
 
 # Name of the network used by Neutron to carry tenant overlay network traffic.
-#tunnel_net_name:
+tunnel_net_name: tunnel_net
 
 # Name of the network used to carry storage data traffic.
 #storage_net_name:
@@ -123,6 +123,16 @@ internal_net_allocation_pool_end: "10.{{ internal_net_vlan }}.3.255"
 internal_net_gateway: "10.{{ internal_net_vlan }}.0.1"
 # internal_net_mtu:
 # internal_net_routes:
+
+# Tunnel (i.e. vxlan) network IP information.
+# tunnel_net_fqdn: tunnel.cumulus.hpc.cam.ac.uk
+tunnel_net_vlan: 217
+tunnel_net_cidr: "10.{{ tunnel_net_vlan }}.0.0/16"
+tunnel_net_allocation_pool_start: "10.{{ tunnel_net_vlan }}.1.0"
+tunnel_net_allocation_pool_end: "10.{{ tunnel_net_vlan }}.3.255"
+tunnel_net_gateway: "10.{{ tunnel_net_vlan }}.0.1"
+# tunnel_net_mtu:
+# tunnel_net_routes:
 
 # External network IP information.
 # external_net_vip_address:
