@@ -165,7 +165,7 @@ storage_mgmt_net_gateway: "10.{{ storage_mgmt_net_vlan }}.0.1"
 # storage_mgmt_net_mtu:
 # storage_mgmt_net_routes:
 
-# Cleaning network IP information.
+# Workload cleaning network IP information.
 cleaning_net_vlan: 213
 cleaning_net_cidr: "10.{{ cleaning_net_vlan }}.0.0/16"
 cleaning_net_allocation_pool_start: "10.{{ cleaning_net_vlan }}.1.0"
@@ -173,6 +173,17 @@ cleaning_net_allocation_pool_end: "10.{{ cleaning_net_vlan }}.3.255"
 cleaning_net_neutron_allocation_pool_start: "10.{{ cleaning_net_vlan }}.100.0"
 cleaning_net_neutron_allocation_pool_end: "10.{{ cleaning_net_vlan }}.102.255"
 cleaning_net_gateway: "10.{{ cleaning_net_vlan }}.0.1"
+# cleaning_net_mtu:
+# cleaning_net_routes:
+
+# Workload inspection network IP information.
+inspection_net_vlan: 210
+inspection_net_cidr: "10.{{ inspection_net_vlan }}.0.0/16"
+inspection_net_allocation_pool_start: "10.{{ inspection_net_vlan }}.1.0"
+inspection_net_allocation_pool_end: "10.{{ inspection_net_vlan }}.3.255"
+inspection_net_neutron_allocation_pool_start: "10.{{ inspection_net_vlan }}.100.0"
+inspection_net_neutron_allocation_pool_end: "10.{{ inspection_net_vlan }}.102.255"
+inspection_net_gateway: "10.{{ inspection_net_vlan }}.0.1"
 # cleaning_net_mtu:
 # cleaning_net_routes:
 
