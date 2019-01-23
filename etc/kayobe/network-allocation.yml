@@ -1,5 +1,12 @@
+admin_oc_net_ips:
+  cumulus-seed: 10.200.0.1
+external_net_ips:
+  cumulus-seed: 10.219.1.0
+internal_net_ips:
+  cumulus-seed: 10.205.1.0
 oob_oc_net_ips:
-  cumulus-seed: 10.202.0.21
+  cumulus-seed: 10.202.150.1
 provision_oc_net_ips:
   cumulus-seed: 10.201.0.1
-workaround_ansible_issue_8743: true
+storage_mgmt_net_ips:
+  cumulus-seed: 10.207.1.0

@@ -11,6 +11,8 @@ provision_oc_net_bridge_ports:
 
 # Admin network IP information.
 admin_oc_net_interface: "{{ provision_oc_net_interface }}.{{ admin_oc_net_vlan }}"
+# TODO hack to avoid this on the seed
+admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
 
 # Workload out-of-band management network IP information.
 oob_wl_net_interface: "{{ provision_oc_net_interface }}.{{ oob_wl_net_vlan }}"

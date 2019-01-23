@@ -62,7 +62,7 @@ admin_oc_net_cidr: "10.{{ admin_oc_net_vlan }}.0.0/16"
 admin_oc_net_allocation_pool_start: "10.{{ admin_oc_net_vlan }}.1.0"
 admin_oc_net_allocation_pool_end: "10.{{ admin_oc_net_vlan }}.3.255"
 # Make the seed node the default route out, but on the seed default is iLab
-admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
+#admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
 # admin_oc_net_mtu:
 # admin_oc_net_routes:
 

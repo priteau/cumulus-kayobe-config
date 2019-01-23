@@ -11,7 +11,7 @@ provision_oc_net_interface: em1
 # all these are tagged on em1
 
 # Admin network
-admin_oc_net_interface: "{{ provision_oc_net_interface }}.{{ admin_oc_net_net_vlan }}"
+admin_oc_net_interface: "{{ provision_oc_net_interface }}.{{ admin_oc_net_vlan }}"
 # BMC network
 oob_oc_net_interface: "{{ provision_oc_net_interface }}.{{ oob_oc_net_vlan }}"
 
