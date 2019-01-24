@@ -5,7 +5,7 @@
 # Ironic Python Agent (IPA) image build configuration.
 
 # Whether to build IPA images from source.
-#ipa_build_images:
+ipa_build_images: True
 
 # URL of IPA source repository.
 #ipa_build_source_url:
@@ -26,7 +26,9 @@
 
 # List of additional Diskimage Builder (DIB) elements to use when building IPA
 # images.
-#ipa_build_dib_elements_extra:
+ipa_build_dib_elements_extra:
+  - "ipa-extra-hardware"
+  - "stackhpc-ipa-hardware-managers"
 
 # List of Diskimage Builder (DIB) elements to use when building IPA images.
 #ipa_build_dib_elements:
@@ -45,7 +47,11 @@
 
 # List of git repositories containing Diskimage Builder (DIB) elements. See
 # stackhpc.os-images role for usage.
-#ipa_build_dib_git_elements:
+ipa_build_dib_git_elements:
+  - repo: "https://github.com/stackhpc/stackhpc-image-elements"                
+    local: "{{ source_checkout_path }}/stackhpc-image-elements"                
+    version: "master"                                                          
+    elements_path: "elements"  
 
 ###############################################################################
 # Ironic Python Agent (IPA) images configuration.
@@ -86,7 +92,8 @@
 #ipa_collectors_default:
 
 # List of additional inspection collectors to run.
-#ipa_collectors_extra:
+ipa_collectors_extra:
+  - "extra-hardware"
 
 # List of inspection collectors to run.
 #ipa_collectors:
