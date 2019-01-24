@@ -17,9 +17,6 @@ cumulus-seed
 [controllers]
 # Add controller nodes here if required. These hosts will provide the
 # OpenStack overcloud.
-ctrl1
-ctrl2
-ctrl3
 
 [network:children]
 # using network nodes as hypervisors
