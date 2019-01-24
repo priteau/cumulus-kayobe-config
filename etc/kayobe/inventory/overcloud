@@ -9,3 +9,7 @@ ctrl3 ipmi_address=10.202.0.9 bmc_type=idrac
 
 [compute]
 mon1 ipmi_address=10.202.0.2 bmc_type=idrac
+
+# TODO- split out network once we have two
+#[network]
+#net1 ipmi_address=10.202.0.4 bmc_type=idrac
