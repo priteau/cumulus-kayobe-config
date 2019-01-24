@@ -16,7 +16,8 @@
 #compute_default_network_interfaces:
 
 # List of extra networks to which compute nodes are attached.
-#compute_extra_network_interfaces:
+compute_extra_network_interfaces:
+  - provision_oc_net
 
 ###############################################################################
 # Compute node BIOS configuration.

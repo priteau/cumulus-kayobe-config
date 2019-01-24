@@ -40,7 +40,11 @@ oob_wl_net_ips:
   mon1: 10.212.1.3
   net1: 10.212.1.4
 provision_oc_net_ips:
+  ctrl1: 10.201.1.0
+  ctrl2: 10.201.1.1
+  ctrl3: 10.201.1.2
   cumulus-seed: 10.201.0.1
+  mon1: 10.201.1.3
 provision_wl_net_ips:
   ctrl1: 10.211.1.0
   ctrl2: 10.211.1.1
