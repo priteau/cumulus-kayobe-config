@@ -162,7 +162,7 @@ kolla_docker_namespace: cam
 
 #kolla_enable_aodh:
 #kolla_enable_barbican:
-#kolla_enable_blazar:
+kolla_enable_blazar: True
 #kolla_enable_cadf_notifications:
 #kolla_enable_ceilometer:
 #kolla_enable_central_logging:
@@ -186,8 +186,8 @@ kolla_docker_namespace: cam
 #kolla_enable_gnocchi:
 #kolla_enable_grafana:
 #kolla_enable_haproxy:
-#kolla_enable_heat:
-#kolla_enable_horizon:
+kolla_enable_heat: True
+kolla_enable_horizon: True
 #kolla_enable_influxdb:
 kolla_enable_ironic: True
 #kolla_enable_ironic_ipxe:
