@@ -20,13 +20,26 @@
 #kolla_bifrost_dib_os_release:
 
 # List of DIB elements.
-#kolla_bifrost_dib_elements:
+kolla_bifrost_dib_elements:
+  - "devuser"
+  - "disable-selinux"
+  - "enable-serial-console"
+  - "vm"
 
 # DIB init element.
 #kolla_bifrost_dib_init_element:
 
 # DIB environment variables.
-#kolla_bifrost_dib_env_vars:
+kolla_bifrost_dib_env_vars:
+  DIB_CLOUD_INIT_DATASOURCES: "ConfigDrive"
+  DIB_DEV_USER_PWDLESS_SUDO: "yes"
+  DIB_DEV_USER_PASSWORD: |
+          $ANSIBLE_VAULT;1.1;AES256
+          62633531613230613537336432326462333930393764306665353564303764633835343330633863
+          6361346539306464333766666239336232663162633164330a613362343237383032393336383962
+          63613264626636626231623262373761336130636666386230653839396633303536643837393135
+          3338306235393236330a643230383932616265333138376337653834323434393763356434313261
+          3061
 
 # List of DIB packages to install.
 #kolla_bifrost_dib_packages:
