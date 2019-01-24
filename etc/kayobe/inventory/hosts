@@ -27,12 +27,10 @@ ctrl3
 controllers
 
 [compute]
-cpupoc1
-cpupoc2
-
-[monitoring]
 mon1
-mon2
+
+#[monitoring]
+#mon1
 
 [baremetal-compute]
 # Add baremetal compute nodes here if required.

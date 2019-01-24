@@ -29,6 +29,9 @@ ipa_build_images: True
 ipa_build_dib_elements_extra:
   - "ipa-extra-hardware"
   - "stackhpc-ipa-hardware-managers"
+  - "devuser"
+  - "disable-selinux"
+  - "dynamic-login"
 
 # List of Diskimage Builder (DIB) elements to use when building IPA images.
 #ipa_build_dib_elements:
@@ -39,7 +42,10 @@ ipa_build_dib_elements_extra:
 
 # Dictionary of additional environment variables to provide to Diskimage
 # Builder (DIB) during IPA image build.
-#ipa_build_dib_env_extra:
+ipa_build_dib_env_extra:
+  DIB_DEV_USER_USERNAME: dev
+  DIB_DEV_USER_PASSWORD: dev
+  DIB_DEV_USER_PWDLESS_SUDO: 1
 
 # Dictionary of environment variables to provide to Diskimage Builder (DIB)
 # during IPA image build.
