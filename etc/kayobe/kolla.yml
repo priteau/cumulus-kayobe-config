@@ -196,13 +196,13 @@ kolla_enable_ironic: False
 #kolla_enable_karbor:
 #kolla_enable_kuryr:
 kolla_enable_magnum: True
-kolla_enable_manila: True
+#kolla_enable_manila:
 #kolla_enable_manila_backend_generic:
 #kolla_enable_manila_backend_hnas:
 #kolla_enable_manila_backend_cephfs_native:
 kolla_enable_manila_backend_cephfs_nfs: True
 #kolla_enable_mistral:
-kolla_enable_monasca: True
+#kolla_enable_monasca:
 #kolla_enable_mongodb:
 #kolla_enable_multipathd:
 #kolla_enable_murano:
