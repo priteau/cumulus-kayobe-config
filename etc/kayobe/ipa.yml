@@ -44,7 +44,6 @@ ipa_build_dib_elements_extra:
 # Builder (DIB) during IPA image build.
 ipa_build_dib_env_extra:
   DIB_DEV_USER_USERNAME: dev
-  DIB_DEV_USER_PASSWORD: dev
   DIB_DEV_USER_PWDLESS_SUDO: 1
 
 # Dictionary of environment variables to provide to Diskimage Builder (DIB)
