@@ -24,7 +24,7 @@ docker_storage_driver: 'overlay'
 
 # URL of docker registry
 # Private registry running on seed
-docker_registry: "10.200.0.1:5000"
+docker_registry: "10.200.0.1:4000"
 
 # CA of docker registry
 #docker_registry_ca:
