@@ -46,6 +46,9 @@ oob_wl_net_ips:
   mon1: 10.212.1.3
   net1: 10.212.1.4
 provision_oc_net_ips:
+  ceph01: 10.201.1.4
+  ceph02: 10.201.1.5
+  ceph03: 10.201.1.6
   ctrl1: 10.201.1.0
   ctrl2: 10.201.1.1
   ctrl3: 10.201.1.2
