@@ -162,7 +162,7 @@ kolla_docker_namespace: cam
 
 #kolla_enable_aodh:
 #kolla_enable_barbican:
-kolla_enable_blazar: True
+#kolla_enable_blazar:
 #kolla_enable_cadf_notifications:
 #kolla_enable_ceilometer:
 #kolla_enable_central_logging:
