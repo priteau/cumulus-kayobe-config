@@ -1,0 +1,35 @@
+---
+
+storage_lvm_groups:
+  - vgname: ceph-hdd-a
+    disks:
+      - /dev/sda
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-a-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-hdd-b
+    disks:
+      - /dev/sdb
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-b-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-ssd
+    disks:
+      - /dev/sdo
+    create: true
+    lvnames:
+      - lvname: ceph-ssd-a
+        size: "30g"
+        create: true
+        mount: false
+    lvnames:
+      - lvname: ceph-ssd-b
+        size: "30g"
+        create: true
+        mount: false
