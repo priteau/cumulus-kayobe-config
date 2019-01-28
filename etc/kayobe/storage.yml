@@ -18,6 +18,7 @@
 # List of extra networks to which storage nodes are attached.
 storage_extra_network_interfaces:
   - provision_oc_net
+  - public_net
 
 ###############################################################################
 # Storage node BIOS configuration.
