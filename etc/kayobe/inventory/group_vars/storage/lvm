@@ -19,6 +19,105 @@ storage_lvm_groups:
         size: "100%FREE"
         create: true
         mount: false
+  - vgname: ceph-hdd-c
+    disks:
+      - /dev/sdc
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-c-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-hdd-d
+    disks:
+      - /dev/sdd
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-d-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-hdd-e
+    disks:
+      - /dev/sde
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-e-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-hdd-f
+    disks:
+      - /dev/sdf
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-f-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-hdd-g
+    disks:
+      - /dev/sdg
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-g-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-hdd-h
+    disks:
+      - /dev/sdh
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-h-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-hdd-i
+    disks:
+      - /dev/sdi
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-i-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-hdd-j
+    disks:
+      - /dev/sdj
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-j-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-hdd-k
+    disks:
+      - /dev/sdk
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-k-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-hdd-l
+    disks:
+      - /dev/sdl
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-l-0
+        size: "100%FREE"
+        create: true
+        mount: false
+  - vgname: ceph-hdd-m
+    disks:
+      - /dev/sdm
+    create: true
+    lvnames:
+      - lvname: ceph-hdd-m-0
+        size: "100%FREE"
+        create: true
+        mount: false
   - vgname: ceph-ssd
     disks:
       - /dev/sdo
