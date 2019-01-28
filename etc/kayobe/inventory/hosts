@@ -24,10 +24,8 @@ cumulus-seed
 controllers
 
 [compute]
-mon1
 
-#[monitoring]
-#mon1
+[monitoring]
 
 [baremetal-compute]
 # Add baremetal compute nodes here if required.
