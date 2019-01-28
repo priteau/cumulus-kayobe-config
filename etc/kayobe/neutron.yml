@@ -18,6 +18,9 @@
 # range: Range of allowed VLANs on this physical network (format <min>:<max>,
 # optional)
 #kolla_neutron_ml2_network_vlan_ranges:
+kolla_neutron_ml2_network_vlan_ranges:
+  - physical_network: "physnet1"
+    range: 400:419
 
 # List of Neutron ML2 extention drivers to use.
 #kolla_neutron_ml2_extension_drivers:
