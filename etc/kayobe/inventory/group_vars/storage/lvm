@@ -25,54 +25,54 @@ storage_lvm_groups:
     create: true
     lvnames:
       - lvname: ceph-ssd-a
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-b
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-c
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-d
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-e
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-f
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-g
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-h
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-i
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-j
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-k
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-l
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
       - lvname: ceph-ssd-m
-        size: "30g"
+        size: "28g"
         create: true
         mount: false
