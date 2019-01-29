@@ -2,7 +2,7 @@
 
 nova_instance_datadir_volume: "/var/lib/nova"
 
-storage_lvm_groups:
+compute_lvm_groups:
   - vgname: instances-disk
     disks:
       - /dev/sdb
