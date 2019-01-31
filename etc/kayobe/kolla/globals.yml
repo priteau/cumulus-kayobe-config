@@ -9,3 +9,7 @@ keystone_token_provider: 'fernet'
 
 # Tell kolla to use the extra volume in this location
 nova_instance_datadir_volume: '/var/lib/nova'
+
+# Ceph integration, without nova having rbd backend
+cinder_backend_ceph: "yes"
+glance_backend_ceph: "yes"
