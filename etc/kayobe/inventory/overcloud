@@ -11,8 +11,8 @@ ctrl3 ipmi_address=10.202.0.9 bmc_type=idrac
 #[network]
 #net1 ipmi_address=10.202.0.4 bmc_type=idrac
 
-#[monitoring]
-#mon1 ipmi_address=10.202.0.2 bmc_type=idrac
+[monitoring]
+mon1 ipmi_address=10.202.0.2 bmc_type=idrac
 
 [storage]
 ceph01 ipmi_address=10.202.0.3 bmc_type=idrac
