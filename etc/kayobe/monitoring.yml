@@ -16,7 +16,8 @@
 #monitoring_default_network_interfaces:
 
 # List of extra networks to which monitoring nodes are attached.
-#monitoring_extra_network_interfaces:
+monitoring_extra_network_interfaces:
+  - provision_oc_net
 
 ###############################################################################
 # Monitoring node BIOS configuration.
