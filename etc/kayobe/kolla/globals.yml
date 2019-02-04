@@ -13,3 +13,5 @@ nova_instance_datadir_volume: '/var/lib/nova'
 # Ceph integration, without nova having rbd backend
 cinder_backend_ceph: "yes"
 #glance_backend_ceph: "yes"
+
+enable_prometheus: "yes"
