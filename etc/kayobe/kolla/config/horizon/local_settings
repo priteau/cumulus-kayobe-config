@@ -798,7 +798,7 @@ LAUNCH_INSTANCE_DEFAULTS = {
     "create_volume": False,
     "disable_image": False,
     "disable_instance_snapshot": False,
-    "disable_volume": False,
-    "disable_volume_snapshot": False,
+    "disable_volume": True,
+    "disable_volume_snapshot": True,
     "enable_scheduler_hints": False,
 }
