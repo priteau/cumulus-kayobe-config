@@ -109,6 +109,10 @@ kolla_build_blocks:
   magnum_conductor_footer: |
     # This branch fixes k8s FailedNodeAllocatableEnforcement warning
     RUN pip install -U --no-deps git+https://github.com/stackhpc/magnum@stackhpc/6.1.1.2
+  manila_share_footer: |
+    # Update the ceph volume client to mimic, due to obsolete mds commands
+    RUN cp /usr/lib/python2.7/site-packages/ceph_volume_client.py /usr/lib/python2.7/site-packages/ceph_volume_client.py.old
+    RUN curl https://raw.githubusercontent.com/ceph/ceph/mimic/src/pybind/ceph_volume_client.py -o /usr/lib/python2.7/site-packages/ceph_volume_client.py
 
 # Dict mapping image customization variable names to their values.
 # Each variable takes the form:
