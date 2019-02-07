@@ -3,9 +3,9 @@
 # Network interface definitions for the controller group.
 
 # Overcloud provisioning network IP information.
-provision_oc_net_interface: bren16
+provision_oc_net_interface: brenp94s0f0
 provision_oc_net_bridge_ports:
-  - eno16
+  - enp94s0f0
 # TODO: we should have a bond on 25Gb, longer term
 # provision_oc_net_bond_slaves:
 
