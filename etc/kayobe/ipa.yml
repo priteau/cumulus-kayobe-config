@@ -45,6 +45,7 @@ ipa_build_dib_elements_extra:
 ipa_build_dib_env_extra:
   DIB_DEV_USER_USERNAME: dev
   DIB_DEV_USER_PWDLESS_SUDO: 1
+  DIB_DHCP_TIMEOUT: 300
 
 # Dictionary of environment variables to provide to Diskimage Builder (DIB)
 # during IPA image build.
