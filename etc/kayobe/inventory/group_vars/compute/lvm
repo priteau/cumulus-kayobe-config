@@ -1,4 +1,5 @@
 ---
+nova_instance_datadir_volume: /var/lib/nova
 
 compute_lvm_groups:
   - vgname: instances-disk
