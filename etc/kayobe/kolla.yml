@@ -27,17 +27,17 @@
 # Kolla-ansible installation.
 
 # Type of Kolla-ansible control installation. One of 'binary' or 'source'.
-#kolla_ansible_ctl_install_type: source
+kolla_ansible_ctl_install_type: source
 
 # Path to directory for kolla-ansible source code checkout.
 #kolla_ansible_source_path:
 
 # URL of Kolla Ansible source code repository if type is 'source'.
-#kolla_ansible_source_url: https://github.com/RSE-Cambridge/kolla-ansible
+kolla_ansible_source_url: https://github.com/RSE-Cambridge/kolla-ansible
 
 # Version (branch, tag, etc.) of Kolla Ansible source code repository if type
 # is 'source'.
-#kolla_ansible_source_version: origin/cumulus/queens
+kolla_ansible_source_version: origin/cumulus/rocky
 
 # Path to virtualenv in which to install kolla-ansible.
 #kolla_ansible_venv:
@@ -206,7 +206,7 @@ kolla_enable_grafana: True
 kolla_enable_heat: True
 kolla_enable_horizon: True
 #kolla_enable_influxdb:
-kolla_enable_ironic: True
+kolla_enable_ironic: False
 #kolla_enable_ironic_ipxe:
 #kolla_enable_ironic_pxe_uefi:
 #kolla_enable_iscsid:
