@@ -36,7 +36,7 @@ kolla_bifrost_dib_env_vars:
   DIB_DEV_USER_PWDLESS_SUDO: "yes"
   DIB_DEV_USER_PASSWORD: password
   DIB_DEV_USER_USERNAME: dib
-  DIB_DHCP_TIMEOUT: 300
+  #DIB_DHCP_TIMEOUT: 40
 
 # List of DIB packages to install.
 #kolla_bifrost_dib_packages:
