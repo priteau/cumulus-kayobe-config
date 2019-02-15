@@ -15,3 +15,4 @@ cinder_backend_ceph: "yes"
 #glance_backend_ceph: "yes"
 
 magnum_tag: pike2
+keystone_tag: pike2
