@@ -85,8 +85,8 @@ LAUNCH_INSTANCE_DEFAULTS = {
 
 WEBSSO_ENABLED = True
 WEBSSO_CHOICES = (
-    ("credentials", _("Local Login")),
-    ("mapped", _("Federated Login")),
+    ("credentials", "Local Login"),
+    ("mapped", "Federated Login"),
 )
 WEBSSO_INITIAL_CHOICE = "mapped"
 
