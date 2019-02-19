@@ -121,6 +121,8 @@ kolla_build_customizations:
   keystone_base_packages_append:
     # Allow custom packages to be installed via pip.
     - 'python-pip'
+    # Allow use of OpenID connecto for federation
+    - 'mod_auth_openidc'
   neutron_server_packages_append:
     # Allow custom packages to be installed via pip.
     - 'python-pip'

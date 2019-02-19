@@ -82,3 +82,12 @@ LAUNCH_INSTANCE_DEFAULTS = {
     "disable_volume_snapshot": True,
     "enable_scheduler_hints": False,
 }
+
+WEBSSO_ENABLED = True
+WEBSSO_CHOICES = (
+    ("credentials", _("Local Login")),
+    ("mapped", _("Federated Login")),
+)
+WEBSSO_INITIAL_CHOICE = "mapped"
+
+OPENSTACK_KEYSTONE_FEDERATION_MANAGEMENT = True
