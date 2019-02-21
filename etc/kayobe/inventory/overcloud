@@ -8,9 +8,11 @@ ctrl2 ipmi_address=10.202.0.6 bmc_type=idrac
 ctrl3 ipmi_address=10.202.0.9 bmc_type=idrac
 
 # TODO: split out network once we get net2 online
-[network]
-net1 ipmi_address=10.202.0.4 bmc_type=idrac
-net2 ipmi_address=10.202.0.7 bmc_type=idrac
+#[network]
+#net1 ipmi_address=10.202.0.4 bmc_type=idrac
+#net2 ipmi_address=10.202.0.7 bmc_type=idrac
+[network:children]
+controllers
 
 [monitoring]
 mon1 ipmi_address=10.202.0.2 bmc_type=idrac
