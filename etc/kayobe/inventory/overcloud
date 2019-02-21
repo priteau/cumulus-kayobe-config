@@ -8,8 +8,9 @@ ctrl2 ipmi_address=10.202.0.6 bmc_type=idrac
 ctrl3 ipmi_address=10.202.0.9 bmc_type=idrac
 
 # TODO: split out network once we get net2 online
-#[network]
-#net1 ipmi_address=10.202.0.4 bmc_type=idrac
+[network]
+net1 ipmi_address=10.202.0.4 bmc_type=idrac
+net2 ipmi_address=10.202.0.7 bmc_type=idrac
 
 [monitoring]
 mon1 ipmi_address=10.202.0.2 bmc_type=idrac
@@ -20,9 +21,9 @@ controllers
 
 [compute]
 cpu-e-1085 ipmi_address=10.202.0.10 bmc_type=idrac
-cpu-e-1086 ipmi_address=10.202.0.11 bmc_type=idrac
-cpu-e-1087 ipmi_address=10.202.0.12 bmc_type=idrac
-cpu-e-1088 ipmi_address=10.202.0.13 bmc_type=idrac
+#cpu-e-1086 ipmi_address=10.202.0.11 bmc_type=idrac
+#cpu-e-1087 ipmi_address=10.202.0.12 bmc_type=idrac
+#cpu-e-1088 ipmi_address=10.202.0.13 bmc_type=idrac
 
 #[ceph]
 #ceph01 ipmi_address=10.202.0.3 bmc_type=idrac
