@@ -3,14 +3,23 @@
 # Network interface definitions for the controller group.
 
 # Overcloud provisioning network IP information.
-provision_oc_net_interface: brenp94s0f0
+# On 1Gb nic for now
+provision_oc_net_interface: breno16
 provision_oc_net_bridge_ports:
-  - enp94s0f0
-# TODO: we should have a bond on 25Gb, longer term
-# provision_oc_net_bond_slaves:
+  - eno16
+
+# need to setup 25Gb bond
+#provision_oc_net_bond_slaves:
+#  - enp94s0f0
+#  - enp94s0f1
+#provision_oc_net_bond_mode: "802.3ad"
+#provision_oc_net_bond_lacp_rate: 1
+#provision_oc_net_bond_updelay: 200
+#provision_oc_net_bond_downdelay: 200
+#provision_oc_net_bond_xmit_hash_policy: "layer3+4"
 
 # Admin network IP information.
-admin_oc_net_interface: "enp94s0f0.{{ admin_oc_net_vlan }}"
+admin_oc_net_interface: "eno16.{{ admin_oc_net_vlan }}"
 # TODO hack to avoid this on the seed
 admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
 
