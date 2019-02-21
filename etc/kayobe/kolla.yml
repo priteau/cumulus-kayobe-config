@@ -234,7 +234,7 @@ kolla_enable_manila_backend_cephfs_nfs: True
 #kolla_enable_mongodb:
 #kolla_enable_multipathd:
 #kolla_enable_murano:
-#kolla_enable_neutron_agent_ha:
+kolla_enable_neutron_agent_ha: True
 #kolla_enable_neutron_bgp_dragent:
 #kolla_enable_neutron_dvr:
 #kolla_enable_neutron_fwaas:
