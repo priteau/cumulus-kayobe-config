@@ -23,8 +23,8 @@ controllers
 
 [compute]
 cpu-e-1085 ipmi_address=10.202.0.10 bmc_type=idrac
-#cpu-e-1086 ipmi_address=10.202.0.11 bmc_type=idrac
-#cpu-e-1087 ipmi_address=10.202.0.12 bmc_type=idrac
+cpu-e-1086 ipmi_address=10.202.0.11 bmc_type=idrac
+cpu-e-1087 ipmi_address=10.202.0.12 bmc_type=idrac
 #cpu-e-1088 ipmi_address=10.202.0.13 bmc_type=idrac
 
 #[ceph]
