@@ -20,6 +20,7 @@ mon1 ipmi_address=10.202.0.2 bmc_type=idrac
 # put cinder-volume on the controllers
 [storage:children]
 controllers
+ceph
 
 [compute]
 cpu-e-1085 ipmi_address=10.202.0.10 bmc_type=idrac
@@ -27,7 +28,7 @@ cpu-e-1086 ipmi_address=10.202.0.11 bmc_type=idrac
 cpu-e-1087 ipmi_address=10.202.0.12 bmc_type=idrac
 #cpu-e-1088 ipmi_address=10.202.0.13 bmc_type=idrac
 
-#[ceph]
-#ceph01 ipmi_address=10.202.0.3 bmc_type=idrac
-#ceph02 ipmi_address=10.202.0.5 bmc_type=idrac
-#ceph03 ipmi_address=10.202.0.8 bmc_type=idrac
+[ceph]
+ceph01 ipmi_address=10.202.0.3 bmc_type=idrac
+ceph02 ipmi_address=10.202.0.5 bmc_type=idrac
+ceph03 ipmi_address=10.202.0.8 bmc_type=idrac

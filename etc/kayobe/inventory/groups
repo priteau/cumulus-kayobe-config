@@ -32,12 +32,16 @@ seed
 [compute]
 # Empty group to provide declaration of compute group.
 
+[ceph]
+# Empty group declaration of ceph group.
+
 [overcloud:children]
 controllers
 network
 monitoring
 storage
 compute
+ceph
 
 ###############################################################################
 # Docker groups.
