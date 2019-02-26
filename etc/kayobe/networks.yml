@@ -83,8 +83,11 @@ provision_oc_net_allocation_pool_end: "10.{{ provision_oc_net_vlan }}.3.255"
 provision_oc_net_inspection_allocation_pool_start: "10.{{ provision_oc_net_vlan }}.10.0"
 provision_oc_net_inspection_allocation_pool_end: "10.{{ provision_oc_net_vlan }}.12.255"
 # provision_oc_net_gateway:
-provision_oc_net_mtu: 9000
 # provision_oc_net_routes:
+
+# TODO: bump mtu
+#provision_oc_net_mtu: 9000
+#bond_25_net_mtu: 9000
 
 # Workload out-of-band management network IP information.
 oob_wl_net_vlan: 212
