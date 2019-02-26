@@ -8,6 +8,7 @@ provision_oc_net_interface: brbond0
 provision_oc_net_bridge_ports:
   - bond0
 
+bond_25_net_mtu: 9000
 bond_25_net_interface: bond0
 bond_25_net_bond_slaves:
   - enp94s0f0

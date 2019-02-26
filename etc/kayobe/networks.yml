@@ -83,7 +83,7 @@ provision_oc_net_allocation_pool_end: "10.{{ provision_oc_net_vlan }}.3.255"
 provision_oc_net_inspection_allocation_pool_start: "10.{{ provision_oc_net_vlan }}.10.0"
 provision_oc_net_inspection_allocation_pool_end: "10.{{ provision_oc_net_vlan }}.12.255"
 # provision_oc_net_gateway:
-# provision_oc_net_mtu:
+provision_oc_net_mtu: 9000
 # provision_oc_net_routes:
 
 # Workload out-of-band management network IP information.
@@ -135,7 +135,7 @@ external_net_cidr: "10.{{ external_net_vlan }}.0.0/16"
 external_net_allocation_pool_start: "10.{{ external_net_vlan }}.1.0"
 external_net_allocation_pool_end: "10.{{ external_net_vlan }}.3.255"
 # external_net_gateway:
-# external_net_mtu:
+external_net_mtu: 1500
 # external_net_routes:
 
 # Public network IP information.
@@ -146,7 +146,7 @@ public_net_cidr: "10.{{ public_net_vlan }}.0.0/16"
 public_net_allocation_pool_start: "10.{{ public_net_vlan }}.1.0"
 public_net_allocation_pool_end: "10.{{ public_net_vlan }}.3.255"
 # public_net_gateway:
-# public_net_mtu:
+public_net_mtu: 1500
 # public_net_routes:
 
 # Storage network IP information.
