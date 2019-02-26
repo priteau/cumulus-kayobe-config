@@ -16,6 +16,12 @@ bond_25_net_bond_slaves:
   - enp130s0f0
   - enp130s0f1
 
+bond_25_net_bond_mode: "802.3ad"
+bond_25_net_bond_xmit_hash_policy: "layer3+4"
+bond_25_net_bond_lacp_rate: 1
+bond_25_net_bond_updelay: 200
+bond_25_net_bond_downdelay: 200
+
 # Admin network IP information.
 admin_oc_net_interface: "eno3.{{ admin_oc_net_vlan }}"
 # TODO hack to avoid this on the seed
