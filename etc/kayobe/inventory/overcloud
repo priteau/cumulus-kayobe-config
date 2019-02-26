@@ -27,6 +27,11 @@ cpu-e-1085 ipmi_address=10.202.0.10 bmc_type=idrac
 cpu-e-1086 ipmi_address=10.202.0.11 bmc_type=idrac
 cpu-e-1087 ipmi_address=10.202.0.12 bmc_type=idrac
 #cpu-e-1088 ipmi_address=10.202.0.13 bmc_type=idrac
+#cpu-e-1088 ipmi_address=10.202.0.13 bmc_type=idrac
+#cpu-e-1025 ipmi_address=10.202.0.14 bmc_type=idrac
+#cpu-e-1026 ipmi_address=10.202.0.15 bmc_type=idrac
+#cpu-e-1027 ipmi_address=10.202.0.16 bmc_type=idrac
+#cpu-e-1028 ipmi_address=10.202.0.17 bmc_type=idrac
 
 [ceph]
 ceph01 ipmi_address=10.202.0.3 bmc_type=idrac
