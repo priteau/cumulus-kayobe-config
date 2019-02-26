@@ -19,6 +19,7 @@
 storage_extra_network_interfaces:
   - provision_oc_net
   - public_net
+  - bond_25_net
 
 ###############################################################################
 # Storage node BIOS configuration.

@@ -9,6 +9,13 @@ provision_oc_net_bridge_ports:
 # TODO: we should have a bond on 25Gb, longer term
 # provision_oc_net_bond_slaves:
 
+bond_25_net_interface: bond0
+bond_25_net_bond_slaves:
+  - enp3s0f0
+  - enp3s0f1
+  - enp130s0f0
+  - enp130s0f1
+
 # Admin network IP information.
 admin_oc_net_interface: "eno3.{{ admin_oc_net_vlan }}"
 # TODO hack to avoid this on the seed
