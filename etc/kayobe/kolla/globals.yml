@@ -49,7 +49,7 @@ monasca_persister_tag: rocky
 neutron_tag: rocky
 nova_tag: rocky
 openvswitch_tag: rocky
-prometheus-tag: rocky
+prometheus_tag: rocky
 rabbitmq_tag: rocky
 storm_tag: rocky
 zookeeper_tag: rocky
