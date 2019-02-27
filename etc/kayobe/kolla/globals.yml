@@ -20,6 +20,7 @@ cinder_backend_ceph: "yes"
 
 # Container image tags.
 # These should be allowed to change independently, as services are updated.
+bifrost_tag: rocky
 cron_tag: rocky
 ceph_tag: rocky
 cinder_tag: rocky
