@@ -23,6 +23,7 @@ cinder_backend_ceph: "yes"
 cron_tag: rocky
 ceph_tag: rocky
 cinder_tag: rocky
+chrony_tag: rocky
 elasticsearch_tag: rocky
 fluentd_tag: rocky
 glance_tag: rocky
