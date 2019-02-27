@@ -7,10 +7,13 @@
 #kolla_neutron_ml2_mechanism_drivers:
 
 # List of Neutron ML2 type drivers to use.
-#kolla_neutron_ml2_type_drivers:
+kolla_neutron_ml2_type_drivers:
+  - vxlan
+  - vlan
 
 # List of Neutron ML2 tenant network types to use.
-#kolla_neutron_ml2_tenant_network_types:
+kolla_neutron_ml2_tenant_network_types:
+  - vxlan
 
 # List of Neutron ML2 network VLAN ranges to use. Each item should be a dict
 # containing the following items:
@@ -20,7 +23,7 @@
 #kolla_neutron_ml2_network_vlan_ranges:
 kolla_neutron_ml2_network_vlan_ranges:
   - physical_network: "physnet1"
-    range: 400:419
+    range: 400:401
 
 # List of Neutron ML2 extention drivers to use.
 #kolla_neutron_ml2_extension_drivers:
