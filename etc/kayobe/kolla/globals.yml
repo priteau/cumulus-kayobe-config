@@ -17,3 +17,38 @@ cinder_backend_ceph: "yes"
 # TODO: how to build these?
 #magnum_tag: pike2
 #keystone_tag: pike2
+
+# Container image tags.
+# These should be allowed to change independently, as services are updated.
+cron_tag: rocky
+ceph_tag: rocky
+cinder_tag: rocky
+elasticsearch_tag: rocky
+fluentd_tag: rocky
+glance_tag: rocky
+grafana_tag: rocky
+haproxy_tag: rocky
+heat_tag: rockt
+horizon_tag: rocky
+influxdb_tag: rocky
+ironic_tag: rocky
+iscsid_tag: rocky
+kafka_tag: rocky
+keepalived_tag: rocky
+keystone_tag: rocky
+kibana_tag: rocky
+kolla_toolbox_tag: rocky
+logstash_tag: rocky
+manila_tag: rocky
+mariadb_tag: rocky
+memcached_tag: rocky
+monasca_tag: rocky
+monasca_notification_tag: rocky
+monasca_persister_tag: rocky
+neutron_tag: rocky
+nova_tag: rocky
+openvswitch_tag: rocky
+prometheus-tag: rocky
+rabbitmq_tag: rocky
+storm_tag: rocky
+zookeeper_tag: rocky
