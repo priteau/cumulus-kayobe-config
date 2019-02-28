@@ -146,8 +146,8 @@ external_net_mtu: 1500
 public_net_vlan: 215
 public_net_vip_address: "10.{{ public_net_vlan }}.0.1"
 public_net_cidr: "10.{{ public_net_vlan }}.0.0/16"
-public_net_allocation_pool_start: "10.{{ public_net_vlan }}.1.0"
-public_net_allocation_pool_end: "10.{{ public_net_vlan }}.3.255"
+#public_net_allocation_pool_start: "10.{{ public_net_vlan }}.1.0"
+#public_net_allocation_pool_end: "10.{{ public_net_vlan }}.3.255"
 # public_net_gateway:
 public_net_mtu: 1500
 # public_net_routes:
