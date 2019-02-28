@@ -8,5 +8,5 @@ raid_config: "{{ storage_raid_config }}"
 sysctl_parameters: "{{ storage_sysctl_parameters }}"
 users: "{{ storage_users }}"
 
-lvm_groups: "{{ storage_lvm_groups }}"
-network_interfaces: "{{ storage_network_interfaces | unique | list }}"
+lvm_groups: "{{ ceph_lvm_groups }}"
+network_interfaces: "{{ ceph_network_interfaces | unique | list }}"
