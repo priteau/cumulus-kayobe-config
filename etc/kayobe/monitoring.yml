@@ -10,7 +10,7 @@
 # Monitoring node network interface configuration.
 
 # List of networks to which monitoring nodes are attached.
-monitoring_network_interfaces:
+monitoring_network_interfaces: >
   {{ [admin_oc_net_name,
       "br_net",
       internal_net_name,

@@ -4,7 +4,7 @@
 
 # similar to src/cumulus-kayobe-config/etc/kayobe/controller.yml
 ceph_network_interfaces: >
-  {{ ([admin_oc_net_name,
+  {{ [admin_oc_net_name,
        "br_net",
        "bond0_net",
        internal_net_name,

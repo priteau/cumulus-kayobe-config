@@ -11,7 +11,7 @@
 
 # List of networks to which compute nodes are attached.
 compute_network_interfaces: >
-  {{ ([admin_oc_net_name,
+   {{ [admin_oc_net_name,
        internal_net_name,
        storage_net_name,
        tunnel_net_name,
