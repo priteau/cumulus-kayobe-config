@@ -4,8 +4,8 @@
 
 # Overcloud provisioning network IP information.
 # On 1Gb nic for now
-brbond0_net_interface: brbond0
-brbond0_net_bridge_ports:
+br_net_interface: brbond0
+br_net_bridge_ports:
   - bond0
 
 bond0_net_interface: bond0

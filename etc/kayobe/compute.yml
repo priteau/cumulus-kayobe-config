@@ -16,7 +16,7 @@ compute_network_interfaces: >
        storage_net_name,
        tunnel_net_name,
        "bond0_net",
-       "brbond0_net"] | unique | list }}
+       "br_net"] | unique | list }}
 
 # List of default networks to which compute nodes are attached.
 #compute_default_network_interfaces:
