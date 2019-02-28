@@ -13,6 +13,7 @@
 controller_network_interfaces: >
   {{ [admin_oc_net_name,
       "br_net",
+      "external_net",
       public_net_name,
       tunnel_net_name,
       internal_net_name,

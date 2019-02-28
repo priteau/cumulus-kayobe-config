@@ -15,6 +15,7 @@ compute_network_interfaces: >
        internal_net_name,
        storage_net_name,
        tunnel_net_name,
+       "external_net",
        "bond0_net",
        "br_net"] | unique | list }}
 
