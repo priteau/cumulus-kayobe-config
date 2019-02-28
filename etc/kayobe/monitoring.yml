@@ -10,14 +10,17 @@
 # Monitoring node network interface configuration.
 
 # List of networks to which monitoring nodes are attached.
-#monitoring_network_interfaces:
+monitoring_network_interfaces:
+  {{ [admin_oc_net_name,
+      "br_net",
+      internal_net_name,
+      storage_net_name] | unique | list }}
 
 # List of default networks to which monitoring nodes are attached.
 #monitoring_default_network_interfaces:
 
 # List of extra networks to which monitoring nodes are attached.
-monitoring_extra_network_interfaces:
-  - provision_oc_net
+#monitoring_extra_network_interfaces:
 
 ###############################################################################
 # Monitoring node BIOS configuration.
