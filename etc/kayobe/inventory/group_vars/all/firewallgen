@@ -1,0 +1,17 @@
+---
+
+firewallgen_networks_kayobe_defaults:
+- "admin_oc_net_name"
+- "oob_oc_net_name"
+- "provision_oc_net_name"
+- "oob_wl_net_name"
+- "provision_wl_net_name"
+- "internal_net_name"
+- "public_net_name"
+- "tunnel_net_name"
+- "storage_net_name"
+- "storage_mgmt_net_name"
+- "inspection_net_name"
+- "cleaning_net_name"
+
+firewallgen_networks: "{{ firewallgen_networks_kayobe_defaults + external_net_names | default([])}}"
