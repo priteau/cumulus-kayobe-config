@@ -4,20 +4,15 @@
 
 # Overcloud provisioning network IP information.
 # On 1Gb nic for now
-provision_oc_net_interface: brbond0
-provision_oc_net_bridge_ports:
+brbond0_net_interface: brbond0
+brbond0_net_bridge_ports:
   - bond0
 
-bond_25_net_interface: bond0
-bond_25_net_bond_slaves:
+bond0_net_interface: bond0
+bond0_net_bond_slaves:
   - enp94s0f0
   - enp94s0f1
 
-bond_25_net_bond_mode: "802.3ad"
-bond_25_net_bond_xmit_hash_policy: "layer3+4"
-bond_25_net_bond_lacp_rate: 1
-bond_25_net_bond_updelay: 200
-bond_25_net_bond_downdelay: 200
 
 # Admin network IP information.
 # still on 1G network

@@ -85,10 +85,6 @@ provision_oc_net_inspection_allocation_pool_end: "10.{{ provision_oc_net_vlan }}
 # provision_oc_net_gateway:
 # provision_oc_net_routes:
 
-# TODO: bump mtu
-#provision_oc_net_mtu: 9000
-#bond_25_net_mtu: 9000
-
 # Workload out-of-band management network IP information.
 oob_wl_net_vlan: 212
 oob_wl_net_cidr: "10.{{ oob_wl_net_vlan }}.0.0/16"
@@ -138,7 +134,7 @@ external_net_cidr: "10.{{ external_net_vlan }}.0.0/16"
 external_net_allocation_pool_start: "10.{{ external_net_vlan }}.1.0"
 external_net_allocation_pool_end: "10.{{ external_net_vlan }}.3.255"
 # external_net_gateway:
-external_net_mtu: 1500
+# external_net_mtu:
 # external_net_routes:
 
 # Public network IP information.
@@ -146,10 +142,10 @@ external_net_mtu: 1500
 public_net_vlan: 215
 public_net_vip_address: "10.{{ public_net_vlan }}.0.1"
 public_net_cidr: "10.{{ public_net_vlan }}.0.0/16"
-#public_net_allocation_pool_start: "10.{{ public_net_vlan }}.1.0"
-#public_net_allocation_pool_end: "10.{{ public_net_vlan }}.3.255"
+# public_net_allocation_pool_start: "10.{{ public_net_vlan }}.1.0"
+# public_net_allocation_pool_end: "10.{{ public_net_vlan }}.3.255"
 # public_net_gateway:
-public_net_mtu: 1500
+# public_net_mtu:
 # public_net_routes:
 
 # Storage network IP information.
@@ -192,13 +188,30 @@ inspection_net_inspection_allocation_pool_end: "10.{{ inspection_net_vlan }}.102
 # inspection_net_mtu:
 # inspection_net_routes:
 
+# 1G and external stays on default mtu
+provision_oc_net_mtu: 1500
+public_net_mtu: 1500
+admin_oc_net_mtu: 1500
+oob_oc_net_mtu: 1500
+
+# TODO: we want these to be 9000
+brbond0_net_mtu: 1500
+bond0_net_mtu: 1500
+bond0_net_bond_mode: "802.3ad"
+bond0_net_bond_xmit_hash_policy: "layer3+4"
+bond0_net_bond_lacp_rate: 1
+bond0_net_bond_updelay: 200
+bond0_net_bond_downdelay: 200
+
 # TODO: map above to physical networks
 
-# 1G Ethernet management network
-mgmt_physical_network: physnet1
 # High Speed (25Gb) Ethernet network
-hs_eth_physical_network: physnet2
+hs_eth_physical_network: physnet1
+# 1G Ethernet management network
+# Only used for management and pxe
+mgmt_physical_network: physnet2
 # Low latency (100G OPA) network
+# Not currently used at all
 lln_phyiscal_network: physnet3
 
 ###############################################################################
