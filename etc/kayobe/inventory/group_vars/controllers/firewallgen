@@ -7,3 +7,5 @@ firewallgen_ipv4_input_allow_rewrite_rules:
   - '. |= map( if .processes[].name == "dnsmasq" and .processes[].docker_hint == "ironic_dnsmasq" then .interface = "{% raw %}{{ inspection_net_interface }}{% endraw %}" else . end)'
   - '. |= map( if .processes[].docker_hint == "ironic_pxe" then .interface = "{% raw %}{{ internal_net_interface }}{% endraw %}" else . end)'
   - '. | map(select(.processes[].name != "rpcbind"))'
+  # haproxy starts an ephemeral port for communicating with syslog
+  - '. |= map(select(.processes[].name != "haproxy" or .proto != "udp"))'
