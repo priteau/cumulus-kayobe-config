@@ -168,7 +168,7 @@ kolla_overcloud_inventory_custom_components: "{{ lookup('template', kayobe_confi
 #kolla_ansible_target_venv:
 
 # Whether TLS is enabled for the external API endpoints.
-#kolla_enable_tls_external:
+kolla_enable_tls_external: True
 
 # Whether debug logging is enabled.
 #kolla_openstack_logging_debug:
