@@ -43,14 +43,9 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'openstack-expor' in docker container 'prometheus_openstack_exporter'"
   - interface: "all"
-    port: 123
+    port: 880
     proto: udp
-    comment: "hint: used by 'ntpd'"
-  - interface: "breno3.206"
-    port: 123
-    proto: udp
-    destination: "{{ storage_net_name | net_ip }}"
-    comment: "hint: used by 'ntpd'"
+    comment: "hint: used by 'rpcbind'"
   - interface: "docker0"
     port: 123
     proto: udp
@@ -66,11 +61,6 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "127.0.0.1"
     comment: "hint: used by 'chronyd' in docker container 'chrony'"
-  - interface: "{{ admin_oc_net_interface }}"
-    port: 123
-    proto: udp
-    destination: "{{ admin_oc_net_name | net_ip }}"
-    comment: "hint: used by 'ntpd'"
   - interface: "{{ internal_net_interface }}"
     port: 123
     proto: udp

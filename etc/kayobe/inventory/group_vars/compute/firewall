@@ -37,10 +37,6 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'libvirtd' in docker container 'nova_libvirt'"
-  - interface: "all"
-    port: 123
-    proto: udp
-    comment: "hint: used by 'ntpd'"
   - interface: "docker0"
     port: 123
     proto: udp
@@ -56,16 +52,6 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "127.0.0.1"
     comment: "hint: used by 'chronyd' in docker container 'chrony'"
-  - interface: "{{ admin_oc_net_interface }}"
-    port: 123
-    proto: udp
-    destination: "{{ admin_oc_net_name | net_ip }}"
-    comment: "hint: used by 'ntpd'"
-  - interface: "{{ external_net_interface }}"
-    port: 123
-    proto: udp
-    destination: "{{ 'external_net' | net_ip }}"
-    comment: "hint: used by 'ntpd'"
   - interface: "{{ internal_net_interface }}"
     port: 123
     proto: udp
@@ -76,13 +62,3 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'fluentd' in docker container 'fluentd'"
-  - interface: "{{ storage_net_interface }}"
-    port: 123
-    proto: udp
-    destination: "{{ storage_net_name | net_ip }}"
-    comment: "hint: used by 'ntpd'"
-  - interface: "{{ tunnel_net_interface }}"
-    port: 123
-    proto: udp
-    destination: "{{ tunnel_net_name | net_ip }}"
-    comment: "hint: used by 'ntpd'"

@@ -1,11 +1,21 @@
 ---
 
-firewallgen_ipv4_input_allow_rewrite_rules:
+firewallgen_ipv4_input_allow_rewrite_rules_controllers:
   - '. |= map( if .processes[].name == "epmd" and .processes[].docker_hint == "rabbitmq" then .interface = "{% raw %}{{ internal_net_interface }}{% endraw %}" else . end)'
   - '. |= map( if .processes[].name == "nginx" and .processes[].docker_hint == "inspection_store" then .interface = "{% raw %}{{ internal_net_interface }}{% endraw %}" else . end)'
-  - '. |= map( if .processes[].name == "sshd" then .interface = "{% raw %}{{ admin_oc_net_interface }}{% endraw %}" else . end)'
   - '. |= map( if .processes[].name == "dnsmasq" and .processes[].docker_hint == "ironic_dnsmasq" then .interface = "{% raw %}{{ inspection_net_interface }}{% endraw %}" else . end)'
   - '. |= map( if .processes[].docker_hint == "ironic_pxe" then .interface = "{% raw %}{{ internal_net_interface }}{% endraw %}" else . end)'
+  # FIXME: rpcbind required for manilla?
   - '. | map(select(.processes[].name != "rpcbind"))'
   # haproxy starts an ephemeral port for communicating with syslog
   - '. |= map(select(.processes[].name != "haproxy" or .proto != "udp"))'
+  # port 111 is portmapper (an NFS service), FIXME: we probably need this for manilla
+  - '. | map(select(.port != 111))'
+  - '. |= map(select(.processes[].haproxy_hint != "grafana_server_external"))'
+  - '. |= map(select(if .processes[].haproxy_hint? then .processes[].haproxy_hint | test("prometheus.*_external") | not else true end))'
+  # John thinks this might be required for VXLANs
+  - '. |= map( if .port == 4789 then .interface = "{% raw %}{{ tunnel_net_interface }}{% endraw %}" else . end)'
+
+firewallgen_ipv4_input_allow_rewrite_rules: >
+  {{ firewallgen_ipv4_input_allow_rewrite_rules_controllers +
+  firewallgen_ipv4_input_allow_rewrite_rules_all }}

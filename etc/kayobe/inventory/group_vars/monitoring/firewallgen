@@ -1,10 +1,9 @@
 ---
 
-firewallgen_ipv4_input_allow_rewrite_rules:
-  # rpcbind is using ephemeral port 
-  - '. | map(select(.processes[].name != "rpcbind"))'
-  - '. |= map( if .processes[].name == "sshd" then .interface = "{% raw %}{{ admin_oc_net_interface }}{% endraw %}" else . end)'
-  # systemd socket activation for  rpcbind
+firewallgen_ipv4_input_allow_rewrite_rules_monitoring:
+  # systemd socket activation for portmapper service
   - '. | map(select(.port != 111))'
 
-  
+firewallgen_ipv4_input_allow_rewrite_rules: >-
+  {{ firewallgen_ipv4_input_allow_rewrite_rules_monitoring +
+     firewallgen_ipv4_input_allow_rewrite_rules_all }}

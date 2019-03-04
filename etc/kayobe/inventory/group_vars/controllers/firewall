@@ -3,10 +3,6 @@
 firewallgen_enable_firewall: True
 
 firewallgen_ipv4_input_allow_rules:
-  - interface: "all"
-    port: 111
-    proto: tcp
-    comment: "hint: used by 'systemd'"
   - interface: "lo"
     port: 25
     proto: tcp
@@ -213,6 +209,11 @@ firewallgen_ipv4_input_allow_rules:
   - interface: "{{ internal_net_interface }}"
     port: 9292
     proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'glance-api' in docker container 'glance_api'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9292
+    proto: tcp
     destination: "{{ internal_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for glance_api"
   - interface: "{{ internal_net_interface }}"
@@ -276,11 +277,6 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ public_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for horizon_external"
   - interface: "{{ public_net_interface }}"
-    port: 3000
-    proto: tcp
-    destination: "{{ public_net_name | net_vip_address }}"
-    comment: "hint: used by 'haproxy' for grafana_server_external"
-  - interface: "{{ public_net_interface }}"
     port: 5000
     proto: tcp
     destination: "{{ public_net_name | net_vip_address }}"
@@ -331,11 +327,6 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ public_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for manila_api_external"
   - interface: "{{ public_net_interface }}"
-    port: 9093
-    proto: tcp
-    destination: "{{ public_net_name | net_vip_address }}"
-    comment: "hint: used by 'haproxy' for prometheus_alertmanager_external"
-  - interface: "{{ public_net_interface }}"
     port: 9292
     proto: tcp
     destination: "{{ public_net_name | net_vip_address }}"
@@ -350,14 +341,6 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ public_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for neutron_server_external"
-  - interface: "all"
-    port: 111
-    proto: udp
-    comment: "hint: used by 'systemd'"
-  - interface: "all"
-    port: 4789
-    proto: udp
-    comment: "hint: used by 'unknown'"
   - interface: "lo"
     port: 323
     proto: udp
@@ -373,3 +356,7 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'fluentd' in docker container 'fluentd'"
+  - interface: "{{ tunnel_net_interface }}"
+    port: 4789
+    proto: udp
+    comment: "hint: used by 'unknown'"
