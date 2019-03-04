@@ -10,16 +10,13 @@
 # Network interface attachments.
 
 # List of networks to which storage nodes are attached.
-#storage_network_interfaces:
+storage_network_interfaces: "{{ controller_network_interfaces }}"
 
 # List of default networks to which storage nodes are attached.
 #storage_default_network_interfaces:
 
 # List of extra networks to which storage nodes are attached.
-storage_extra_network_interfaces:
-  - provision_oc_net
-  - public_net
-  - bond_25_net
+# storage_extra_network_interfaces:
 
 ###############################################################################
 # Storage node BIOS configuration.

@@ -1,0 +1,12 @@
+---
+# using defaults from src/kayobe/ansible/group_vars/storage
+ansible_user: "{{ kayobe_ansible_user }}"
+bootstrap_user: "{{ storage_bootstrap_user }}"
+bios_config: "{{ storage_bios_config }}"
+ceph_disks: "{{ storage_ceph_disks }}"
+raid_config: "{{ storage_raid_config }}"
+sysctl_parameters: "{{ storage_sysctl_parameters }}"
+users: "{{ storage_users }}"
+
+lvm_groups: "{{ ceph_lvm_groups }}"
+network_interfaces: "{{ ceph_network_interfaces | unique | list }}"

@@ -49,12 +49,7 @@ ceph
 [docker:children]
 # Hosts in this group will have Docker installed.
 seed
-controllers
-network
-monitoring
-# storage doesn't need docker, as we using ceph-ansible
-# storage
-compute
+overcloud
 
 ###############################################################################
 # Baremetal compute node groups.

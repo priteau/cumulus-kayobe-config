@@ -10,15 +10,20 @@
 # Network interface attachments.
 
 # List of networks to which compute nodes are attached.
-#compute_network_interfaces:
+compute_network_interfaces: >
+   {{ [admin_oc_net_name,
+       internal_net_name,
+       storage_net_name,
+       tunnel_net_name,
+       "external_net",
+       "bond0_net",
+       "br_net"] | unique | list }}
 
 # List of default networks to which compute nodes are attached.
 #compute_default_network_interfaces:
 
 # List of extra networks to which compute nodes are attached.
-compute_extra_network_interfaces:
-  - bond_25_net
-  - provision_oc_net
+#compute_extra_network_interfaces:
 
 ###############################################################################
 # Compute node BIOS configuration.
