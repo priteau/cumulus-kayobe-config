@@ -25,7 +25,7 @@ cron_tag: rocky
 ceph_tag: rocky
 cinder_tag: rocky
 chrony_tag: rocky
-elasticsearch_tag: 7.0.1.2
+elasticsearch_tag: rocky
 fluentd_tag: rocky
 glance_tag: rocky
 grafana_tag: rocky
@@ -38,7 +38,7 @@ iscsid_tag: rocky
 kafka_tag: rocky
 keepalived_tag: rocky
 keystone_tag: rocky
-kibana_tag: 7.0.1.2
+kibana_tag: rocky
 kolla_toolbox_tag: rocky
 logstash_tag: rocky
 manila_tag: rocky
