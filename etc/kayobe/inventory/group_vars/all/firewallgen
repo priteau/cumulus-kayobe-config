@@ -16,8 +16,32 @@ firewallgen_networks_kayobe_defaults:
 
 firewallgen_networks: "{{ firewallgen_networks_kayobe_defaults + external_net_names | default([])}}"
 
+internal_interface: '{{ lookup("vars", internal_net_name ~ "_" ~ "interface") }}'
+
 firewallgen_ipv4_input_allow_rewrite_rules_all:
   - '. |= map( if .processes[].name == "sshd" then .interface = "{% raw %}{{ admin_oc_net_interface }}{% endraw %}" else . end)'
   # ntpd should only use the admin_oc_net_interface
   - '. | map(select(.proto != "udp" or .port != 123 or .interface == "{{ lookup("vars", internal_net_name ~ "_" ~ "interface") }}" or .interface == "docker0" or .interface == "lo" ))'
+  # rpcbind is using ephemeral port - we need to lock this to a particular port
+  # in order to generate a firewall rule
+  - '. | map(select(.processes[].name != "rpcbind"))'
 
+firewallgen_ipv4_input_allow_custom_rules_all:
+  # docker registry - ss doesn't show docker forwarded ports unless EXPOSE is
+  # set: https://stackoverflow.com/questions/36454955/docker-and-netstat-netstat-is-not-showing-ports-exposed-by-docker-containers
+# cadvisor
+- interface: "{% raw %}{{ internal_interface }}{% endraw %}"
+  port: 18080
+  proto: tcp
+  destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+  comment: cadvisor
+# mtail
+- interface: "{% raw %}{{ internal_interface }}{% endraw %}"
+  port: 9197
+  proto: tcp
+  destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+  comment: mtail
+
+firewallgen_ipv4_input_allow_custom_rules: >-
+  {{ firewallgen_ipv4_input_allow_custom_rules_all +
+  firewallgen_ipv4_input_allow_custom_rules_extra | default([]) }}

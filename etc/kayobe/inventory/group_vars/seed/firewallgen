@@ -22,7 +22,7 @@ firewallgen_ipv4_input_allow_rewrite_rules:
 # rabbit (doesn't seem to referenced in any config file)
   - '. |= map( if .port == 25672 and .proto == "tcp"  then .interface = "lo" else . end)'
 
-firewallgen_ipv4_input_allow_custom_rules:
+firewallgen_ipv4_input_allow_custom_rules_extra:
   # docker registry - ss doesn't show docker forwarded ports unless
   # EXPOSE is set: https://stackoverflow.com/questions/36454955/docker-and-netstat-netstat-is-not-showing-ports-exposed-by-docker-containers
   - interface: "{% raw %}{{ provision_oc_net_interface }}{% endraw %}"
