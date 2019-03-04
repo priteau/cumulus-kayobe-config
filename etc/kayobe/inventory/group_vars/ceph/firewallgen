@@ -1,0 +1,9 @@
+---
+
+firewallgen_ipv4_input_allow_rewrite_rules_ceph:
+  # systemd socket activation for portmapper service
+  - '. | map(select(.port != 111))'
+
+firewallgen_ipv4_input_allow_rewrite_rules: >-
+  {{ firewallgen_ipv4_input_allow_rewrite_rules_ceph +
+     firewallgen_ipv4_input_allow_rewrite_rules_all }}

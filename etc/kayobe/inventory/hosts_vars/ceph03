@@ -1,0 +1,314 @@
+---
+
+firewallgen_enable_firewall: True
+
+firewallgen_ipv4_input_allow_rules:
+  - interface: "lo"
+    port: 25
+    proto: tcp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'master'"
+  - interface: "{{ admin_oc_net_interface }}"
+    port: 22
+    proto: tcp
+    comment: "hint: used by 'sshd'"
+  - interface: "{{ internal_interface }}"
+    port: 9197
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "mtail"
+  - interface: "{{ internal_interface }}"
+    port: 18080
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "cadvisor"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6800
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6801
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6802
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6803
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6804
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6805
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6806
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6807
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6808
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6809
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6810
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6811
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6812
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6813
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6814
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6815
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6818
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6819
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6820
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6821
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6822
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6823
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6824
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6825
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6826
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_mgmt_net_interface }}"
+    port: 6827
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6789
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-mon'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6800
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6801
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6802
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6803
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6804
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6805
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6806
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6807
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6808
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6809
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6810
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6811
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6812
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6813
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6814
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6815
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6816
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6818
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6819
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6820
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6821
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6822
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6823
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6824
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6825
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6826
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-mds'"
+  - interface: "{{ storage_net_interface }}"
+    port: 6827
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-osd'"
+  - interface: "{{ storage_net_interface }}"
+    port: 8080
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'radosgw'"
+  - interface: "docker0"
+    port: 123
+    proto: udp
+    destination: "172.17.0.1"
+    comment: "hint: used by 'ntpd'"
+  - interface: "lo"
+    port: 123
+    proto: udp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'ntpd'"
+  - interface: "{{ internal_net_interface }}"
+    port: 123
+    proto: udp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'ntpd'"
