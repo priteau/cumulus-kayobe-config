@@ -21,7 +21,7 @@ internal_interface: '{{ lookup("vars", internal_net_name ~ "_" ~ "interface") }}
 firewallgen_ipv4_input_allow_rewrite_rules_all:
   - '. |= map( if .processes[].name == "sshd" then .interface = "{% raw %}{{ admin_oc_net_interface }}{% endraw %}" else . end)'
   # ntpd should only use the admin_oc_net_interface
-  - '. | map(select(.proto != "udp" or .port != 123 or .interface == "{{ lookup("vars", internal_net_name ~ "_" ~ "interface") }}" or .interface == "docker0" or .interface == "lo" ))'
+  - '. | map(select(.proto != "udp" or .port != 123 or .interface == "{{ internal_interface }}" or .interface == "docker0" or .interface == "lo" ))'
   # rpcbind is using ephemeral port - we need to lock this to a particular port
   # in order to generate a firewall rule
   - '. | map(select(.processes[].name != "rpcbind"))'
