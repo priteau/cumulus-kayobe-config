@@ -1,8 +1,6 @@
 ---
 
 firewallgen_ipv4_input_allow_rewrite_rules_extra:
-# Only allow ssh on admin_oc_net_interface
-  - '. |= map( if .processes[].name == "sshd" then .interface = "{% raw %}{{ admin_oc_net_interface }}{% endraw %}" else . end)'
 # Xvnc is accessed via ssh
   - '. |= map( if .processes[].name == "Xvnc" then .interface = "lo" else . end)'
 # this is systemd which will start portmapper
@@ -23,9 +21,8 @@ firewallgen_ipv4_input_allow_rewrite_rules_extra:
   - '. |= map( if .port == 25672 and .proto == "tcp"  then .interface = "lo" else . end)'
 
 firewallgen_ipv4_input_allow_custom_rules_extra:
-  # docker registry - ss doesn't show docker forwarded ports unless
-  # EXPOSE is set: https://stackoverflow.com/questions/36454955/docker-and-netstat-netstat-is-not-showing-ports-exposed-by-docker-containers
-  - interface: "{{ firewallgen_interface_tmpl % provision_oc_net_name }}"
+  # These are ipv4-mapped ipv6 addresses and don't show in ss -nlpt -4 output
+  - interface: "{{ firewallgen_interface_tmpl % 'provision_oc_net_name' }}"
     port: 5000
     proto: tcp
     destination: "{% raw %}{{ provision_oc_net_name | net_ip }}{% endraw %}"

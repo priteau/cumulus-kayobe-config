@@ -36,8 +36,7 @@ firewallgen_ipv4_input_allow_rewrite_rules: >-
      firewallgen_ipv4_input_allow_rewrite_rules_extra }}
 
 firewallgen_ipv4_input_allow_custom_rules_all:
-  # docker registry - ss doesn't show docker forwarded ports unless EXPOSE is
-  # set: https://stackoverflow.com/questions/36454955/docker-and-netstat-netstat-is-not-showing-ports-exposed-by-docker-containers
+  # These are ipv4-mapped ipv6 addresses and don't show in ss -nlpt -4 output
 # cadvisor
 - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
   port: 18080

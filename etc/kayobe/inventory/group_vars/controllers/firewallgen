@@ -13,7 +13,7 @@ firewallgen_ipv4_input_allow_rewrite_rules_controllers:
   - '. | map(select(.port != 111))'
   - '. |= map(select(.processes[].haproxy_hint != "grafana_server_external"))'
   - '. |= map(select(if .processes[].haproxy_hint? then .processes[].haproxy_hint | test("prometheus.*_external") | not else true end))'
-  # John thinks this might be required for VXLANs
+  # VXLANs? : https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=4789 
   - '. |= map( if .port == 4789 then .interface = "{% raw %}{{ tunnel_net_interface }}{% endraw %}" else . end)'
 
 firewallgen_ipv4_input_allow_rewrite_rules: >
