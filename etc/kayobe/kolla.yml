@@ -478,7 +478,7 @@ kolla_tls_cert: !vault |
 
 # Path to a CA certificate file to use for the OS_CACERT environment variable in
 # openrc files when TLS is enabled, instead of Kolla-Ansible's default.
-kolla_external_fqdn_cacert: /etc/kolla/certificates/haproxy-ca.crt
+#kolla_external_fqdn_cacert:
 
 ###############################################################################
 # Dummy variable to allow Ansible to accept this file.
