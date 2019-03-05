@@ -145,7 +145,6 @@ external_net_allocation_pool_end: "10.{{ external_net_vlan }}.3.255"
 public_net_vlan: 111
 public_net_vip_address: 128.232.224.64
 public_net_fqdn: cumulus.openstack.hpc.cam.ac.uk
-public_net_mtu: 1500
 public_net_routes:
   - cidr: "128.232.224.0/23"
 # Comment out cidr so we don't hand out ips to all interfaces

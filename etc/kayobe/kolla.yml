@@ -288,7 +288,8 @@ kolla_enable_prometheus: True
 # use by HAproxy.
 #
 # Note that this should be formatted as a literal style block scalar.
-kolla_tls_cert: !vault |
+kolla_tls_cert: "{{ secrets_kolla_tls_cert }}"
+asdf_kolla_tls_cert: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           31303462613131363563363166353863383837656163323638353065626631613661363966356364
           6336393936353562306636346130366663323034356162380a666563653566393465643535323561
