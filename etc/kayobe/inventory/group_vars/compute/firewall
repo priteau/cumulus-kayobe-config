@@ -47,6 +47,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "cadvisor"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 5900:6000
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "libvirt serial consoles"
   - interface: "docker0"
     port: 123
     proto: udp

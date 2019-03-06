@@ -282,6 +282,11 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_ip }}"
     comment: "Galera: Incremental State Transfer"
   - interface: "{{ internal_net_name | net_interface }}"
+    port: 6080
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "serial console proxy (internal)"
+  - interface: "{{ internal_net_name | net_interface }}"
     port: 9197
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
@@ -366,6 +371,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ public_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for neutron_server_external"
+  - interface: "{{ public_net_name | net_interface }}"
+    port: 6080
+    proto: tcp
+    destination: "{{ public_net_name | net_ip }}"
+    comment: "serial console proxy (public)"
   - interface: "lo"
     port: 323
     proto: udp
