@@ -41,6 +41,7 @@ keystone_tag: rocky
 kibana_tag: 7.0.1.2
 kolla_toolbox_tag: rocky
 logstash_tag: rocky
+magnum_tag: rocky
 manila_tag: rocky
 mariadb_tag: rocky
 memcached_tag: rocky
