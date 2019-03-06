@@ -13,9 +13,23 @@ firewallgen_ipv4_input_allow_rewrite_rules_controllers:
   - '. | map(select(.port != 111))'
   - '. |= map(select(.processes[].haproxy_hint != "grafana_server_external"))'
   - '. |= map(select(if .processes[].haproxy_hint? then .processes[].haproxy_hint | test("prometheus.*_external") | not else true end))'
-  # VXLANs? : https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=4789 
+  # VXLANs? : https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=4789
   - '. |= map( if .port == 4789 then .interface = "{% raw %}{{ tunnel_net_interface }}{% endraw %}" else . end)'
 
 firewallgen_ipv4_input_allow_rewrite_rules: >
   {{ firewallgen_ipv4_input_allow_rewrite_rules_controllers +
   firewallgen_ipv4_input_allow_rewrite_rules_all }}
+
+firewallgen_ipv4_input_allow_custom_rules_extra:
+  # Galera firewall rules: http://galeracluster.com/documentation-webpages/firewallsettings.html
+  # We seemed to need these for: kayobe kolla ansible run mariadb_recovery
+  # Galera: Incremental State Transfer
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    port: 4568
+    proto: tcp
+    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+  # Galera: For all other State Snapshot Transfer
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    port: 4444
+    proto: tcp
+    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
