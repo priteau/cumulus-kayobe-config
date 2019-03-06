@@ -30,7 +30,7 @@ fluentd_tag: rocky
 glance_tag: rocky
 grafana_tag: rocky
 haproxy_tag: rocky
-heat_tag: rockt
+heat_tag: rocky
 horizon_tag: rocky
 influxdb_tag: rocky
 ironic_tag: rocky
