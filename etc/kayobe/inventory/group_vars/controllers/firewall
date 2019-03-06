@@ -272,6 +272,16 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for keystone_admin"
   - interface: "{{ internal_net_name | net_interface }}"
+    port: 4444
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "Galera: For all other State Snapshot Transfer"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 4568
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "Galera: Incremental State Transfer"
+  - interface: "{{ internal_net_name | net_interface }}"
     port: 9197
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
