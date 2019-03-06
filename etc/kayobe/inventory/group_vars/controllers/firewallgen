@@ -35,3 +35,16 @@ firewallgen_ipv4_input_allow_custom_rules_extra:
     proto: tcp
     destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
     comment: "Galera: For all other State Snapshot Transfer"
+
+  # Serial console proxy internal endpoint
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    port: 6080
+    proto: tcp
+    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+    comment: serial console proxy (internal)
+  # Serial console proxy public endpoint
+  - interface: "{{ firewallgen_interface_tmpl % 'public_net_name' }}"
+    port: 6080
+    proto: tcp
+    destination: "{% raw %}{{ public_net_name | net_ip }}{% endraw %}"
+    comment: serial console proxy (public)

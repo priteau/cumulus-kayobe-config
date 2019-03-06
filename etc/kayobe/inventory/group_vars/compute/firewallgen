@@ -8,3 +8,12 @@ firewallgen_ipv4_input_allow_rewrite_rules: >
   {{ firewallgen_ipv4_input_allow_rewrite_rules_compute +
   firewallgen_ipv4_input_allow_rewrite_rules_all }}
 
+firewallgen_ipv4_input_allow_custom_rules_extra:
+  # Libvirt serial consoles, based on:
+  # https://blog.scottlowe.org/2013/09/10/adjusting-vnc-console-access-via-libvirt-xml/
+  # https://libvirt.org/git/?p=libvirt.git;a=blob;f=src/qemu/qemu.conf#l387
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    port: "5900:6000"
+    proto: tcp
+    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+    comment: libvirt serial consoles
