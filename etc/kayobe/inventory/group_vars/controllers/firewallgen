@@ -28,8 +28,10 @@ firewallgen_ipv4_input_allow_custom_rules_extra:
     port: 4568
     proto: tcp
     destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
-  # Galera: For all other State Snapshot Transfer
+    comment: "Galera: Incremental State Transfer"
+  # Galera: "For all other State Snapshot Transfer"
   - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
     port: 4444
     proto: tcp
     destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+    comment: "Galera: For all other State Snapshot Transfer"
