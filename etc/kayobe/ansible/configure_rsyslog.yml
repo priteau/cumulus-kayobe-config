@@ -1,0 +1,29 @@
+---
+# The purpose of this playbook it to export rsyslog output from overcloud
+# nodes to Fluentd which will then ship them to Elasticsearch or Monasca.
+# Fluentd is configured by Kolla-Ansible to listen on port 5140
+# out-of-the-box.
+
+- name: Configure rsyslog to forward messages
+  hosts: overcloud
+  become: yes
+
+  tasks:
+  - name: Check rsyslog is started and enabled
+    systemd:
+      state: started
+      enabled: yes
+      name: rsyslog
+
+  - name: Update rsyslog file
+    lineinfile:
+      path: /etc/rsyslog.conf
+      insertafter: '^#*.* @@remote-host:514'
+      line: '*.* @127.0.0.1:5140'
+    register: rsyslog_config
+
+  - name: Restart rsyslog
+    systemd:
+      state: restarted
+      name: rsyslog
+    when: rsyslog_config.changed
