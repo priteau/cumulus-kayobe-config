@@ -287,6 +287,11 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_ip }}"
     comment: "serial console proxy (internal)"
   - interface: "{{ internal_net_name | net_interface }}"
+    port: 9191
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "glance-api internal"
+  - interface: "{{ internal_net_name | net_interface }}"
     port: 9197
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
@@ -381,6 +386,16 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "127.0.0.1"
     comment: "hint: used by 'chronyd' in docker container 'chrony'"
+  - interface: "lo"
+    port: 323
+    proto: udp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'chronyd'"
+  - interface: "lo"
+    port: 5140
+    proto: udp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'fluentd' in docker container 'fluentd'"
   - interface: "{{ internal_net_interface }}"
     port: 123
     proto: udp

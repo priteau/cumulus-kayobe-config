@@ -48,3 +48,10 @@ firewallgen_ipv4_input_allow_custom_rules_extra:
     proto: tcp
     destination: "{% raw %}{{ public_net_name | net_ip }}{% endraw %}"
     comment: serial console proxy (public)
+
+  # this is shown as listening to 10.205.0.1:9191 in ss output
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    port: 9191
+    proto: tcp
+    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+    comment: glance-api internal

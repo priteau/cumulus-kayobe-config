@@ -23,6 +23,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     comment: "hint: used by 'sshd'"
   - interface: "{{ internal_net_interface }}"
+    port: 5900
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'qemu-kvm' in docker container 'nova_libvirt'"
+  - interface: "{{ internal_net_interface }}"
     port: 8022
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
@@ -67,6 +72,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "127.0.0.1"
     comment: "hint: used by 'chronyd' in docker container 'chrony'"
+  - interface: "lo"
+    port: 5140
+    proto: udp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'fluentd' in docker container 'fluentd'"
   - interface: "{{ internal_net_interface }}"
     port: 123
     proto: udp
@@ -77,3 +87,8 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'fluentd' in docker container 'fluentd'"
+  - interface: "{{ tunnel_net_name | net_interface }}"
+    port: 4789
+    proto: udp
+    destination: "{{ tunnel_net_name | net_ip }}"
+    comment: "required for VXLANs to work"
