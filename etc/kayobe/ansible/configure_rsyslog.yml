@@ -15,15 +15,22 @@
       enabled: yes
       name: rsyslog
 
-  - name: Update rsyslog file
+  - name: Configure rsyslog forwarding to Fluentd
     lineinfile:
       path: /etc/rsyslog.conf
       insertafter: '^#*.* @@remote-host:514'
       line: '*.* @127.0.0.1:5140'
-    register: rsyslog_config
+    register: rsyslog_forwarding
+
+  - name: Configure deduplication
+    lineinfile:
+      path: /etc/rsyslog.conf
+      insertafter: '^#### GLOBAL DIRECTIVES ####$'
+      line: '$RepeatedMsgReduction on'
+    register: rsyslog_deduplication
 
   - name: Restart rsyslog
     systemd:
       state: restarted
       name: rsyslog
-    when: rsyslog_config.changed
+    when: rsyslog_forwarding.changed or rsyslog_deduplication.changed
