@@ -215,7 +215,7 @@ hs_eth_physical_network: physnet1
 mgmt_physical_network: physnet2
 # Low latency (100G OPA) network
 # Not currently used at all
-lln_phyiscal_network: physnet3
+lln_physical_network: physnet3
 
 ###############################################################################
 # Network virtual patch link configuration.
