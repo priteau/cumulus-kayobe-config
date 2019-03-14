@@ -26,3 +26,8 @@ firewallgen_ipv4_input_allow_custom_rules_extra:
     port: 5000
     proto: tcp
     destination: "{% raw %}{{ provision_oc_net_name | net_ip }}{% endraw %}"
+  - interface: "{{ firewallgen_interface_tmpl % 'ilab_net_name' }}"
+    port: 22
+    proto: tcp
+    destination: "{% raw %}{{ ilab_net_name | net_ip }}{% endraw %}"
+    comment: SSH via ILAB
