@@ -38,6 +38,11 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'node_exporter' in docker container 'prometheus_node_exporter'"
   - interface: "{{ internal_net_interface }}"
+    port: 9177
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'libvirt_exporte' in docker container 'prometheus_libvirt_exporter'"
+  - interface: "{{ internal_net_interface }}"
     port: 16509
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
