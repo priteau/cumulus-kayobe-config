@@ -23,6 +23,8 @@ seed_extra_network_interfaces:
   - external_net
   - storage_mgmt_net
   - ilab_net
+  - "bond0_net"
+  - "br_net"
 
 ###############################################################################
 # LVM configuration.

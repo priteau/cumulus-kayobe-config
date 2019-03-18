@@ -12,6 +12,7 @@
 # List of networks to which controller nodes are attached.
 controller_network_interfaces: >
   {{ [admin_oc_net_name,
+      "bond0_net",
       "br_net",
       "external_net",
       public_net_name,

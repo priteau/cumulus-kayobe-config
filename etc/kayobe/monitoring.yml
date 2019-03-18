@@ -12,6 +12,7 @@
 # List of networks to which monitoring nodes are attached.
 monitoring_network_interfaces: >
   {{ [admin_oc_net_name,
+      "bond0_net",
       "br_net",
       internal_net_name,
       storage_net_name] | unique | list }}
