@@ -56,6 +56,8 @@ nova_tag: rocky
 openvswitch_tag: rocky
 prometheus_tag: rocky
 prometheus_mtail_tag: 7.0.1.3
+prometheus_elasticsearch_exporter_tag: 7.0.1.4
+prometheus_libvirt_exporter_tag: 7.0.1.4
 rabbitmq_tag: rocky
 storm_tag: rocky
 zookeeper_tag: rocky
