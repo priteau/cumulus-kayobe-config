@@ -203,3 +203,5 @@ tunnel_net_ips:
   mon1: 10.217.1.0
   net1: 10.217.1.4
   net2: 10.217.1.12
+ilab_net_ips:
+  cumulus-seed: 10.60.150.1

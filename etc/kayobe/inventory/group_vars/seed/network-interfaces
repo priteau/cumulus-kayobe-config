@@ -30,6 +30,9 @@ storage_mgmt_net_interface: "{{ provision_oc_net_interface }}.{{ storage_mgmt_ne
 # storage_mgmt_net_bridge_ports:
 # storage_mgmt_net_bond_slaves:
 
+# Admin backdoor to seed node
+ilab_net_interface: "{{ provision_oc_net_interface }}.{{ ilab_net_vlan }}"
+
 ###############################################################################
 # Dummy variable to allow Ansible to accept this file.
 workaround_ansible_issue_8743: yes

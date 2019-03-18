@@ -22,6 +22,7 @@ seed_extra_network_interfaces:
   - internal_net
   - external_net
   - storage_mgmt_net
+  - ilab_net
 
 ###############################################################################
 # LVM configuration.
