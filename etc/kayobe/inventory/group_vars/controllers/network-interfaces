@@ -5,9 +5,12 @@
 
 # Main bond to 25GbE fabric
 # Note: moved from breno3 1GbE interface
-br_net_interface: brbond0
+br_net_interface: breno3
 br_net_bridge_ports:
-  - bond0
+  - eno3
+#br_net_interface: brbond0
+#br_net_bridge_ports:
+#  - bond0
 
 bond0_net_interface: bond0
 bond0_net_bond_slaves:
