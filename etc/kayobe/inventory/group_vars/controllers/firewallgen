@@ -56,7 +56,7 @@ firewallgen_ipv4_input_allow_custom_rules_extra:
     destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
     comment: glance-api internal
 
-  - interface: "{{ internal_net_interface }}"
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
     proto: vrrp
     destination: 224.0.0.18
     comment: used by keepalived for vrrp
