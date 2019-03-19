@@ -34,6 +34,16 @@ firewallgen_ipv4_input_allow_rewrite_rules_all:
   # dszumski: TLDR is that it is opened by rsyslog to forward logs to fluentd,
   # never runs recv() and that we should block it externally.
   - '. | map(select(.proto != "udp" or .processes[].name != "rsyslogd"))'
+  - >-
+    . |= map(if .processes[].name == "mtail" then
+        .interface = "{{ firewallgen_interface_tmpl % 'internal_net_name' }}" |
+        .ip = "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+      else . end)
+  - >-
+    . |= map(if .processes[].name == "cadvisor" then
+        .interface = "{{ firewallgen_interface_tmpl % 'internal_net_name' }}" |
+        .ip = "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+      else . end)
 
 firewallgen_ipv4_input_allow_rewrite_rules: >-
   {{ firewallgen_ipv4_input_allow_rewrite_rules_all +
