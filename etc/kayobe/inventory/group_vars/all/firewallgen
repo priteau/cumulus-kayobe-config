@@ -49,20 +49,7 @@ firewallgen_ipv4_input_allow_rewrite_rules: >-
   {{ firewallgen_ipv4_input_allow_rewrite_rules_all +
      firewallgen_ipv4_input_allow_rewrite_rules_extra }}
 
-firewallgen_ipv4_input_allow_custom_rules_all:
-  # These are ipv4-mapped ipv6 addresses and don't show in ss -nlpt -4 output
-  # cadvisor
-  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
-    port: 18080
-    proto: tcp
-    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
-    comment: cadvisor
-  # mtail
-  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
-    port: 9197
-    proto: tcp
-    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
-    comment: mtail
+firewallgen_ipv4_input_allow_custom_rules_all: []
 
 firewallgen_ipv4_input_allow_custom_rules: >-
   {{ firewallgen_ipv4_input_allow_custom_rules_all +

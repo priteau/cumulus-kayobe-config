@@ -23,11 +23,6 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     comment: "hint: used by 'sshd'"
   - interface: "{{ internal_net_interface }}"
-    port: 5900
-    proto: tcp
-    destination: "{{ internal_net_name | net_ip }}"
-    comment: "hint: used by 'qemu-kvm' in docker container 'nova_libvirt'"
-  - interface: "{{ internal_net_interface }}"
     port: 8022
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
@@ -51,12 +46,12 @@ firewallgen_ipv4_input_allow_rules:
     port: 9197
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
-    comment: "mtail"
+    comment: "hint: used by 'mtail' in docker container 'prometheus_mtail'"
   - interface: "{{ internal_net_name | net_interface }}"
     port: 18080
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
-    comment: "cadvisor"
+    comment: "hint: used by 'cadvisor' in docker container 'prometheus_cadvisor'"
   - interface: "{{ internal_net_name | net_interface }}"
     port: 5900:6000
     proto: tcp
