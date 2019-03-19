@@ -15,6 +15,7 @@ firewallgen_ipv4_input_allow_rewrite_rules_controllers:
   - '. |= map(select(if .processes[].haproxy_hint? then .processes[].haproxy_hint | test("prometheus.*_external") | not else true end))'
   # VXLANs? : https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=4789
   - '. |= map( if .port == 4789 then .interface = "{% raw %}{{ tunnel_net_interface }}{% endraw %}" else . end)'
+  - '. |= map( if .processes[].name == "httpd" and .processes[].docker_hint == "placement_api" then .interface = "{% raw %}{{ internal_net_interface }}{% endraw %}" else . end)'
 
 firewallgen_ipv4_input_allow_rewrite_rules: >
   {{ firewallgen_ipv4_input_allow_rewrite_rules_controllers +
