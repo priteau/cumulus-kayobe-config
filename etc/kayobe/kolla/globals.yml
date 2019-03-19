@@ -17,6 +17,12 @@ cinder_backend_ceph: "yes"
 # Enable CADF notifications in Keystone
 enable_cadf_notifications: "yes"
 
+# Projects to extracts metrics from with cASO
+caso_projects:
+  - iris
+  - iris-euclid
+  - demo
+
 # TODO: how to build these?
 #magnum_tag: pike2
 #keystone_tag: pike2
