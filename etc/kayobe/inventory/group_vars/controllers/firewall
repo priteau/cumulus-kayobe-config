@@ -92,6 +92,11 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for nova_novncproxy"
   - interface: "{{ internal_net_interface }}"
+    port: 6780
+    proto: tcp
+    destination: "{{ internal_net_name | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for radosgw"
+  - interface: "{{ internal_net_interface }}"
     port: 8000
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
@@ -326,6 +331,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ public_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for nova_novncproxy_external"
+  - interface: "{{ public_net_interface }}"
+    port: 6780
+    proto: tcp
+    destination: "{{ public_net_name | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for radosgw_external"
   - interface: "{{ public_net_interface }}"
     port: 8000
     proto: tcp
