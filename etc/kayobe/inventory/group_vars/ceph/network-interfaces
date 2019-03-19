@@ -3,7 +3,7 @@
 # Network interface definitions for the ceph group.
 
 # similar to src/cumulus-kayobe-config/etc/kayobe/controller.yml
-ceph_network_interfaces: >
+storage_network_interfaces: >
   {{ [admin_oc_net_name,
        "br_net",
        "bond0_net",
