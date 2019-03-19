@@ -1,10 +1,17 @@
 ---
 
+firewallgen_libvirt_serial_console_range_start: 5900
+firewallgen_libvirt_serial_console_range_end: 6000
+
 firewallgen_ipv4_input_allow_rewrite_rules_compute:
   # systemd socket activation for portmapper service
   - '. | map(select(.port != 111))'
   # drop 4789 and add explictly it the custom_rules_extra
   - '. | map(select(.port != 4789))'
+  # libvirt serial console range is added explictly (see below)
+  - >-
+    . | map(select(.port < {{ firewallgen_libvirt_serial_console_range_start }}  or
+                   .port > {{ firewallgen_libvirt_serial_console_range_end }} ))
 
 firewallgen_ipv4_input_allow_rewrite_rules: >
   {{ firewallgen_ipv4_input_allow_rewrite_rules_compute +
@@ -15,7 +22,7 @@ firewallgen_ipv4_input_allow_custom_rules_extra:
   # https://blog.scottlowe.org/2013/09/10/adjusting-vnc-console-access-via-libvirt-xml/
   # https://libvirt.org/git/?p=libvirt.git;a=blob;f=src/qemu/qemu.conf#l387
   - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
-    port: "5900:6000"
+    port: "{{ firewallgen_libvirt_serial_console_range_start }}:{{ firewallgen_libvirt_serial_console_range_end }}"
     proto: tcp
     destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
     comment: libvirt serial consoles
@@ -25,4 +32,3 @@ firewallgen_ipv4_input_allow_custom_rules_extra:
     port: 4789
     proto: udp
     comment: required for VXLANs to work
-
