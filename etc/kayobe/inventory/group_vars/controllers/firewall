@@ -295,12 +295,12 @@ firewallgen_ipv4_input_allow_rules:
     port: 9197
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
-    comment: "mtail"
+    comment: "hint: used by 'mtail' in docker container 'prometheus_mtail'"
   - interface: "{{ internal_net_name | net_interface }}"
     port: 18080
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
-    comment: "cadvisor"
+    comment: "hint: used by 'cadvisor' in docker container 'prometheus_cadvisor'"
   - interface: "{{ public_net_interface }}"
     port: 80
     proto: tcp
@@ -410,3 +410,7 @@ firewallgen_ipv4_input_allow_rules:
     port: 4789
     proto: udp
     comment: "hint: used by 'unknown'"
+  - interface: "{{ internal_net_name | net_interface }}"
+    proto: vrrp
+    destination: "224.0.0.18"
+    comment: "used by keepalived for vrrp"
