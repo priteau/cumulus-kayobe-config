@@ -8,6 +8,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "127.0.0.1"
     comment: "hint: used by 'master'"
+  - interface: "lo"
+    port: 24224
+    proto: tcp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'fluentd' in docker container 'fluentd'"
   - interface: "{{ admin_oc_net_interface }}"
     port: 22
     proto: tcp
@@ -28,29 +33,55 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'prometheus' in docker container 'prometheus_server'"
   - interface: "{{ internal_net_interface }}"
-    port: 9093
-    proto: tcp
-    destination: "{{ internal_net_name | net_ip }}"
-    comment: "hint: used by 'alertmanager' in docker container 'prometheus_alertmanager'"
-  - interface: "{{ internal_net_interface }}"
     port: 9100
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'node_exporter' in docker container 'prometheus_node_exporter'"
   - interface: "{{ internal_net_interface }}"
+    port: 9108
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'elasticsearch_e' in docker container 'prometheus_elasticsearch_exporter'"
+  - interface: "{{ internal_net_interface }}"
     port: 9198
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'openstack-expor' in docker container 'prometheus_openstack_exporter'"
-  - interface: "all"
-    port: 880
-    proto: udp
-    comment: "hint: used by 'rpcbind'"
   - interface: "docker0"
     port: 123
     proto: udp
     destination: "172.17.0.1"
     comment: "hint: used by 'ntpd'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9200
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'java' in docker container 'elasticsearch'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9300
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'java' in docker container 'elasticsearch'"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 9093
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'alertmanager' in docker container 'prometheus_alertmanager'"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 9094
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'alertmanager' in docker container 'prometheus_alertmanager'"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 9197
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'mtail' in docker container 'prometheus_mtail'"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 18080
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'cadvisor' in docker container 'prometheus_cadvisor'"
   - interface: "lo"
     port: 123
     proto: udp
@@ -66,8 +97,18 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'ntpd'"
+  - interface: "lo"
+    port: 5140
+    proto: udp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'fluentd' in docker container 'fluentd'"
   - interface: "{{ internal_net_interface }}"
     port: 5140
     proto: udp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'fluentd' in docker container 'fluentd'"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 9094
+    proto: udp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'alertmanager' in docker container 'prometheus_alertmanager'"
