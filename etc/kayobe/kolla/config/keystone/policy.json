@@ -6,6 +6,7 @@
     "owner": "user_id:%(user_id)s or user_id:%(target.token.user_id)s",
     "admin_or_owner": "(rule:admin_required and domain_id:%(target.token.user.domain.id)s) or rule:owner",
     "admin_and_matching_domain_id": "rule:admin_required and domain_id:%(domain_id)s",
+    "accounting_and_matching_domain_id": "role:accounting and domain_id:%(domain_id)s",
     "service_admin_or_owner": "rule:service_or_admin or rule:owner",
 
     "default": "rule:admin_required",
@@ -65,7 +66,7 @@
     "admin_and_matching_target_user_domain_id": "rule:admin_required and domain_id:%(target.user.domain_id)s",
     "admin_and_matching_user_domain_id": "rule:admin_required and domain_id:%(user.domain_id)s",
     "identity:get_user": "rule:cloud_admin or rule:admin_and_matching_target_user_domain_id or rule:owner",
-    "identity:list_users": "rule:cloud_admin or rule:admin_and_matching_domain_id",
+    "identity:list_users": "rule:cloud_admin or rule:admin_and_matching_domain_id or rule:accounting_and_matching_domain_id",
     "identity:create_user": "rule:cloud_admin or rule:admin_and_matching_user_domain_id",
     "identity:update_user": "rule:cloud_admin or rule:admin_and_matching_target_user_domain_id",
     "identity:delete_user": "rule:cloud_admin or rule:admin_and_matching_target_user_domain_id",
