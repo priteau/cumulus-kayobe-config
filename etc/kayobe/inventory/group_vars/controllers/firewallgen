@@ -1,0 +1,64 @@
+---
+
+firewallgen_ipv4_input_allow_rewrite_rules_controllers:
+  - '. |= map( if .processes[].name == "epmd" and .processes[].docker_hint == "rabbitmq" then .interface = "{% raw %}{{ internal_net_interface }}{% endraw %}" else . end)'
+  - '. |= map( if .processes[].name == "nginx" and .processes[].docker_hint == "inspection_store" then .interface = "{% raw %}{{ internal_net_interface }}{% endraw %}" else . end)'
+  - '. |= map( if .processes[].name == "dnsmasq" and .processes[].docker_hint == "ironic_dnsmasq" then .interface = "{% raw %}{{ inspection_net_interface }}{% endraw %}" else . end)'
+  - '. |= map( if .processes[].docker_hint == "ironic_pxe" then .interface = "{% raw %}{{ internal_net_interface }}{% endraw %}" else . end)'
+  # FIXME: rpcbind required for manilla?
+  - '. | map(select(.processes[].name != "rpcbind"))'
+  # haproxy starts an ephemeral port for communicating with syslog
+  - '. |= map(select(.processes[].name != "haproxy" or .proto != "udp"))'
+  # port 111 is portmapper (an NFS service), FIXME: we probably need this for manilla
+  - '. | map(select(.port != 111))'
+  - '. |= map(select(.processes[].haproxy_hint != "grafana_server_external"))'
+  - '. |= map(select(if .processes[].haproxy_hint? then .processes[].haproxy_hint | test("prometheus.*_external") | not else true end))'
+  # VXLANs? : https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=4789
+  - '. |= map( if .port == 4789 then .interface = "{% raw %}{{ tunnel_net_interface }}{% endraw %}" else . end)'
+  - '. |= map( if .processes[].name == "httpd" and .processes[].docker_hint == "placement_api" then .interface = "{% raw %}{{ internal_net_interface }}{% endraw %}" else . end)'
+
+firewallgen_ipv4_input_allow_rewrite_rules: >
+  {{ firewallgen_ipv4_input_allow_rewrite_rules_controllers +
+  firewallgen_ipv4_input_allow_rewrite_rules_all }}
+
+firewallgen_ipv4_input_allow_custom_rules_extra:
+  # Galera firewall rules: http://galeracluster.com/documentation-webpages/firewallsettings.html
+  # We seemed to need these for: kayobe kolla ansible run mariadb_recovery
+  # Galera: Incremental State Transfer
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    port: 4568
+    proto: tcp
+    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+    comment: "Galera: Incremental State Transfer"
+  # Galera: "For all other State Snapshot Transfer"
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    port: 4444
+    proto: tcp
+    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+    comment: "Galera: For all other State Snapshot Transfer"
+
+  # Serial console proxy internal endpoint
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    port: 6080
+    proto: tcp
+    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+    comment: serial console proxy (internal)
+  # Serial console proxy public endpoint
+  - interface: "{{ firewallgen_interface_tmpl % 'public_net_name' }}"
+    port: 6080
+    proto: tcp
+    destination: "{% raw %}{{ public_net_name | net_ip }}{% endraw %}"
+    comment: serial console proxy (public)
+
+  # this is shown as listening to 10.205.0.1:9191 in ss output
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    port: 9191
+    proto: tcp
+    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+    comment: glance-api internal
+
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    proto: vrrp
+    destination: 224.0.0.18
+    comment: used by keepalived for vrrp
+
