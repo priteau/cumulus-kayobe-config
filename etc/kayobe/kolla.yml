@@ -15,7 +15,7 @@ kolla_source_url: https://github.com/RSE-Cambridge/kolla
 
 # Version (branch, tag, etc.) of Kolla source code repository if type is
 # 'source'.
-kolla_source_version: refs/tags/cumulus/7.0.1.4
+kolla_source_version: refs/tags/cumulus/7.0.1.5
 
 # Path to virtualenv in which to install kolla.
 #kolla_venv:
@@ -37,7 +37,7 @@ kolla_ansible_source_url: https://github.com/RSE-Cambridge/kolla-ansible
 
 # Version (branch, tag, etc.) of Kolla Ansible source code repository if type
 # is 'source'.
-kolla_ansible_source_version: refs/tags/cumulus/7.0.1.6
+kolla_ansible_source_version: refs/tags/cumulus/7.0.1.7
 
 # Path to virtualenv in which to install kolla-ansible.
 #kolla_ansible_venv:
@@ -73,7 +73,7 @@ kolla_docker_namespace: rse-cambridge
 #kolla_docker_registry_password:
 
 # Kolla OpenStack release version. This should be a Docker image tag.
-kolla_openstack_release: 7.0.1.4
+kolla_openstack_release: 7.0.1.5
 
 # Dict mapping names of sources to their definitions for
 # kolla_install_type=source. See kolla.common.config for details.
@@ -91,6 +91,9 @@ kolla_openstack_release: 7.0.1.4
 # Dict mapping Jinja2 block names in kolla's Docker images to their contents.
 #kolla_build_blocks:
 kolla_build_blocks:
+  prometheus_server_repository_version: |
+    # Avoid the pain of porting 1.x rules and migrating data to 2.x
+    ARG prometheus_version='2.8.0'
   ironic_inspector_footer: |
     # Install our custom inspector plugins.
     RUN pip install stackhpc-inspector-plugins==1.1.1
