@@ -61,3 +61,7 @@ prometheus_libvirt_exporter_tag: 7.0.1.4
 rabbitmq_tag: rocky
 storm_tag: rocky
 zookeeper_tag: rocky
+
+# Kayobe currently configures ntpd on each node in the overcloud
+enable_chrony: false
+enable_host_ntp: true
