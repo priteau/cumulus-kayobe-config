@@ -1,0 +1,41 @@
+{% raw %}
+- name: example
+  rules:
+
+  - alert: LowDiskSpace
+    expr: ( ( node_filesystem_free_bytes - node_filesystem_avail_bytes ) / node_filesystem_free_bytes ) * 100 >= 80
+    for: 5m
+    labels:
+      severity: moderate
+    annotations:
+      summary: "Disk on {{ $labels.instance }} is low on space"
+      description: "{{ $labels.device }} is {{ $value }}% full."
+
+  - alert: LowMemory
+    expr: ( ( node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes ) / node_memory_MemTotal_bytes ) * 100 >= 80
+    for: 5m
+    labels:
+      severity: moderate
+    annotations:
+      summary: "Memory on {{ $labels.instance }} is low"
+      description: "Memory is {{ $value }}% full."
+
+  - alert: Overheating
+    expr: node_hwmon_temp_celsius >= 100
+    for: 5m
+    labels:
+      severity: moderate
+    annotations:
+      summary: "CPU {{ $labels.instance }} is overheating"
+      description: "CPU {{ $labels.chip }} is {{ $value }}% celcius."
+
+  - alert: InstanceDown
+    expr: up{job="node"} == 0
+    for: 5m
+    labels:
+      severity: page
+    annotations:
+      summary: "Instance {{$labels.instance}} down"
+      description: "{{$labels.instance}} has been down for more than 5 minutes."
+
+{% endraw %}
