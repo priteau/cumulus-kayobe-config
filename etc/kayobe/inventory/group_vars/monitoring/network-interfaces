@@ -3,13 +3,9 @@
 # Network interface definitions for the monitoring group.
 
 # Overcloud provisioning network IP information.
-br_net_interface: breno3
+br_net_interface: brbond0
 br_net_bridge_ports:
-  - eno3
-
-#br_net_interface: brbond0
-#br_net_bridge_ports:
-#  - bond0
+  - bond0
 
 bond0_net_interface: bond0
 bond0_net_bond_slaves:
