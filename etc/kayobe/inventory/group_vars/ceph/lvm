@@ -1,7 +1,7 @@
 ---
 # Config for Ceph LVM
 
-ceph_lvm_groups:
+storage_lvm_groups:
   - vgname: ceph-hdd-a
     disks:
       - /dev/sda
