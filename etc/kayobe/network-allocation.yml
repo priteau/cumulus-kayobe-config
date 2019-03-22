@@ -205,3 +205,7 @@ tunnel_net_ips:
   net2: 10.217.1.12
 ilab_net_ips:
   cumulus-seed: 10.60.150.1
+public_net_ips:
+  ctrl1: 128.232.224.65
+  ctrl2: 128.232.224.66
+  ctrl3: 128.232.224.67

@@ -1,0 +1,96 @@
+---
+
+firewallgen_enable_firewall: True
+
+firewallgen_ipv4_input_allow_rules:
+  - interface: "lo"
+    port: 25
+    proto: tcp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'master'"
+  - interface: "lo"
+    port: 53
+    proto: tcp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'dnsmasq' in docker container 'bifrost_deploy'"
+  - interface: "lo"
+    port: 4369
+    proto: tcp
+    comment: "hint: used by 'epmd' in docker container 'bifrost_deploy'"
+  - interface: "lo"
+    port: 5050
+    proto: tcp
+    comment: "hint: used by 'ironic-inspecto' in docker container 'bifrost_deploy'"
+  - interface: "lo"
+    port: 25672
+    proto: tcp
+    comment: "hint: used by 'beam.smp' in docker container 'bifrost_deploy'"
+  - interface: "{{ admin_oc_net_interface }}"
+    port: 22
+    proto: tcp
+    comment: "hint: used by 'sshd'"
+  - interface: "{{ ilab_net_name | net_interface }}"
+    port: 22
+    proto: tcp
+    destination: "{{ ilab_net_name | net_ip }}"
+    comment: "SSH via ILAB"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 9197
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "mtail"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 18080
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "cadvisor"
+  - interface: "{{ provision_oc_net_interface }}"
+    port: 53
+    proto: tcp
+    destination: "{{ provision_oc_net_name | net_ip }}"
+    comment: "hint: used by 'dnsmasq' in docker container 'bifrost_deploy'"
+  - interface: "{{ provision_oc_net_interface }}"
+    port: 6385
+    proto: tcp
+    comment: "hint: used by 'ironic-api' in docker container 'bifrost_deploy'"
+  - interface: "{{ provision_oc_net_interface }}"
+    port: 8080
+    proto: tcp
+    comment: "hint: used by 'nginx' in docker container 'bifrost_deploy'"
+  - interface: "docker0"
+    port: 123
+    proto: udp
+    destination: "172.17.0.1"
+    comment: "hint: used by 'ntpd'"
+  - interface: "{{ provision_oc_net_name | net_interface }}"
+    port: 5000
+    proto: tcp
+    destination: "{{ provision_oc_net_name | net_ip }}"
+  - interface: "lo"
+    port: 53
+    proto: udp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'dnsmasq' in docker container 'bifrost_deploy'"
+  - interface: "lo"
+    port: 123
+    proto: udp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'ntpd'"
+  - interface: "{{ internal_net_interface }}"
+    port: 123
+    proto: udp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'ntpd'"
+  - interface: "{{ provision_oc_net_interface }}"
+    port: 53
+    proto: udp
+    destination: "{{ provision_oc_net_name | net_ip }}"
+    comment: "hint: used by 'dnsmasq' in docker container 'bifrost_deploy'"
+  - interface: "{{ provision_oc_net_interface }}"
+    port: 67
+    proto: udp
+    comment: "hint: used by 'dnsmasq' in docker container 'bifrost_deploy'"
+  - interface: "{{ provision_oc_net_interface }}"
+    port: 69
+    proto: udp
+    comment: "hint: used by 'xinetd' in docker container 'bifrost_deploy'"

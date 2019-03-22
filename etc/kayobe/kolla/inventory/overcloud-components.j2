@@ -261,3 +261,18 @@ control
 {{ groups['monitoring'][0] }}
 {% endif %}
 #########################
+
+# Cinder
+[cinder-api:children]
+cinder
+
+[cinder-backup:children]
+cinder
+#storage
+
+[cinder-scheduler:children]
+cinder
+
+[cinder-volume:children]
+cinder
+#storage

@@ -148,11 +148,13 @@ external_net_allocation_pool_end: "10.{{ external_net_vlan }}.3.255"
 public_net_vlan: 111
 public_net_vip_address: 128.232.224.64
 public_net_fqdn: cumulus.openstack.hpc.cam.ac.uk
-public_net_routes:
-  - cidr: "128.232.224.0/23"
-# Comment out cidr so we don't hand out ips to all interfaces
-# public_net_cidr: "128.232.224.0/23"
-# public_net_gateway: 128.232.225.254
+#public_net_routes:
+#  - cidr: "128.232.224.0/23"
+# Ideally comment out cidr so we don't hand out ips to all interfaces
+public_net_cidr: "128.232.224.0/23"
+public_net_gateway: 128.232.225.254
+public_net_allocation_pool_start: 128.232.224.65
+public_net_allocation_pool_end: 128.232.224.67
 
 # Storage network IP information.
 storage_net_vlan: 206
@@ -227,7 +229,7 @@ hs_eth_physical_network: physnet1
 mgmt_physical_network: physnet2
 # Low latency (100G OPA) network
 # Not currently used at all
-lln_phyiscal_network: physnet3
+lln_physical_network: physnet3
 
 ###############################################################################
 # Network virtual patch link configuration.
