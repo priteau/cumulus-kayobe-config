@@ -32,6 +32,9 @@ cpu-e-1028 ipmi_address=10.202.0.17 bmc_type=idrac
 [storage:children]
 ceph
 
+[ceph-rgw:children]
+ceph
+
 [ceph]
 ceph01 ipmi_address=10.202.0.3 bmc_type=idrac
 ceph02 ipmi_address=10.202.0.5 bmc_type=idrac
