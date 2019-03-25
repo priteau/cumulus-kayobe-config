@@ -1,0 +1,6 @@
+{
+    "accounting_required": "role:accounting",
+    "identity:list_user_projects": "rule:owner or rule:admin_and_matching_domain_id or rule:accounting_required",
+    "identity:list_users": "rule:cloud_admin or rule:admin_and_matching_domain_id or rule:accounting_required",
+    "identity:list_users_in_group": "rule:cloud_admin or rule:admin_and_matching_target_group_domain_id or rule:accounting_required"
+}

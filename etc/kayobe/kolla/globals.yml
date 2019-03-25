@@ -20,6 +20,11 @@ enable_cadf_notifications: "yes"
 # add route to ceph-rgw group in haproxy
 enable_ceph_rgw_external: "yes"
 
+# Projects to extracts metrics from with cASO
+caso_projects:
+  - iris
+  - iris-euclid
+
 # TODO: how to build these?
 #magnum_tag: pike2
 #keystone_tag: pike2
@@ -27,6 +32,7 @@ enable_ceph_rgw_external: "yes"
 # Container image tags.
 # These should be allowed to change independently, as services are updated.
 bifrost_tag: rocky
+caso_tag: 7.0.1.5
 cron_tag: rocky
 ceph_tag: rocky
 cinder_tag: rocky
@@ -58,6 +64,7 @@ neutron_tag: rocky
 nova_tag: rocky
 openvswitch_tag: rocky
 prometheus_tag: rocky
+prometheus_server_tag: 7.0.1.5
 prometheus_mtail_tag: 7.0.1.3
 prometheus_elasticsearch_exporter_tag: 7.0.1.4
 prometheus_libvirt_exporter_tag: 7.0.1.4
