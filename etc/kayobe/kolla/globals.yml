@@ -20,6 +20,9 @@ enable_cadf_notifications: "yes"
 # add route to ceph-rgw group in haproxy
 enable_ceph_rgw_external: "yes"
 
+# opt into new docker packages
+docker_legacy_packages: False
+
 # Projects to extracts metrics from with cASO
 caso_projects:
   - iris
