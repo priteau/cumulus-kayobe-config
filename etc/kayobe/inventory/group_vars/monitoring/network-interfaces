@@ -1,27 +1,19 @@
 ---
 ###############################################################################
-# Network interface definitions for the controller group.
+# Network interface definitions for the monitoring group.
 
-# Overcloud provisioning network IP information.
-br_net_interface: breno3
-br_net_bridge_ports:
-  - eno3
-# TODO: we should have a bond on 25Gb, longer term
-# provision_oc_net_bond_slaves:
+bond0_net_interface: bond0
+bond0_net_bond_slaves:
+  - enp3s0f0
+  - enp3s0f1
 
 # Admin network IP information.
 admin_oc_net_interface: "eno3.{{ admin_oc_net_vlan }}"
-# TODO hack to avoid this on the seed
+# Use seed node as default gateway
 admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
 
 # Internal network IP information.
-internal_net_interface: "{{ br_net_interface }}.{{ internal_net_vlan }}"
-
-# Storage network IP information.
-storage_net_interface: "{{ br_net_interface }}.{{ storage_net_vlan }}"
-
-# Storage management network IP information.
-storage_mgmt_net_interface: "{{ br_net_interface }}.{{ storage_mgmt_net_vlan }}"
+internal_net_interface: "{{ bond0_net_interface }}.{{ internal_net_vlan }}"
 
 ###############################################################################
 # Dummy variable to allow Ansible to accept this file.

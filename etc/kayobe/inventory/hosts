@@ -12,7 +12,7 @@ localhost ansible_connection=local
 [seed]
 # Add a seed node here if required. This host will provide the Bifrost
 # undercloud.
-cumulus-seed
+cumulus-seed ansible_host=10.60.150.1
 
 [controllers]
 # Add controller nodes here if required. These hosts will provide the

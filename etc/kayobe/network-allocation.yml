@@ -163,7 +163,6 @@ storage_mgmt_net_ips:
   ctrl1: 10.207.1.1
   ctrl2: 10.207.1.2
   ctrl3: 10.207.1.3
-  cumulus-seed: 10.207.1.0
   mon1: 10.207.1.4
   net1: 10.207.1.5
   net2: 10.207.1.13

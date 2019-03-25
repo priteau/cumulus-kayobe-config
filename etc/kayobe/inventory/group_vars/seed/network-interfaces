@@ -2,37 +2,28 @@
 ###############################################################################
 # Network interface definitions for the seed group.
 
-# Overcloud provisioning network IP information.
-provision_oc_net_interface: em1
-# provision_oc_net_bridge_ports:
-# provision_oc_net_bond_slaves:
+# Admin access via ilab over 1GB
+ilab_net_interface: "em1.{{ ilab_net_vlan }}"
 
-# Seed node will act as a gateway for all these networks, over iLab
-# all these are tagged on em1
+# Bond to 25GbE fabric that carries all other networks
+bond0_net_interface: bond0
+bond0_net_bond_slaves:
+  - p1p1
+  - p1p2
 
-# Admin network
-admin_oc_net_interface: "{{ provision_oc_net_interface }}.{{ admin_oc_net_vlan }}"
+# Admin network to rest of control plane
+# NOTE: seed node is the default gateway for all other control nodes
+#       via this network, and all other nodes access this via 1GbE
+admin_oc_net_interface: "{{ bond0_net_interface }}.{{ admin_oc_net_vlan }}"
+
+# Overcloud provisioning network
+# NOTE: all other nodes access this via 1GbE for PXE boot
+provision_oc_net_interface: "{{ bond0_net_interface }}.{{ provision_oc_net_vlan }}"
+
 # BMC network
-oob_oc_net_interface: "{{ provision_oc_net_interface }}.{{ oob_oc_net_vlan }}"
+# NOTE: all BMCs attached via 1GbE
+oob_oc_net_interface: "{{ bond0_net_interface }}.{{ oob_oc_net_vlan }}"
 
 # Internal network IP information.
-internal_net_interface: "{{ provision_oc_net_interface }}.{{ internal_net_vlan }}"
-# internal_net_bridge_ports:
-# internal_net_bond_slaves:
-
-# External network IP information.
-external_net_interface: "{{ provision_oc_net_interface }}.{{ external_net_vlan }}"
-# external_net_bridge_ports:
-# external_net_bond_slaves:
-
-# Storage management network IP information.
-storage_mgmt_net_interface: "{{ provision_oc_net_interface }}.{{ storage_mgmt_net_vlan }}"
-# storage_mgmt_net_bridge_ports:
-# storage_mgmt_net_bond_slaves:
-
-# Admin backdoor to seed node
-ilab_net_interface: "{{ provision_oc_net_interface }}.{{ ilab_net_vlan }}"
-
-###############################################################################
-# Dummy variable to allow Ansible to accept this file.
-workaround_ansible_issue_8743: yes
+# NOTE: only used for admin access to internal_net
+internal_net_interface: "{{ bond0_net_interface }}.{{ internal_net_vlan }}"

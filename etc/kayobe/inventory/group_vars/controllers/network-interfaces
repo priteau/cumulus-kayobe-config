@@ -1,15 +1,20 @@
+
 ---
 ###############################################################################
-# Network interface definitions for the controller group.
+# Network interface definitions for the network group.
 
-# Overcloud provisioning network IP information.
-br_net_interface: breno3
+# Main bond to 25GbE fabric
+# Note: moved from breno3 1GbE interface
+br_net_interface: brbond0
 br_net_bridge_ports:
-  - eno3
-# TODO: we should have a bond on 25Gb, longer term
-# provision_oc_net_bond_slaves:
+  - bond0
 
-# Admin network IP information.
+bond0_net_interface: bond0
+bond0_net_bond_slaves:
+  - enp3s0f0
+  - enp3s0f1
+
+# Admin network IP information
 admin_oc_net_interface: "eno3.{{ admin_oc_net_vlan }}"
 # TODO: Currently using public_net as default gateway
 # admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"

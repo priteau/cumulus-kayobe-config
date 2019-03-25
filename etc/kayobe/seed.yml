@@ -11,18 +11,20 @@ seed_bootstrap_user: centos
 # Network interface attachments.
 
 # List of networks to which seed nodes are attached.
-#seed_network_interfaces:
+seed_network_interfaces:
+  - "{{ ilab_net_name }}"
+  - "bond0_net"
+  - "{{ admin_oc_net_name }}"
+  - "{{ oob_oc_net_name }}"
+  - "{{ provision_oc_net_name }}"
+  - "{{ internal_net_name }}"
 
 # List of default networks to which seed nodes are attached.
 #seed_default_network_interfaces:
 
 # List of extra networks to which seed nodes are attached.
 # because currently seed will be the gateway out via iLab
-seed_extra_network_interfaces:
-  - internal_net
-  - external_net
-  - storage_mgmt_net
-  - ilab_net
+#seed_extra_network_interfaces:
 
 ###############################################################################
 # LVM configuration.
