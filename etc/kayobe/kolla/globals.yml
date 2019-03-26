@@ -23,6 +23,9 @@ enable_ceph_rgw_external: "yes"
 # opt into new docker packages
 docker_legacy_packages: False
 
+# add ceph exporter:
+enable_prometheus_external_ceph_mgr_exporter: "yes"
+
 # Projects to extracts metrics from with cASO
 caso_projects:
   - iris

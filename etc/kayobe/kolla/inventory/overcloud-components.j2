@@ -164,7 +164,8 @@ control
 control
 
 [ceph:children]
-control
+#control
+stroage
 
 [magnum:children]
 control
@@ -276,3 +277,23 @@ cinder
 [cinder-volume:children]
 cinder
 #storage
+
+[prometheus-elasticsearch-exporter:children]
+elasticsearch
+
+[prometheus-libvirt-exporter:children]
+compute
+
+#Caso
+[caso:children]
+monitoring
+
+[prometheus-openstack-exporter:children]
+monitoring
+
+[prometheus-mtail:children]
+monitoring
+control
+compute
+network
+storage

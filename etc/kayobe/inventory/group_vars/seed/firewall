@@ -63,7 +63,7 @@ firewallgen_ipv4_input_allow_rules:
     destination: "172.17.0.1"
     comment: "hint: used by 'ntpd'"
   - interface: "{{ provision_oc_net_name | net_interface }}"
-    port: 5000
+    port: 4000
     proto: tcp
     destination: "{{ provision_oc_net_name | net_ip }}"
   - interface: "lo"

@@ -16,7 +16,7 @@ kolla_source_url: https://github.com/RSE-Cambridge/kolla
 # Version (branch, tag, etc.) of Kolla source code repository if type is
 # 'source'.
 #kolla_source_version: refs/tags/cumulus/7.0.1.5
-kolla_source_version: rebase-cumulus-rocky
+kolla_source_version: cumulus/rocky
 
 # Path to virtualenv in which to install kolla.
 #kolla_venv:
@@ -39,7 +39,7 @@ kolla_ansible_source_url: https://github.com/RSE-Cambridge/kolla-ansible
 # Version (branch, tag, etc.) of Kolla Ansible source code repository if type
 # is 'source'.
 #kolla_ansible_source_version: refs/tags/cumulus/7.0.1.7
-kolla_ansible_source_version: rebase-cumulus-rocky
+kolla_ansible_source_version: cumulus/rocky
 
 # Path to virtualenv in which to install kolla-ansible.
 #kolla_ansible_venv:
