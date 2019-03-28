@@ -1,0 +1,11 @@
+---
+
+firewallgen_ipv4_forward_allow:
+  - in-interface: "{{ ilab_net_interface }}"
+    out-interface: "{{ admin_oc_net_name | net_interface }}"
+    state: RELATED,ESTABLISHED
+  - in-interface: "{{ admin_oc_net_name | net_interface }}"
+    out-interface: "{{ ilab_net_interface }}"
+     
+firewallgen_ipv4_snat:
+  - out-interface: "{{ ilab_net_interface }}"
