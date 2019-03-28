@@ -265,28 +265,22 @@ control
 
 # Cinder
 [cinder-api:children]
-cinder
+control
 
 [cinder-backup:children]
-cinder
-#storage
+control
 
 [cinder-scheduler:children]
-cinder
+control
 
 [cinder-volume:children]
-cinder
-#storage
+control
 
 [prometheus-elasticsearch-exporter:children]
 elasticsearch
 
 [prometheus-libvirt-exporter:children]
 compute
-
-#Caso
-[caso:children]
-monitoring
 
 [prometheus-openstack-exporter:children]
 monitoring
