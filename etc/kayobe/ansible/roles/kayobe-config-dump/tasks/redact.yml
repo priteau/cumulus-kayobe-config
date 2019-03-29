@@ -1,16 +1,12 @@
 ---
 
-- name: decrypt passwords
-  copy:
-   content: "{{ lookup('pipe', 'ansible-vault view --vault-id {{ vault_password_file }} ' + redact_path) }}"
-   dest: "{{ redact_path }}"
-   decrypt: yes
-   mode: 0600
-
 - name: redact passwords
   copy:
-   content: "{{ lookup('file', redact_path) | redact }}"
-   dest: "{{ redact_path }}"
+    content: "{{ plaintext | redact }}"
+    dest: "{{ redact_path }}"
+    mode: 0600
+  vars:
+    plaintext: "{{ lookup('pipe', 'ansible-vault view --vault-id {{ vault_password_file }} ' + redact_path) }}"
 
 - name: reencrypt
   command: >-
