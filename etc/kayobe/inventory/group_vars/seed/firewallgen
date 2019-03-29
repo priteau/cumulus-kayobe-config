@@ -19,15 +19,20 @@ firewallgen_ipv4_input_allow_rewrite_rules_extra:
   - '. |= map( if .port == 4369 and .proto == "tcp"  then .interface = "lo" else . end)'
 # rabbit (doesn't seem to referenced in any config file)
   - '. |= map( if .port == 25672 and .proto == "tcp"  then .interface = "lo" else . end)'
+# bifrost mysql
+  - '. |= map( if .port == 3306 and .proto == "tcp"  then .interface = "lo" else . end)'
+# bifrost rabbitmq
+  - '. |= map( if .port == 5672 and .proto == "tcp"  then .interface = "lo" else . end)'
+# DNS ?
+  - '. |= map( if .port == 53 then .interface = "lo" else . end)'
+# docker-proxy for docker regsitry
+  - >-
+    . |= map( if .port == 4000 and .proto == "tcp" then
+            .interface = "{{ firewallgen_interface_tmpl % 'provision_oc_net_name' }}" else . end)
 
 firewallgen_ipv4_input_allow_custom_rules_extra:
-  # These are ipv4-mapped ipv6 addresses and don't show in ss -nlpt -4 output
-  - interface: "{{ firewallgen_interface_tmpl % 'provision_oc_net_name' }}"
-    port: 5000
-    proto: tcp
-    destination: "{% raw %}{{ provision_oc_net_name | net_ip }}{% endraw %}"
-  - interface: "{{ firewallgen_interface_tmpl % 'ilab_net_name' }}"
-    port: 22
-    proto: tcp
-    destination: "{% raw %}{{ ilab_net_name | net_ip }}{% endraw %}"
-    comment: SSH via ILAB
+ - interface: "{{ firewallgen_interface_tmpl % 'ilab_net_name' }}"
+   port: 22
+   proto: tcp
+   destination: "{% raw %}{{ ilab_net_name | net_ip }}{% endraw %}"
+   comment: SSH via ILAB
