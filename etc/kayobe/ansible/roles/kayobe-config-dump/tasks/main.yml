@@ -38,7 +38,6 @@
         --node-config-dir "{{ config_dump_path }}"
         --output-dir "{{ output_dir }}"
         --extra-vars "ansible_user={{ user }}"
-        --kolla-extra-vars "ansible_user={{ user }}"
       environment: "{{ env }}"
       register: result
   vars:
