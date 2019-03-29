@@ -6,11 +6,11 @@
     suffix: kayobe_config
   register: tempfile_output
 - block:
-    - name: clone kayobe-config
-      git:
-        repo: "{{ kayobe_config_repo }}"
-        version: "{{ kayobe_config_version }}"
+    - name: make a copy of the config
+      synchronize:
+        src: "{{ config_path }}"
         dest: "{{ path }}"
+      delegate_to: "{{ inventory_hostname }}"
     - name: make a temp vault password file
       copy:
         content: "{{ dummy_password }}"
@@ -42,6 +42,7 @@
       environment: "{{ env }}"
       register: result
   vars:
+    config_path: "{{ lookup('env', 'KAYOBE_BASE_PATH') }}"
     temp_vault_password_file: "{{ path ~ '/vault.pass' }}"
     path: "{{ tempfile_output.path }}"
     password_yml_path: "{{ path ~ '/etc/kayobe/kolla/passwords.yml' }}"

@@ -4,6 +4,3 @@
   hosts: localhost
   roles:
     - name: kayobe-config-dump
-  vars:
-    kayobe_config_repo: https://github.com/RSE-Cambridge/cumulus-kayobe-config
-    kayobe_config_version: rocky
