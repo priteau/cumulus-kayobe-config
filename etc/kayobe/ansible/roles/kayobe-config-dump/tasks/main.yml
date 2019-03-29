@@ -1,0 +1,64 @@
+---
+
+- name: create temporary directory
+  tempfile:
+    state: directory
+    suffix: kayobe_config
+  register: tempfile_output
+- block:
+    - name: clone kayobe-config
+      git:
+        repo: "{{ kayobe_config_repo }}"
+        version: "{{ kayobe_config_version }}"
+        dest: "{{ path }}"
+    - name: make a temp vault password file
+      copy:
+        content: "{{ dummy_password }}"
+        dest: "{{ temp_vault_password_file }}"
+    - include_tasks: 'redact.yml'
+      vars:
+        redact_path: "{{ item }}"
+      with_items:
+        - "{{ password_yml_path }}"
+        - "{{ secrets_yml_path }}"
+    - name: generate config
+      command: >-
+        kayobe overcloud service configuration generate
+        --node-config-dir "{{ config_dump_path }}"
+        --extra-vars "ansible_user={{ user }}"
+        --kolla-extra-vars "ansible_user={{ user }}"
+      environment: "{{ env }}"
+      register: result
+    - file:
+        path: "{{ output_dir }}"
+        state: directory
+    - name: save kayobe config
+      command: >-
+        kayobe overcloud service configuration save
+        --node-config-dir "{{ config_dump_path }}"
+        --output-dir "{{ output_dir }}"
+        --extra-vars "ansible_user={{ user }}"
+        --kolla-extra-vars "ansible_user={{ user }}"
+      environment: "{{ env }}"
+      register: result
+  vars:
+    temp_vault_password_file: "{{ path ~ '/vault.pass' }}"
+    path: "{{ tempfile_output.path }}"
+    password_yml_path: "{{ path ~ '/etc/kayobe/kolla/passwords.yml' }}"
+    secrets_yml_path: "{{ path ~ '/etc/kayobe/secrets.yml' }}"
+    env:
+      KAYOBE_CONFIG_PATH: "{{ path ~ '/etc/kayobe' }}"
+      KAYOBE_VAULT_PASSWORD: "{{ dummy_password }}"
+      KAYOBE_BASE_PATH: "{{ path }}"
+  rescue:
+    - copy:
+        content: "{{ result.stdout }}"
+        dest: /tmp/kayobe-config-dump-debug
+      when: result | default(False) and result.rc != 0
+  always:
+    - debug:
+        var: tempfile_output
+    - name: remove tempdir
+      file:
+        #path: "{{ tempfile_output.path }}"
+        state: absent
