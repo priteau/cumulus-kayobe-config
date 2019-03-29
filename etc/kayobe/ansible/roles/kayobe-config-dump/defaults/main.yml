@@ -1,0 +1,8 @@
+config_dump_path: /tmp/kayobe-config-dump
+output_dir: "{{ lookup('env', 'PWD') ~ '/redacted-config' }}"
+# You can't use ANSIBLE_VAULT_PASSWORD_FILE as you will get:
+# ERROR! The vault-ids default,default are available to encrypt.
+# Specify the vault-id to encrypt with --encrypt-vault-id
+vault_password_file: ~/vaultpassword
+dummy_password: password
+user: stack
