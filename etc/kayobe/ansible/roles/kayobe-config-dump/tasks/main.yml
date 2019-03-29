@@ -8,8 +8,9 @@
 - block:
     - name: make a copy of the config
       synchronize:
-        src: "{{ config_path }}"
+        src: "{{ original_config_path }}"
         dest: "{{ path }}"
+        recursive: yes
       delegate_to: "{{ inventory_hostname }}"
     - name: make a temp vault password file
       copy:
@@ -41,7 +42,7 @@
       environment: "{{ env }}"
       register: result
   vars:
-    config_path: "{{ lookup('env', 'KAYOBE_BASE_PATH') }}"
+    original_config_path: "{{ lookup('env', 'KAYOBE_CONFIG_PATH') ~ '/../..' }}"
     temp_vault_password_file: "{{ path ~ '/vault.pass' }}"
     path: "{{ tempfile_output.path }}"
     password_yml_path: "{{ path ~ '/etc/kayobe/kolla/passwords.yml' }}"
