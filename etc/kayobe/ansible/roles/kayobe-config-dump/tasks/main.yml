@@ -61,5 +61,5 @@
         var: tempfile_output
     - name: remove tempdir
       file:
-        #path: "{{ tempfile_output.path }}"
+        path: "{{ tempfile_output.path }}"
         state: absent
