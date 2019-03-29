@@ -1,0 +1,6 @@
+---
+
+- name: dump config
+  hosts: localhost
+  roles:
+    - name: kayobe-config-dump

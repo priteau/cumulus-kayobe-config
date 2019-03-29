@@ -1,0 +1,13 @@
+---
+
+- name: redact passwords
+  copy:
+    content: "{{ plaintext | redact }}"
+    dest: "{{ redact_path }}"
+    mode: 0600
+  vars:
+    plaintext: "{{ lookup('pipe', 'ansible-vault view --vault-id {{ vault_password_file }} ' + redact_path) }}"
+
+- name: reencrypt
+  command: >-
+    ansible-vault encrypt --vault-id "{{ temp_vault_password_file }}" --encrypt-vault-id default "{{ redact_path }}"
