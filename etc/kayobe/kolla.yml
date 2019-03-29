@@ -15,7 +15,8 @@ kolla_source_url: https://github.com/RSE-Cambridge/kolla
 
 # Version (branch, tag, etc.) of Kolla source code repository if type is
 # 'source'.
-kolla_source_version: refs/tags/cumulus/7.0.1.5
+#kolla_source_version: refs/tags/cumulus/7.0.1.5
+kolla_source_version: cumulus/rocky
 
 # Path to virtualenv in which to install kolla.
 #kolla_venv:
@@ -37,7 +38,8 @@ kolla_ansible_source_url: https://github.com/RSE-Cambridge/kolla-ansible
 
 # Version (branch, tag, etc.) of Kolla Ansible source code repository if type
 # is 'source'.
-kolla_ansible_source_version: refs/tags/cumulus/7.0.1.7
+#kolla_ansible_source_version: refs/tags/cumulus/7.0.1.7
+kolla_ansible_source_version: cumulus/rocky
 
 # Path to virtualenv in which to install kolla-ansible.
 #kolla_ansible_venv:
@@ -73,7 +75,7 @@ kolla_docker_namespace: rse-cambridge
 #kolla_docker_registry_password:
 
 # Kolla OpenStack release version. This should be a Docker image tag.
-kolla_openstack_release: 7.0.1.5
+kolla_openstack_release: 7.0.1.6
 
 # Dict mapping names of sources to their definitions for
 # kolla_install_type=source. See kolla.common.config for details.

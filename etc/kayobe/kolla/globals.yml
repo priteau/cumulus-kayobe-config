@@ -20,57 +20,59 @@ enable_cadf_notifications: "yes"
 # add route to ceph-rgw group in haproxy
 enable_ceph_rgw_external: "yes"
 
+# opt into new docker packages
+docker_legacy_packages: False
+
+# add ceph exporter:
+enable_prometheus_external_ceph_mgr_exporter: "yes"
+
 # Projects to extracts metrics from with cASO
 caso_projects:
   - iris
   - iris-euclid
 
-# TODO: how to build these?
-#magnum_tag: pike2
-#keystone_tag: pike2
-
 # Container image tags.
 # These should be allowed to change independently, as services are updated.
-bifrost_tag: rocky
-caso_tag: 7.0.1.5
-cron_tag: rocky
-ceph_tag: rocky
-cinder_tag: rocky
-chrony_tag: rocky
-elasticsearch_tag: 7.0.1.2
-fluentd_tag: rocky
-glance_tag: rocky
-grafana_tag: rocky
-haproxy_tag: rocky
-heat_tag: rocky
-horizon_tag: rocky
-influxdb_tag: rocky
-ironic_tag: rocky
-iscsid_tag: rocky
-kafka_tag: rocky
-keepalived_tag: rocky
-keystone_tag: rocky
-kibana_tag: 7.0.1.2
-kolla_toolbox_tag: rocky
-logstash_tag: rocky
-magnum_tag: rocky
-manila_tag: rocky
-mariadb_tag: rocky
-memcached_tag: rocky
-monasca_tag: rocky
-monasca_notification_tag: rocky
-monasca_persister_tag: rocky
-neutron_tag: rocky
-nova_tag: rocky
-openvswitch_tag: rocky
-prometheus_tag: rocky
-prometheus_server_tag: 7.0.1.5
-prometheus_mtail_tag: 7.0.1.3
-prometheus_elasticsearch_exporter_tag: 7.0.1.4
-prometheus_libvirt_exporter_tag: 7.0.1.4
-rabbitmq_tag: rocky
-storm_tag: rocky
-zookeeper_tag: rocky
+bifrost_tag: 7.0.1.6
+caso_tag: 7.0.1.6
+cron_tag: 7.0.1.6
+ceph_tag: 7.0.1.6
+cinder_tag: 7.0.1.6
+chrony_tag: 7.0.1.6
+elasticsearch_tag: 7.0.1.6
+fluentd_tag: 7.0.1.6
+glance_tag: 7.0.1.6
+grafana_tag: 7.0.1.6
+haproxy_tag: 7.0.1.6
+heat_tag: 7.0.1.6
+horizon_tag: 7.0.1.6
+influxdb_tag: 7.0.1.6
+ironic_tag: 7.0.1.6
+iscsid_tag: 7.0.1.6
+kafka_tag: 7.0.1.6
+keepalived_tag: 7.0.1.6
+keystone_tag: 7.0.1.6
+kibana_tag: 7.0.1.6
+kolla_toolbox_tag: 7.0.1.6
+logstash_tag: 7.0.1.6
+magnum_tag: 7.0.1.6
+manila_tag: 7.0.1.6
+mariadb_tag: 7.0.1.6
+memcached_tag: 7.0.1.6
+monasca_tag: 7.0.1.6
+monasca_notification_tag: 7.0.1.6
+monasca_persister_tag: 7.0.1.6
+neutron_tag: 7.0.1.6
+nova_tag: 7.0.1.6
+openvswitch_tag: 7.0.1.6
+prometheus_tag: 7.0.1.6
+prometheus_server_tag: 7.0.1.6
+prometheus_mtail_tag: 7.0.1.6
+prometheus_elasticsearch_exporter_tag: 7.0.1.6
+prometheus_libvirt_exporter_tag: 7.0.1.6
+rabbitmq_tag: 7.0.1.6
+storm_tag: 7.0.1.6
+zookeeper_tag: 7.0.1.6
 
 # Kayobe currently configures ntpd on each node in the overcloud
 enable_chrony: false
