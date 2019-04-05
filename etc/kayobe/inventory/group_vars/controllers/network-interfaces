@@ -1,4 +1,3 @@
-
 ---
 ###############################################################################
 # Network interface definitions for the network group.
@@ -14,7 +13,6 @@ bond0_net_bond_slaves:
   - enp3s0f0
   - enp3s0f1
 
-
 # Admin network IP information
 admin_oc_net_interface: "eno3.{{ admin_oc_net_vlan }}"
 # TODO: Currently using public_net as default gateway
@@ -22,8 +20,7 @@ admin_oc_net_interface: "eno3.{{ admin_oc_net_vlan }}"
 
 # Public network IP information.
 # Currently on 1GbE
-public_net_interface: "eno3.{{ public_net_vlan }}"
-
+public_net_interface: "{{ br_net_interface }}.{{ public_net_vlan }}"
 
 # Workload out-of-band management network IP information.
 oob_wl_net_interface: "{{ br_net_interface }}.{{ oob_wl_net_vlan }}"
