@@ -10,7 +10,7 @@ groups:
     labels:
       severity: moderate
     annotations:
-      summary: "Disk on {{ $labels.instance }} is low on space"
+      summary: "Prometheus exporter at {{ $labels.instance }} reports low disk space"
       description: "{{ $labels.device }} is {{ $value }}% full."
 
   - alert: LowMemory
@@ -19,7 +19,7 @@ groups:
     labels:
       severity: moderate
     annotations:
-      summary: "Memory on {{ $labels.instance }} is low"
+      summary: "Prometheus exporter at {{ $labels.instance }} reports low memory"
       description: "Memory is {{ $value }}% full."
 
   - alert: Overheating
@@ -28,8 +28,8 @@ groups:
     labels:
       severity: moderate
     annotations:
-      summary: "CPU {{ $labels.instance }} is overheating"
-      description: "CPU {{ $labels.chip }} is {{ $value }}% celcius."
+      summary: "Prometheus exporter at {{ $labels.instance }} reports overheating"
+      description: "Sensor {{ $labels.chip }} reports {{ $value }} degrees celcius."
 
   - alert: InstanceDown
     expr: up{job="node"} == 0
