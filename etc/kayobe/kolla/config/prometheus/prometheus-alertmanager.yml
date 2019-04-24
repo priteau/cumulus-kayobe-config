@@ -25,7 +25,7 @@ receivers:
   - name: 'page'
     slack_configs: {% raw %}
     - channel: '#iris-notifications'
-      title: '{{ '{{' }} .GroupLabels.app {{ '}}' }} detected  {{ '{{' }} .GroupLabels.alertname {{ '}}' }}'
+      title: '{{ '{{' }} .GroupLabels.alertname {{ '}}' }} alert has triggered'
       text: '{{ '{{' }} range .Alerts {{ '}}' }}{{ '{{' }} .Annotations.description {{ '}}' }}\n{{ '{{' }} end {{ '}}' }} '
 {% endraw %}
 templates: []
