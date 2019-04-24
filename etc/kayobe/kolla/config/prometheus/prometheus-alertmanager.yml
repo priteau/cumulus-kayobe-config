@@ -1,8 +1,7 @@
-{% raw %}
 global:
   resolve_timeout: 5m
   smtp_require_tls: true
-  slack_api_url: 'https://hooks.slack.com/services/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'
+  slack_api_url: '{{ secrets_slack_notification_channel_url }}'
 route:
   receiver: 'default'
   group_by: [alertname, app]
@@ -24,9 +23,9 @@ receivers:
       # Jiralert doesn't handle resolving issues, and complains if this is true
       send_resolved: false
   - name: 'page'
-    slack_configs:
+    slack_configs: {% raw %}
     - channel: '#iris-notifications'
       title: '{{ '{{' }} .GroupLabels.app {{ '}}' }} detected  {{ '{{' }} .GroupLabels.alertname {{ '}}' }}'
       text: '{{ '{{' }} range .Alerts {{ '}}' }}{{ '{{' }} .Annotations.description {{ '}}' }}\n{{ '{{' }} end {{ '}}' }} '
-templates: []
 {% endraw %}
+templates: []
