@@ -26,6 +26,13 @@ docker_legacy_packages: False
 # add ceph exporter:
 enable_prometheus_external_ceph_mgr_exporter: "yes"
 
+# Support manging Jira tickets via Prometheus Alertmanager
+enable_prometheus_jiralert: "yes"
+prometheus_jiralert_api_url: 'https://stackhpc.atlassian.net'
+prometheus_jiralert_project: 'SO'
+prometheus_jiralert_user: 'doug@stackhpc.com'
+prometheus_jiralert_default_receiver_name: 'default'
+
 # Projects to extracts metrics from with cASO
 caso_projects:
   - iris
@@ -70,6 +77,7 @@ prometheus_server_tag: 7.0.1.6
 prometheus_mtail_tag: 7.0.1.6
 prometheus_elasticsearch_exporter_tag: 7.0.1.6
 prometheus_libvirt_exporter_tag: 7.0.1.6
+prometheus_jiralert_tag: 7.0.1.7
 rabbitmq_tag: 7.0.1.6
 storm_tag: 7.0.1.6
 zookeeper_tag: 7.0.1.6

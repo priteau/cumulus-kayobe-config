@@ -4,10 +4,26 @@ global:
   smtp_require_tls: true
   slack_api_url: 'https://hooks.slack.com/services/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'
 route:
-  receiver: 'slack-notifications'
-  group_by: [alertname, datacenter, app]
+  receiver: 'default'
+  group_by: [alertname, app]
+  group_interval: 10m
+  repeat_interval: 24h
+  routes:
+    - match:
+        severity: page
+      # Also generate Jira ticket
+      continue: true
+      receiver: page
+    - match:
+        severity: page
+      receiver: default
 receivers:
-  - name: 'slack-notifications'
+  - name: 'default'
+    webhook_configs:
+    - url: 'http://localhost:9097/alert'
+      # Jiralert doesn't handle resolving issues, and complains if this is true
+      send_resolved: false
+  - name: 'page'
     slack_configs:
     - channel: '#iris-notifications'
       title: '{{ '{{' }} .GroupLabels.app {{ '}}' }} detected  {{ '{{' }} .GroupLabels.alertname {{ '}}' }}'
