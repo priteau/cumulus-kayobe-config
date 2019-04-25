@@ -1,0 +1,31 @@
+global:
+  resolve_timeout: 5m
+  smtp_require_tls: true
+  slack_api_url: '{{ secrets_slack_notification_channel_url }}'
+route:
+  receiver: 'default'
+  group_by: [alertname, app]
+  group_interval: 10m
+  repeat_interval: 24h
+  routes:
+    - match:
+        severity: page
+      # Also generate Jira ticket
+      continue: true
+      receiver: page
+    - match:
+        severity: page
+      receiver: default
+receivers:
+  - name: 'default'
+    webhook_configs:
+    - url: 'http://localhost:9097/alert'
+      # Jiralert doesn't handle resolving issues, and complains if this is true
+      send_resolved: false
+  - name: 'page'
+    slack_configs: {{ '{% raw %}' }}{% raw %}
+    - channel: '#iris-notifications'
+      title: '{{ .GroupLabels.alertname }} alert has triggered'
+      text: '{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}'
+{% endraw %}{{ '{% endraw %}' }}
+templates: []
