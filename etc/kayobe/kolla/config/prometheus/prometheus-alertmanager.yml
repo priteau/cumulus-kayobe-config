@@ -23,9 +23,9 @@ receivers:
       # Jiralert doesn't handle resolving issues, and complains if this is true
       send_resolved: false
   - name: 'page'
-    slack_configs: {% raw %}
+    slack_configs: {{ '{% raw %}' }}{% raw %}
     - channel: '#iris-notifications'
-      title: '{{ '{{' }} .GroupLabels.alertname {{ '}}' }} alert has triggered'
-      text: '{{ '{{' }} range .Alerts {{ '}}' }}{{ '{{' }} .Annotations.description {{ '}}' }}\n{{ '{{' }} end {{ '}}' }} '
-{% endraw %}
+      title: '{{ .GroupLabels.alertname }} alert has triggered'
+      text: '{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}'
+{% endraw %}{{ '{% endraw %}' }}
 templates: []
