@@ -41,7 +41,7 @@ caso_projects:
 # Container image tags.
 # These should be allowed to change independently, as services are updated.
 bifrost_tag: 7.0.1.6
-caso_tag: 7.0.1.6
+caso_tag: 7.0.1.8
 cron_tag: 7.0.1.6
 ceph_tag: 7.0.1.6
 cinder_tag: 7.0.1.6
