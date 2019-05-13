@@ -112,6 +112,8 @@ kolla_build_blocks:
     RUN yum remove -y mod_auth_openidc
     RUN rpm -i https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.3.11/cjose-0.6.1.4-1.el7.x86_64.rpm
     RUN rpm -i https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.3.11/mod_auth_openidc-2.3.11-1.el7.x86_64.rpm
+  horizon_footer: |
+    RUN pip install -U --no-deps git+https://github.com/RSE-Cambridge/magnum-ui@cumulus/rocky
 
 # Dict mapping image customization variable names to their values.
 # Each variable takes the form:
@@ -134,6 +136,9 @@ kolla_build_customizations:
     - 'openssl-devel'
     - 'hiredis'
   neutron_server_packages_append:
+    # Allow custom packages to be installed via pip.
+    - 'python-pip'
+  horizon_packages_append:
     # Allow custom packages to be installed via pip.
     - 'python-pip'
 

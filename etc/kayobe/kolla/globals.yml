@@ -61,7 +61,7 @@ glance_tag: 7.0.1.6
 grafana_tag: 7.0.1.6
 haproxy_tag: 7.0.1.6
 heat_tag: 7.0.1.6
-horizon_tag: 7.0.1.6
+horizon_tag: 7.0.1.8
 influxdb_tag: 7.0.1.6
 ironic_tag: 7.0.1.6
 iscsid_tag: 7.0.1.6
