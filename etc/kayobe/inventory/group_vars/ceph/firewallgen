@@ -21,3 +21,8 @@ firewallgen_ipv4_input_allow_custom_rules_extra:
     proto: tcp
     destination: "{% raw %}{{ storage_mgmt_net_name | net_ip }}{% endraw %}"
     comment: ceph
+  - interface: "{{ firewallgen_interface_tmpl % 'storage_net_name' }}"
+    port: "{{ firewallgen_ceph_range_start }}:{{ firewallgen_ceph_range_end }}"
+    proto: tcp
+    destination: "{% raw %}{{ storage_net_name | net_ip }}{% endraw %}"
+    comment: ceph

@@ -51,6 +51,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ storage_net_name | net_ip }}"
     comment: "hint: used by 'ceph-mon'"
+  - interface: "{{ storage_net_name | net_interface }}"
+    port: 6800:7300
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "ceph"
   - interface: "docker0"
     port: 123
     proto: udp
