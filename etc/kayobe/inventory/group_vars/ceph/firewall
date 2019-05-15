@@ -3,10 +3,6 @@
 firewallgen_enable_firewall: True
 
 firewallgen_ipv4_input_allow_rules:
-  - interface: "all"
-    port: 9283
-    proto: tcp
-    comment: "hint: used by 'ceph-mgr'"
   - interface: "lo"
     port: 25
     proto: tcp
@@ -41,6 +37,10 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'cadvisor' in docker container 'prometheus_cadvisor'"
+  - interface: "{{ storage_mgmt_net_name | net_interface }}"
+    port: 9283
+    proto: tcp
+    comment: "hint: used by 'ceph-mgr'"
   - interface: "{{ storage_mgmt_net_name | net_interface }}"
     port: 6800:7300
     proto: tcp

@@ -10,6 +10,10 @@ firewallgen_ipv4_input_allow_rewrite_rules_extra:
   - >-
     . | map(select(.port < {{ firewallgen_ceph_range_start }}  or
                    .port > {{ firewallgen_ceph_range_end }} ))
+  - >-
+    . |= map(if .processes[].name == "ceph-mgr" then
+        .interface = "{{ firewallgen_interface_tmpl % 'storage_mgmt_net_name' }}"
+      else . end)
 
 firewallgen_ipv4_input_allow_custom_rules_extra:
   # Ceph ports, based on: "When a daemon fails and restarts without letting
