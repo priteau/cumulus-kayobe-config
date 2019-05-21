@@ -58,7 +58,7 @@ ironic_tag: 7.0.1.6
 iscsid_tag: 7.0.1.6
 kafka_tag: 7.0.1.6
 keepalived_tag: 7.0.1.6
-keystone_tag: 7.0.1.6
+keystone_tag: 7.0.1.8
 kibana_tag: 7.0.1.6
 kolla_toolbox_tag: 7.0.1.6
 logstash_tag: 7.0.1.6
