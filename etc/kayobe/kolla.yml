@@ -109,6 +109,7 @@ kolla_build_blocks:
     RUN pip install -U --no-deps git+https://github.com/RSE-Cambridge/magnum@stable/rocky
   keystone_footer: |
     RUN pip install -U --no-deps git+https://github.com/RSE-Cambridge/keystone@stable/rocky
+    RUN yum remove mod_auth_openidc
     RUN rpm -i https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.3.11/cjose-0.6.1.4-1.el7.x86_64.rpm
     RUN rpm -i https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.3.11/mod_auth_openidc-2.3.11-1.el7.x86_64.rpm
 
