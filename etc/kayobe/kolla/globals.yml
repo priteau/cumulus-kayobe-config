@@ -47,7 +47,7 @@ ceph_tag: 7.0.1.6
 cinder_tag: 7.0.1.6
 chrony_tag: 7.0.1.6
 elasticsearch_tag: 7.0.1.6
-fluentd_tag: 7.0.1.6
+fluentd_tag: 7.0.1.8
 glance_tag: 7.0.1.6
 grafana_tag: 7.0.1.6
 haproxy_tag: 7.0.1.6
