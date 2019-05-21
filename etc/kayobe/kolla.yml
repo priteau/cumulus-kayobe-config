@@ -109,6 +109,8 @@ kolla_build_blocks:
     RUN pip install -U --no-deps git+https://github.com/RSE-Cambridge/magnum@stable/rocky
   keystone_footer: |
     RUN pip install -U --no-deps git+https://github.com/RSE-Cambridge/keystone@stable/rocky
+    RUN rpm -i https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.3.11/cjose-0.6.1.4-1.el7.x86_64.rpm
+    RUN rpm -i https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.3.11/mod_auth_openidc-2.3.11-1.el7.x86_64.rpm
 
 # Dict mapping image customization variable names to their values.
 # Each variable takes the form:
@@ -126,8 +128,10 @@ kolla_build_customizations:
   keystone_base_packages_append:
     # Allow custom packages to be installed via pip.
     - 'python-pip'
-    # Allow use of OpenID connecto for federation
-    - 'mod_auth_openidc'
+    # Allow manual install of openidc for federation
+    - 'jansson-devel'
+    - 'openssl-devel'
+    - 'hiredis'
   neutron_server_packages_append:
     # Allow custom packages to be installed via pip.
     - 'python-pip'
