@@ -1,0 +1,83 @@
+---
+
+firewallgen_enable_firewall: True
+
+firewallgen_ipv4_input_allow_rules:
+  - interface: "lo"
+    port: 25
+    proto: tcp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'master'"
+  - interface: "lo"
+    port: 24224
+    proto: tcp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'fluentd' in docker container 'fluentd'"
+  - interface: "{{ admin_oc_net_interface }}"
+    port: 22
+    proto: tcp
+    comment: "hint: used by 'sshd'"
+  - interface: "{{ internal_net_interface }}"
+    port: 6780
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'radosgw'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9100
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'node_exporter' in docker container 'prometheus_node_exporter'"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 9197
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'mtail' in docker container 'prometheus_mtail'"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 18080
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'cadvisor' in docker container 'prometheus_cadvisor'"
+  - interface: "{{ storage_mgmt_net_name | net_interface }}"
+    port: 9283
+    proto: tcp
+    comment: "hint: used by 'ceph-mgr'"
+  - interface: "{{ storage_mgmt_net_name | net_interface }}"
+    port: 6800:7300
+    proto: tcp
+    destination: "{{ storage_mgmt_net_name | net_ip }}"
+    comment: "ceph"
+  - interface: "{{ storage_net_interface }}"
+    port: 6789
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "hint: used by 'ceph-mon'"
+  - interface: "{{ storage_net_name | net_interface }}"
+    port: 6800:7300
+    proto: tcp
+    destination: "{{ storage_net_name | net_ip }}"
+    comment: "ceph"
+  - interface: "docker0"
+    port: 123
+    proto: udp
+    destination: "172.17.0.1"
+    comment: "hint: used by 'ntpd'"
+  - interface: "lo"
+    port: 123
+    proto: udp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'ntpd'"
+  - interface: "lo"
+    port: 5140
+    proto: udp
+    destination: "127.0.0.1"
+    comment: "hint: used by 'fluentd' in docker container 'fluentd'"
+  - interface: "{{ internal_net_interface }}"
+    port: 123
+    proto: udp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'ntpd'"
+  - interface: "{{ internal_net_interface }}"
+    port: 5140
+    proto: udp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'fluentd' in docker container 'fluentd'"
