@@ -47,7 +47,7 @@ ceph_tag: 7.0.1.6
 cinder_tag: 7.0.1.6
 chrony_tag: 7.0.1.6
 elasticsearch_tag: 7.0.1.6
-fluentd_tag: 7.0.1.6
+fluentd_tag: 7.0.1.9
 glance_tag: 7.0.1.6
 grafana_tag: 7.0.1.6
 haproxy_tag: 7.0.1.6
@@ -58,7 +58,7 @@ ironic_tag: 7.0.1.6
 iscsid_tag: 7.0.1.6
 kafka_tag: 7.0.1.6
 keepalived_tag: 7.0.1.6
-keystone_tag: 7.0.1.6
+keystone_tag: 7.0.1.9
 kibana_tag: 7.0.1.6
 kolla_toolbox_tag: 7.0.1.6
 logstash_tag: 7.0.1.6
