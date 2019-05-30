@@ -3,6 +3,9 @@
 firewallgen_libvirt_serial_console_range_start: 5900
 firewallgen_libvirt_serial_console_range_end: 6000
 
+firewallgen_nova_migrate_range_start: 49152
+firewallgen_nova_migrate_range_end: 49215
+
 firewallgen_ipv4_input_allow_rewrite_rules_compute:
   # systemd socket activation for portmapper service
   - '. | map(select(.port != 111))'
@@ -32,3 +35,9 @@ firewallgen_ipv4_input_allow_custom_rules_extra:
     port: 4789
     proto: udp
     comment: required for VXLANs to work
+
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    port: "{{ firewallgen_nova_migrate_range_start }}:{{ firewallgen_nova_migrate_range_end }}"
+    proto: tcp
+    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+    comment: Nova live migration
