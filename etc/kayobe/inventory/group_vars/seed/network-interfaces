@@ -2,8 +2,10 @@
 ###############################################################################
 # Network interface definitions for the seed group.
 
+1gbe_physical_interface: "em1"
+
 # Admin access via ilab over 1GB
-ilab_net_interface: "em1.{{ ilab_net_vlan }}"
+ilab_net_interface: "{{ 1gbe_physical_interface }}.{{ ilab_net_vlan }}"
 
 # Bond to 25GbE fabric that carries all other networks
 bond0_net_interface: bond0
@@ -14,16 +16,16 @@ bond0_net_bond_slaves:
 # Admin network to rest of control plane
 # NOTE: seed node is the default gateway for all other control nodes
 #       via this network, and all other nodes access this via 1GbE
-admin_oc_net_interface: "{{ bond0_net_interface }}.{{ admin_oc_net_vlan }}"
+admin_oc_net_interface: "{{ 1gbe_physical_interface }}.{{ admin_oc_net_vlan }}"
 
 # Overcloud provisioning network
 # NOTE: all other nodes access this via 1GbE for PXE boot
-provision_oc_net_interface: "{{ bond0_net_interface }}.{{ provision_oc_net_vlan }}"
+provision_oc_net_interface: "{{ 1gbe_physical_interface }}.{{ provision_oc_net_vlan }}"
 
 # BMC network
 # NOTE: all BMCs attached via 1GbE
-oob_oc_net_interface: "{{ bond0_net_interface }}.{{ oob_oc_net_vlan }}"
+oob_oc_net_interface: "{{ 1gbe_physical_interface }}.{{ oob_oc_net_vlan }}"
 
 # Internal network IP information.
 # NOTE: only used for admin access to internal_net
-internal_net_interface: "{{ bond0_net_interface }}.{{ internal_net_vlan }}"
+internal_net_interface: "{{ 1gbe_physical_interface }}.{{ internal_net_vlan }}"
