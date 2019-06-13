@@ -13,7 +13,6 @@ seed_bootstrap_user: centos
 # List of networks to which seed nodes are attached.
 seed_network_interfaces:
   - "{{ ilab_net_name }}"
-  - "bond0_net"
   - "{{ admin_oc_net_name }}"
   - "{{ oob_oc_net_name }}"
   - "{{ provision_oc_net_name }}"
