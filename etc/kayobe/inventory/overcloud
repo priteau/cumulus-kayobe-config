@@ -27,6 +27,24 @@ cpu-e-1026 ipmi_address=10.202.0.15 bmc_type=idrac
 cpu-e-1027 ipmi_address=10.202.0.16 bmc_type=idrac
 cpu-e-1028 ipmi_address=10.202.0.17 bmc_type=idrac
 
+[newcompute]
+cpu-e-1029 ipmi_address=10.202.0.18 bmc_type=idrac
+cpu-e-1030 ipmi_address=10.202.0.19 bmc_type=idrac
+cpu-e-1031 ipmi_address=10.202.0.20 bmc_type=idrac
+cpu-e-1032 ipmi_address=10.202.0.21 bmc_type=idrac
+cpu-e-1033 ipmi_address=10.202.0.22 bmc_type=idrac
+cpu-e-1034 ipmi_address=10.202.0.23 bmc_type=idrac
+cpu-e-1035 ipmi_address=10.202.0.24 bmc_type=idrac
+cpu-e-1036 ipmi_address=10.202.0.25 bmc_type=idrac
+cpu-e-1037 ipmi_address=10.202.0.26 bmc_type=idrac
+cpu-e-1038 ipmi_address=10.202.0.27 bmc_type=idrac
+cpu-e-1039 ipmi_address=10.202.0.28 bmc_type=idrac
+cpu-e-1040 ipmi_address=10.202.0.29 bmc_type=idrac
+cpu-e-1041 ipmi_address=10.202.0.30 bmc_type=idrac
+cpu-e-1042 ipmi_address=10.202.0.31 bmc_type=idrac
+cpu-e-1043 ipmi_address=10.202.0.32 bmc_type=idrac
+cpu-e-1044 ipmi_address=10.202.0.33 bmc_type=idrac
+
 # only put monitoring on ceph nodes
 # as we use ceph-ansible
 [storage:children]
