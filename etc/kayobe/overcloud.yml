@@ -3,7 +3,7 @@
 # Overcloud configuration.
 
 # Default Ansible group for overcloud hosts.
-#overcloud_group_default:
+overcloud_group_default: compute
 
 # List of names of Ansible groups for overcloud hosts.
 #overcloud_groups:
