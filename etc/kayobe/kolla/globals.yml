@@ -63,7 +63,7 @@ haproxy_tag: 7.0.1.6
 heat_tag: 7.0.1.6
 horizon_tag: 7.0.1.8
 influxdb_tag: 7.0.1.6
-ironic_tag: 7.0.1.6
+ironic_tag: 7.0.1.10
 iscsid_tag: 7.0.1.6
 kafka_tag: 7.0.1.6
 keepalived_tag: 7.0.1.6
