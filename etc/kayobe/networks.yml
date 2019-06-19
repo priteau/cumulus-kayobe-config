@@ -17,7 +17,7 @@ admin_oc_net_name: admin_oc_net
 
 # Name of the network used by the overcloud hosts to manage the bare metal
 # compute hosts via their out-of-band management controllers.
-#oob_wl_net_name:
+oob_wl_net_name: oob_oc_net
 
 # Name of the network used by the overcloud hosts to provision the bare metal
 # workload hosts.
@@ -63,8 +63,9 @@ ilab_net_name: ilab_net
 # Admin network IP information.
 admin_oc_net_vlan: 200
 admin_oc_net_cidr: "10.{{ admin_oc_net_vlan }}.0.0/16"
-admin_oc_net_allocation_pool_start: "10.{{ admin_oc_net_vlan }}.1.0"
-admin_oc_net_allocation_pool_end: "10.{{ admin_oc_net_vlan }}.3.255"
+# NOTE: production is using 10.200.[1,2,3].x
+admin_oc_net_allocation_pool_start: "10.{{ admin_oc_net_vlan }}.4.0"
+admin_oc_net_allocation_pool_end: "10.{{ admin_oc_net_vlan }}.4.255"
 # Make the seed node the default route out, but on the seed default is iLab
 #admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
 # admin_oc_net_mtu:
@@ -73,14 +74,15 @@ admin_oc_net_allocation_pool_end: "10.{{ admin_oc_net_vlan }}.3.255"
 # Overcloud out-of-band management network IP information.
 oob_oc_net_vlan: 202
 oob_oc_net_cidr: "10.{{ oob_oc_net_vlan }}.0.0/16"
-oob_oc_net_allocation_pool_start: "10.{{ oob_oc_net_vlan }}.1.0"
-oob_oc_net_allocation_pool_end: "10.{{ oob_oc_net_vlan }}.3.255"
+# NOTE: production is using 10.202.[1,2,3].x
+oob_oc_net_allocation_pool_start: "10.{{ oob_oc_net_vlan }}.4.0"
+oob_oc_net_allocation_pool_end: "10.{{ oob_oc_net_vlan }}.4.255"
 # oob_oc_net_gateway:
 # oob_oc_net_mtu:
 # oob_oc_net_routes:
 
 # Overcloud provisioning network IP information.
-provision_oc_net_vlan: 201
+provision_oc_net_vlan: 301
 provision_oc_net_cidr: "10.{{ provision_oc_net_vlan }}.0.0/16"
 provision_oc_net_allocation_pool_start: "10.{{ provision_oc_net_vlan }}.1.0"
 provision_oc_net_allocation_pool_end: "10.{{ provision_oc_net_vlan }}.3.255"
@@ -90,7 +92,7 @@ provision_oc_net_inspection_allocation_pool_end: "10.{{ provision_oc_net_vlan }}
 # provision_oc_net_routes:
 
 # Workload out-of-band management network IP information.
-oob_wl_net_vlan: 212
+oob_wl_net_vlan: 312
 oob_wl_net_cidr: "10.{{ oob_wl_net_vlan }}.0.0/16"
 oob_wl_net_allocation_pool_start: "10.{{ oob_wl_net_vlan }}.1.0"
 oob_wl_net_allocation_pool_end: "10.{{ oob_wl_net_vlan }}.3.255"
@@ -99,7 +101,7 @@ oob_wl_net_allocation_pool_end: "10.{{ oob_wl_net_vlan }}.3.255"
 # oob_wl_net_routes:
 
 # Workload provisioning network IP information.
-provision_wl_net_vlan: 211
+provision_wl_net_vlan: 311
 provision_wl_net_cidr: "10.{{ provision_wl_net_vlan }}.0.0/16"
 provision_wl_net_allocation_pool_start: "10.{{ provision_wl_net_vlan }}.1.0"
 provision_wl_net_allocation_pool_end: "10.{{ provision_wl_net_vlan }}.3.255"
@@ -111,7 +113,7 @@ provision_wl_net_neutron_allocation_pool_end: "10.{{ provision_wl_net_vlan }}.10
 
 # Tunnel (i.e. vxlan) network IP information.
 # tunnel_net_fqdn: tunnel.cumulus.hpc.cam.ac.uk
-tunnel_net_vlan: 217
+tunnel_net_vlan: 317
 tunnel_net_cidr: "10.{{ tunnel_net_vlan }}.0.0/16"
 tunnel_net_allocation_pool_start: "10.{{ tunnel_net_vlan }}.1.0"
 tunnel_net_allocation_pool_end: "10.{{ tunnel_net_vlan }}.3.255"
@@ -121,7 +123,7 @@ tunnel_net_allocation_pool_end: "10.{{ tunnel_net_vlan }}.3.255"
 
 # Internal network IP information.
 #internal_net_fqdn: private.cumulus.hpc.cam.ac.uk
-internal_net_vlan: 205
+internal_net_vlan: 305
 internal_net_vip_address: "10.{{ internal_net_vlan }}.0.1"
 internal_net_cidr: "10.{{ internal_net_vlan }}.0.0/16"
 internal_net_allocation_pool_start: "10.{{ internal_net_vlan }}.1.0"
@@ -133,7 +135,7 @@ internal_net_allocation_pool_end: "10.{{ internal_net_vlan }}.3.255"
 # External network IP information.
 # external_net_vip_address:
 # external_net_fqdn:
-external_net_vlan: 219
+external_net_vlan: 319
 external_net_cidr: "10.{{ external_net_vlan }}.0.0/16"
 external_net_allocation_pool_start: "10.{{ external_net_vlan }}.1.0"
 external_net_allocation_pool_end: "10.{{ external_net_vlan }}.3.255"
@@ -142,22 +144,24 @@ external_net_allocation_pool_end: "10.{{ external_net_vlan }}.3.255"
 # external_net_routes:
 
 # Public network IP information.
-#public_net_vlan: 215
-#public_net_vip_address: "10.{{ public_net_vlan }}.0.1"
-#public_net_cidr: "10.{{ public_net_vlan }}.0.0/16"
-public_net_vlan: 111
-public_net_vip_address: 128.232.224.64
+public_net_vlan: 215
+public_net_vip_address: "10.{{ public_net_vlan }}.0.1"
+public_net_cidr: "10.{{ public_net_vlan }}.0.0/16"
+public_net_allocation_pool_start: "10.{{ public_net_vlan }}.1.0"
+public_net_allocation_pool_end: "10.{{ public_net_vlan }}.1.254"
+#public_net_vlan: 111
+#public_net_vip_address: 128.232.224.64
 public_net_fqdn: cumulus.openstack.hpc.cam.ac.uk
 #public_net_routes:
 #  - cidr: "128.232.224.0/23"
 # Ideally comment out cidr so we don't hand out ips to all interfaces
-public_net_cidr: "128.232.224.0/23"
-public_net_gateway: 128.232.225.254
-public_net_allocation_pool_start: 128.232.224.65
-public_net_allocation_pool_end: 128.232.224.67
+#public_net_cidr: "128.232.224.0/23"
+#public_net_gateway: 128.232.225.254
+#public_net_allocation_pool_start: 128.232.224.65
+#public_net_allocation_pool_end: 128.232.224.67
 
 # Storage network IP information.
-storage_net_vlan: 206
+storage_net_vlan: 306
 storage_net_cidr: "10.{{ storage_net_vlan }}.0.0/16"
 storage_net_allocation_pool_start: "10.{{ storage_net_vlan }}.1.0"
 storage_net_allocation_pool_end: "10.{{ storage_net_vlan }}.3.255"
@@ -166,7 +170,7 @@ storage_net_allocation_pool_end: "10.{{ storage_net_vlan }}.3.255"
 # storage_net_routes:
 
 # Storage management network IP information.
-storage_mgmt_net_vlan: 207
+storage_mgmt_net_vlan: 307
 storage_mgmt_net_cidr: "10.{{ storage_mgmt_net_vlan }}.0.0/16"
 storage_mgmt_net_allocation_pool_start: "10.{{ storage_mgmt_net_vlan }}.1.0"
 storage_mgmt_net_allocation_pool_end: "10.{{ storage_mgmt_net_vlan }}.3.255"
@@ -175,7 +179,7 @@ storage_mgmt_net_allocation_pool_end: "10.{{ storage_mgmt_net_vlan }}.3.255"
 # storage_mgmt_net_routes:
 
 # Workload cleaning network IP information.
-cleaning_net_vlan: 213
+cleaning_net_vlan: 313
 cleaning_net_cidr: "10.{{ cleaning_net_vlan }}.0.0/16"
 cleaning_net_allocation_pool_start: "10.{{ cleaning_net_vlan }}.1.0"
 cleaning_net_allocation_pool_end: "10.{{ cleaning_net_vlan }}.3.255"
@@ -186,7 +190,7 @@ cleaning_net_neutron_allocation_pool_end: "10.{{ cleaning_net_vlan }}.102.255"
 # cleaning_net_routes:
 
 # Workload inspection network IP information.
-inspection_net_vlan: 210
+inspection_net_vlan: 310
 inspection_net_cidr: "10.{{ inspection_net_vlan }}.0.0/16"
 inspection_net_allocation_pool_start: "10.{{ inspection_net_vlan }}.1.0"
 inspection_net_allocation_pool_end: "10.{{ inspection_net_vlan }}.3.255"
