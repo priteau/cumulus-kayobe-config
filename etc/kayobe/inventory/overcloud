@@ -29,11 +29,7 @@ cpu-e-1028 ipmi_address=10.202.0.17 bmc_type=idrac
 
 [compute-jun19]
 cpu-e-1029 ipmi_address=10.202.0.18 bmc_type=idrac
-cpu-e-1030 ipmi_address=10.202.0.19 bmc_type=idrac
-cpu-e-1031 ipmi_address=10.202.0.20 bmc_type=idrac
 cpu-e-1032 ipmi_address=10.202.0.21 bmc_type=idrac
-
-[compute-todo]
 cpu-e-1033 ipmi_address=10.202.0.22 bmc_type=idrac
 cpu-e-1034 ipmi_address=10.202.0.23 bmc_type=idrac
 cpu-e-1035 ipmi_address=10.202.0.24 bmc_type=idrac
@@ -47,9 +43,14 @@ cpu-e-1042 ipmi_address=10.202.0.31 bmc_type=idrac
 cpu-e-1043 ipmi_address=10.202.0.32 bmc_type=idrac
 cpu-e-1044 ipmi_address=10.202.0.33 bmc_type=idrac
 
+[compute-jun19-nic-check]
+cpu-e-1031 ipmi_address=10.202.0.20 bmc_type=idrac
+cpu-e-1030 ipmi_address=10.202.0.19 bmc_type=idrac
+
 [compute:children]
 compute-apr19
 compute-jun19
+compute-jun19-nic-check
 
 # only put monitoring on ceph nodes
 # as we use ceph-ansible
