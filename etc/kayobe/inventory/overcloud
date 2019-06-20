@@ -3,67 +3,25 @@
 # node's Ironic inventory.
 
 [controllers]
-cpu-e-1041 ipmi_address=10.202.0.30 bmc_type=idrac
-cpu-e-1042 ipmi_address=10.202.0.31 bmc_type=idrac
-cpu-e-1043 ipmi_address=10.202.0.32 bmc_type=idrac
+localhost
 
 [baremetal-compute]
-cpu-e-1044 ipmi_address=10.202.0.33 bmc_type=idrac
-
-[compute-preprod]
-# two controllers are also hypervisors, for now
-cpu-e-1042 ipmi_address=10.202.0.31 bmc_type=idrac
-cpu-e-1043 ipmi_address=10.202.0.32 bmc_type=idrac
+# TODO: tenks
 
 [compute:children]
-compute-preprod
+localhost
 
-# TODO: split out network once we get net2 online
-#[network]
-#net1 ipmi_address=10.202.0.4 bmc_type=idrac
-#net2 ipmi_address=10.202.0.7 bmc_type=idrac
 [network:children]
 controllers
 
 [monitoring]
-cpu-e-1041 ipmi_address=10.202.0.30 bmc_type=idrac
+localhost
 
-[compute-apr19]
-cpu-e-1085 ipmi_address=10.202.0.10 bmc_type=idrac
-cpu-e-1086 ipmi_address=10.202.0.11 bmc_type=idrac
-cpu-e-1087 ipmi_address=10.202.0.12 bmc_type=idrac
-cpu-e-1088 ipmi_address=10.202.0.13 bmc_type=idrac
-cpu-e-1025 ipmi_address=10.202.0.14 bmc_type=idrac
-cpu-e-1026 ipmi_address=10.202.0.15 bmc_type=idrac
-cpu-e-1027 ipmi_address=10.202.0.16 bmc_type=idrac
-cpu-e-1028 ipmi_address=10.202.0.17 bmc_type=idrac
-
-[compute-jun19]
-cpu-e-1029 ipmi_address=10.202.0.18 bmc_type=idrac
-cpu-e-1032 ipmi_address=10.202.0.21 bmc_type=idrac
-cpu-e-1033 ipmi_address=10.202.0.22 bmc_type=idrac
-cpu-e-1034 ipmi_address=10.202.0.23 bmc_type=idrac
-cpu-e-1035 ipmi_address=10.202.0.24 bmc_type=idrac
-cpu-e-1036 ipmi_address=10.202.0.25 bmc_type=idrac
-cpu-e-1037 ipmi_address=10.202.0.26 bmc_type=idrac
-cpu-e-1038 ipmi_address=10.202.0.27 bmc_type=idrac
-cpu-e-1039 ipmi_address=10.202.0.28 bmc_type=idrac
-cpu-e-1040 ipmi_address=10.202.0.29 bmc_type=idrac
-
-[compute-jun19-nic-check]
-cpu-e-1031 ipmi_address=10.202.0.20 bmc_type=idrac
-cpu-e-1030 ipmi_address=10.202.0.19 bmc_type=idrac
-
-
-# only put monitoring on ceph nodes
-# as we use ceph-ansible
 [storage:children]
-ceph
+localhost
 
 [ceph-rgw:children]
-ceph
+localhost
 
 [ceph]
-ceph01 ipmi_address=10.202.0.3 bmc_type=idrac
-ceph02 ipmi_address=10.202.0.5 bmc_type=idrac
-ceph03 ipmi_address=10.202.0.8 bmc_type=idrac
+localhost
