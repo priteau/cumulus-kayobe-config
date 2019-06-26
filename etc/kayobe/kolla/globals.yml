@@ -78,9 +78,9 @@ memcached_tag: 7.0.1.6
 monasca_tag: 7.0.1.6
 monasca_notification_tag: 7.0.1.6
 monasca_persister_tag: 7.0.1.6
-neutron_tag: 7.0.1.6
-nova_tag: 7.0.1.6
-openvswitch_tag: 7.0.1.6
+neutron_tag: 7.0.1.10
+nova_tag: 7.0.1.10
+openvswitch_tag: 7.0.1.10
 prometheus_tag: 7.0.1.6
 prometheus_server_tag: 7.0.1.6
 prometheus_mtail_tag: 7.0.1.6
