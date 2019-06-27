@@ -41,16 +41,9 @@ cpu-e-1038 ipmi_address=10.202.0.27 bmc_type=idrac
 cpu-e-1039 ipmi_address=10.202.0.28 bmc_type=idrac
 cpu-e-1040 ipmi_address=10.202.0.29 bmc_type=idrac
 
-[compute-jun19-remove]
-cpu-e-1041 ipmi_address=10.202.0.30 bmc_type=idrac
-cpu-e-1042 ipmi_address=10.202.0.31 bmc_type=idrac
-cpu-e-1043 ipmi_address=10.202.0.32 bmc_type=idrac
-cpu-e-1044 ipmi_address=10.202.0.33 bmc_type=idrac
-
 [compute:children]
 compute-apr19
 compute-jun19
-compute-jun19-remove
 
 # only put monitoring on ceph nodes
 # as we use ceph-ansible
