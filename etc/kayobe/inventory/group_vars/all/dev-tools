@@ -1,0 +1,6 @@
+---
+
+dev_tools_packages:
+  - lldpd
+  - tcpdump
+  - vim

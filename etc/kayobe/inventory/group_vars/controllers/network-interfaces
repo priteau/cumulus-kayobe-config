@@ -13,7 +13,7 @@ bond0_net_bond_slaves:
   - enp3s0f0
   - enp3s0f1
 
-ctrl_1gbe_interface: eno3
+ctrl_1gbe_interface: eno16
 
 # Admin network IP information
 admin_oc_net_interface: "{{ ctrl_1gbe_interface }}.{{ admin_oc_net_vlan }}"
