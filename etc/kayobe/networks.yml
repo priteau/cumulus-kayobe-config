@@ -82,7 +82,7 @@ oob_oc_net_allocation_pool_end: "10.{{ oob_oc_net_vlan }}.4.255"
 # oob_oc_net_routes:
 
 # Overcloud provisioning network IP information.
-provision_oc_net_vlan: 301
+provision_oc_net_vlan: 201
 provision_oc_net_cidr: "10.{{ provision_oc_net_vlan }}.0.0/16"
 provision_oc_net_allocation_pool_start: "10.{{ provision_oc_net_vlan }}.1.0"
 provision_oc_net_allocation_pool_end: "10.{{ provision_oc_net_vlan }}.3.255"
