@@ -13,9 +13,9 @@ nova_instance_datadir_volume: '/var/lib/nova'
 # Ceph integration, without nova having rbd backend
 cinder_backend_ceph: "yes"
 
-# Make glance use Ceph via the Swift API
-glance_backend_swift: "yes"
-glance_file_backend: "no"
+# Make glance use a file backend
+glance_backend_swift: "no"
+glance_file_backend: "yes"
 
 # Enable CADF notifications in Keystone
 enable_cadf_notifications: "yes"
