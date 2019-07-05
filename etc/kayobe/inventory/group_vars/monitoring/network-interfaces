@@ -4,8 +4,8 @@
 
 bond0_net_interface: bond0
 bond0_net_bond_slaves:
-  - enp3s0f0
-  - enp3s0f1
+  - enp94s0f0
+  - enp94s0f0
 
 # Admin network IP information.
 admin_oc_net_interface: "eno16.{{ admin_oc_net_vlan }}"

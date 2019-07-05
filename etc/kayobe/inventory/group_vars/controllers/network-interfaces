@@ -10,8 +10,8 @@ br_net_bridge_ports:
 
 bond0_net_interface: bond0
 bond0_net_bond_slaves:
-  - enp3s0f0
-  - enp3s0f1
+  - enp94s0f0
+  - enp94s0f1
 
 ctrl_1gbe_interface: eno16
 
@@ -25,7 +25,7 @@ admin_oc_net_interface: "{{ ctrl_1gbe_interface }}.{{ admin_oc_net_vlan }}"
 public_net_interface: "{{ br_net_interface }}.{{ public_net_vlan }}"
 
 # Workload out-of-band management network IP information.
-oob_wl_net_interface: "{{ br_net_interface }}.{{ oob_wl_net_vlan }}"
+oob_oc_net_interface: "{{ br_net_interface }}.{{ oob_oc_net_vlan }}"
 
 # Workload provisioning network IP information.
 provision_wl_net_interface: "{{ ctrl_1gbe_interface }}.{{ provision_wl_net_vlan }}"

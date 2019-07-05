@@ -1,6 +1,43 @@
 admin_oc_net_ips:
+  cpu-e-1041: 10.200.4.0
+  cpu-e-1042: 10.200.4.1
+  cpu-e-1043: 10.200.4.2
   cumulus-seed: 10.200.0.1
+cleaning_net_ips:
+  cpu-e-1041: 10.233.1.0
+  cpu-e-1042: 10.233.1.1
+  cpu-e-1043: 10.233.1.2
+external_net_ips:
+  cpu-e-1041: 10.239.1.0
+  cpu-e-1042: 10.239.1.1
+  cpu-e-1043: 10.239.1.2
 ilab_net_ips:
   cumulus-seed: 10.60.150.1
+inspection_net_ips:
+  cpu-e-1041: 10.230.1.0
+  cpu-e-1042: 10.230.1.1
+  cpu-e-1043: 10.230.1.2
+internal_net_ips:
+  cpu-e-1041: 10.225.1.1
+  cpu-e-1042: 10.225.1.2
+  cpu-e-1043: 10.225.1.3
+  cumulus-seed: 10.225.1.0
 oob_oc_net_ips:
+  cpu-e-1041: 10.202.4.0
+  cpu-e-1042: 10.202.4.1
+  cpu-e-1043: 10.202.4.2
   cumulus-seed: 10.202.150.1
+provision_oc_net_ips:
+  cumulus-seed: 10.201.4.0
+provision_wl_net_ips:
+  cpu-e-1041: 10.231.1.0
+  cpu-e-1042: 10.231.1.1
+  cpu-e-1043: 10.231.1.2
+public_net_ips:
+  cpu-e-1041: 10.235.1.0
+  cpu-e-1042: 10.235.1.1
+  cpu-e-1043: 10.235.1.2
+tunnel_net_ips:
+  cpu-e-1041: 10.237.1.0
+  cpu-e-1042: 10.237.1.1
+  cpu-e-1043: 10.237.1.2
