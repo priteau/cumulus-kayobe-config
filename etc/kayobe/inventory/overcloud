@@ -28,15 +28,4 @@ controllers
 [monitoring]
 cpu-e-1041 ipmi_address=10.202.0.30 bmc_type=idrac
 
-# only put monitoring on ceph nodes
-# as we use ceph-ansible
-[storage:children]
-ceph
-
-[ceph-rgw:children]
-ceph
-
-[ceph]
-ceph01 ipmi_address=10.202.0.3 bmc_type=idrac
-ceph02 ipmi_address=10.202.0.5 bmc_type=idrac
-ceph03 ipmi_address=10.202.0.8 bmc_type=idrac
+[storage]
