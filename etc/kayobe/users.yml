@@ -20,7 +20,10 @@ users_default:
     ssh_key:
       # Authorise all users' SSH keys for the kolla user. This allows them to
       # operate kolla.
+      - "{{ lookup('file', kayobe_config_path ~ '/ssh-keys/id_rsa_jmfg2.pub') }}"
+      - "{{ lookup('file', kayobe_config_path ~ '/ssh-keys/id_rsa_pfb29.pub') }}"
       - "{{ lookup('file', kayobe_config_path ~ '/ssh-keys/id_rsa_stackhpc-doug-seed.pub') }}"
+      - "{{ lookup('file', kayobe_config_path ~ '/ssh-keys/id_rsa_stackhpc-will.pub') }}"
 
   - username: jmfg2
     name: John Garbutt
