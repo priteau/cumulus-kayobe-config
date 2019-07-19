@@ -10,7 +10,7 @@ bond0_net_bond_slaves:
 # Admin network IP information.
 admin_oc_net_interface: "eno16.{{ admin_oc_net_vlan }}"
 # Use seed node as default gateway
-admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
+#admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
 
 # Internal network IP information.
 internal_net_interface: "{{ bond0_net_interface }}.{{ internal_net_vlan }}"

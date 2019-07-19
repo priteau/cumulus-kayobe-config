@@ -17,7 +17,7 @@ bond0_net_bond_slaves:
 # still on 1G network
 admin_oc_net_interface: "eno16.{{ admin_oc_net_vlan }}"
 # TODO hack to avoid this on the seed
-admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
+#admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
 
 internal_net_interface: "{{ br_net_interface }}.{{ internal_net_vlan }}"
 external_net_interface: "{{ br_net_interface }}.{{ external_net_vlan }}"
