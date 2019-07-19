@@ -139,22 +139,16 @@ external_net_allocation_pool_end: "10.{{ external_net_octet }}.3.255"
 # external_net_routes:
 
 # Public network IP information.
-public_net_vlan: 315
-public_net_octet: 235
-public_net_vip_address: "10.{{ public_net_octet }}.0.1"
-public_net_cidr: "10.{{ public_net_octet }}.0.0/16"
-public_net_allocation_pool_start: "10.{{ public_net_octet }}.1.0"
-public_net_allocation_pool_end: "10.{{ public_net_octet }}.1.254"
-#public_net_vlan: 111
-#public_net_vip_address: 128.232.224.64
-#public_net_fqdn: cumulus-dev.openstack.hpc.cam.ac.uk
-#public_net_routes:
-#  - cidr: "128.232.224.0/23"
+public_net_vlan: 111
+public_net_vip_address: 128.232.224.80
+public_net_fqdn: cumulus-dev.openstack.hpc.cam.ac.uk
+public_net_routes:
+  - cidr: "128.232.224.0/23"
 # Ideally comment out cidr so we don't hand out ips to all interfaces
-#public_net_cidr: "128.232.224.0/23"
-#public_net_gateway: 128.232.225.254
-#public_net_allocation_pool_start: 128.232.224.65
-#public_net_allocation_pool_end: 128.232.224.67
+public_net_cidr: "128.232.224.0/23"
+public_net_gateway: 128.232.225.254
+public_net_allocation_pool_start: 128.232.224.80
+public_net_allocation_pool_end: 128.232.224.83
 
 # Storage network IP information.
 #storage_net_vlan: 306
