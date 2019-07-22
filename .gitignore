@@ -41,3 +41,4 @@ etc/kayobe/inventory/group_vars/seed/ansible-host
 
 # Ignore kolla configuration.
 etc/kolla
+etc/kolla.bak*
