@@ -229,6 +229,11 @@ firewallgen_ipv4_input_allow_rules:
   - interface: "{{ internal_net_interface }}"
     port: 9292
     proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'glance-api' in docker container 'glance_api'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9292
+    proto: tcp
     destination: "{{ internal_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for glance_api"
   - interface: "{{ internal_net_interface }}"

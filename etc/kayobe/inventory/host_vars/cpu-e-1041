@@ -495,6 +495,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'fluentd' in docker container 'fluentd'"
+  - interface: "{{ tunnel_net_name | net_interface }}"
+    port: 4789
+    proto: udp
+    destination: "{{ tunnel_net_name | net_ip }}"
+    comment: "required for VXLANs to work"
   - interface: "{{ internal_net_name | net_interface }}"
     proto: vrrp
     destination: "224.0.0.18"
