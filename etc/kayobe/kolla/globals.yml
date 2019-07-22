@@ -38,8 +38,8 @@ prometheus_jiralert_default_receiver_name: 'default'
 
 # We use rgw swift account in url = True
 # so we need to override the swift enpoint
-swift_admin_endpoint: "http://10.205.0.1:6780/swift/v1/AUTH_%(tenant_id)s"
-swift_internal_endpoint: "http://10.205.0.1:6780/swift/v1/AUTH_%(tenant_id)s"
+swift_admin_endpoint: "http://10.225.0.1:6780/swift/v1/AUTH_%(tenant_id)s"
+swift_internal_endpoint: "http://10.225.0.1:6780/swift/v1/AUTH_%(tenant_id)s"
 swift_public_endpoint: "https://cumulus-dev.openstack.hpc.cam.ac.uk:6780/swift/v1/AUTH_%(tenant_id)s"
 
 # Projects to extracts metrics from with cASO
