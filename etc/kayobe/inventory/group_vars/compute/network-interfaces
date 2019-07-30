@@ -13,9 +13,11 @@ bond0_net_bond_slaves:
   - enp94s0f0
   - enp94s0f1
 
+compute_1gbe_interface: eno16
+
 # Admin network IP information.
 # still on 1G network
-admin_oc_net_interface: "eno16.{{ admin_oc_net_vlan }}"
+admin_oc_net_interface: "{{ compute_1gbe_interface  }}.{{ admin_oc_net_vlan }}"
 # TODO hack to avoid this on the seed
 #admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
 

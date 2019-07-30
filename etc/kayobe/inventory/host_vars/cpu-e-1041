@@ -352,6 +352,11 @@ firewallgen_ipv4_input_allow_rules:
     port: 6080
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
+    comment: "novnc console proxy (internal)"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 6083
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
     comment: "serial console proxy (internal)"
   - interface: "{{ internal_net_name | net_interface }}"
     port: 9191
@@ -368,6 +373,16 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'cadvisor' in docker container 'prometheus_cadvisor'"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 8085
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "skydive-analyzer internal"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 8090
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "skydive-agent internal"
   - interface: "{{ public_net_interface }}"
     port: 80
     proto: tcp
@@ -451,7 +466,12 @@ firewallgen_ipv4_input_allow_rules:
   - interface: "{{ public_net_name | net_interface }}"
     port: 6080
     proto: tcp
-    destination: "{{ public_net_name | net_ip }}"
+    destination: "{{ public_net_name | net_vip_address }}"
+    comment: "novnc console proxy (public)"
+  - interface: "{{ public_net_name | net_interface }}"
+    port: 6083
+    proto: tcp
+    destination: "{{ public_net_name | net_vip_address }}"
     comment: "serial console proxy (public)"
   - interface: "all"
     port: 9094
@@ -472,10 +492,6 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "127.0.0.1"
     comment: "hint: used by 'fluentd' in docker container 'fluentd'"
-  - interface: "{{ inspection_net_interface }}"
-    port: 67
-    proto: udp
-    comment: "hint: used by 'dnsmasq' in docker container 'ironic_dnsmasq'"
   - interface: "{{ internal_net_interface }}"
     port: 69
     proto: udp

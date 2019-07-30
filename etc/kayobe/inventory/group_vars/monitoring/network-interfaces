@@ -7,8 +7,10 @@ bond0_net_bond_slaves:
   - enp94s0f0
   - enp94s0f0
 
+monitoring_1gbe_interface: eno16
+
 # Admin network IP information.
-admin_oc_net_interface: "eno16.{{ admin_oc_net_vlan }}"
+admin_oc_net_interface: "{{ monitoring_1gbe_interface  }}.{{ admin_oc_net_vlan }}"
 # Use seed node as default gateway
 #admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
 

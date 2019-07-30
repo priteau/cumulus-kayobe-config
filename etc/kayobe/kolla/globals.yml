@@ -11,7 +11,7 @@ keystone_token_provider: 'fernet'
 nova_instance_datadir_volume: '/var/lib/nova'
 
 # Ceph integration, without nova having rbd backend
-cinder_backend_ceph: "yes"
+cinder_backend_ceph: "no"
 
 # Make glance use a file backend
 glance_backend_swift: "no"
@@ -21,13 +21,13 @@ glance_file_backend: "yes"
 enable_cadf_notifications: "yes"
 
 # add route to ceph-rgw group in haproxy
-enable_ceph_rgw_external: "yes"
+enable_ceph_rgw_external: "no"
 
 # opt into new docker packages
 docker_legacy_packages: False
 
 # add ceph exporter:
-enable_prometheus_external_ceph_mgr_exporter: "yes"
+enable_prometheus_external_ceph_mgr_exporter: "no"
 
 # Support manging Jira tickets via Prometheus Alertmanager
 enable_prometheus_jiralert: "yes"
@@ -35,12 +35,6 @@ prometheus_jiralert_api_url: 'https://stackhpc.atlassian.net'
 prometheus_jiralert_project: 'SO'
 prometheus_jiralert_user: 'doug@stackhpc.com'
 prometheus_jiralert_default_receiver_name: 'default'
-
-# We use rgw swift account in url = True
-# so we need to override the swift enpoint
-swift_admin_endpoint: "http://10.225.0.1:6780/swift/v1/AUTH_%(tenant_id)s"
-swift_internal_endpoint: "http://10.225.0.1:6780/swift/v1/AUTH_%(tenant_id)s"
-swift_public_endpoint: "https://cumulus-dev.openstack.hpc.cam.ac.uk:6780/swift/v1/AUTH_%(tenant_id)s"
 
 # Projects to extracts metrics from with cASO
 #caso_projects:
@@ -88,6 +82,7 @@ prometheus_elasticsearch_exporter_tag: 7.0.1.10
 prometheus_libvirt_exporter_tag: 7.0.1.6
 prometheus_jiralert_tag: 7.0.1.10
 rabbitmq_tag: 7.0.1.10
+skydive_tag: 7.0.1.10
 storm_tag: 7.0.1.10
 zookeeper_tag: 7.0.1.10
 
