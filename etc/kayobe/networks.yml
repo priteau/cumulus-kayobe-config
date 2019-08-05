@@ -21,7 +21,7 @@ oob_wl_net_name: oob_oc_net
 
 # Name of the network used by the overcloud hosts to provision the bare metal
 # workload hosts.
-#provision_wl_net_name:
+provision_wl_net_name: provision_wl_net
 
 # Name of the network used to expose the internal OpenStack API endpoints.
 #internal_net_name:
@@ -53,9 +53,6 @@ inspection_net_name: inspection_net
 # Name of the network used to perform cleaning on the bare metal workload
 # hosts
 cleaning_net_name: cleaning_net
-
-# Name of the network used for admin access to the deployment
-ilab_net_name: ilab_net
 
 ###############################################################################
 # Network definitions.
@@ -99,6 +96,7 @@ provision_wl_net_allocation_pool_start: "10.{{ provision_wl_net_octet }}.1.0"
 provision_wl_net_allocation_pool_end: "10.{{ provision_wl_net_octet }}.3.255"
 provision_wl_net_neutron_allocation_pool_start: "10.{{ provision_wl_net_octet }}.100.0"
 provision_wl_net_neutron_allocation_pool_end: "10.{{ provision_wl_net_octet }}.102.255"
+provision_wl_net_physical_interface: "{{ hs_eth_physical_network }}"
 # provision_wl_net_gateway:
 # provision_wl_net_mtu:
 # provision_wl_net_routes:
@@ -175,6 +173,7 @@ cleaning_net_allocation_pool_start: "10.{{ cleaning_net_octet }}.1.0"
 cleaning_net_allocation_pool_end: "10.{{ cleaning_net_octet }}.3.255"
 cleaning_net_neutron_allocation_pool_start: "10.{{ cleaning_net_octet }}.100.0"
 cleaning_net_neutron_allocation_pool_end: "10.{{ cleaning_net_octet }}.102.255"
+cleaning_net_physical_interface: "{{ hs_eth_physical_network }}"
 # cleaning_net_gateway:
 # cleaning_net_mtu:
 # cleaning_net_routes:
@@ -187,17 +186,10 @@ inspection_net_allocation_pool_start: "10.{{ inspection_net_octet }}.1.0"
 inspection_net_allocation_pool_end: "10.{{ inspection_net_octet }}.3.255"
 inspection_net_inspection_allocation_pool_start: "10.{{ inspection_net_octet }}.100.0"
 inspection_net_inspection_allocation_pool_end: "10.{{ inspection_net_octet }}.102.255"
+inspection_net_physical_interface: "{{ hs_eth_physical_network }}"
 # inspection_net_gateway:
 # inspection_net_mtu:
 # inspection_net_routes:
-
-# Cambridge ilab network IP information.
-ilab_net_vlan: 60
-ilab_net_cidr: "10.{{ ilab_net_vlan }}.0.0/16"
-ilab_net_routes:
-  # Default route onto the Cambridge ilab network
-  - cidr: "0.0.0.0/0"
-    gateway: "10.60.255.1"
 
 # 1G and external stays on default mtu
 provision_oc_net_mtu: 1500
@@ -205,7 +197,6 @@ public_net_mtu: 1500
 admin_oc_net_mtu: 1500
 oob_oc_net_mtu: 1500
 ilab_net_mtu: 1500
-cp_net_mtu: 1500
 
 # TODO: we want these to be 9000
 br_net_mtu: 1500

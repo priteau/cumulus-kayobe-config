@@ -13,7 +13,6 @@ monitoring_bootstrap_user: centos
 monitoring_network_interfaces: >
   {{ [admin_oc_net_name,
       "bond0_net",
-      "cp_net",
       internal_net_name] | unique | list }}
 
 # List of default networks to which monitoring nodes are attached.

@@ -5,15 +5,12 @@
 bond0_net_interface: bond0
 bond0_net_bond_slaves:
   - enp94s0f0
-  - enp94s0f0
+  - enp94s0f1
 
 monitoring_1gbe_interface: eno16
-cp_net_interface: breno16
-cp_net_bridge_ports:
-  - "{{ monitoring_1gbe_interface }}"
 
 # Admin network IP information.
-admin_oc_net_interface: "{{ cp_net_interface  }}.{{ admin_oc_net_vlan }}"
+admin_oc_net_interface: "{{ monitoring_1gbe_interface  }}.{{ admin_oc_net_vlan }}"
 # Use seed node as default gateway
 #admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
 
