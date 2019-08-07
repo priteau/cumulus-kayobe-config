@@ -54,6 +54,9 @@ inspection_net_name: inspection_net
 # hosts
 cleaning_net_name: cleaning_net
 
+# Name of the network used for admin access to the deployment
+ilab_net_name: ilab_net
+
 ###############################################################################
 # Network definitions.
 
@@ -190,6 +193,14 @@ inspection_net_physical_interface: "{{ hs_eth_physical_network }}"
 # inspection_net_gateway:
 # inspection_net_mtu:
 # inspection_net_routes:
+
+# Cambridge ilab network IP information.
+ilab_net_vlan: 60
+ilab_net_cidr: "10.{{ ilab_net_vlan }}.0.0/16"
+ilab_net_routes:
+  # Default route onto the Cambridge ilab network
+  - cidr: "0.0.0.0/0"
+    gateway: "10.60.255.1"
 
 # 1G and external stays on default mtu
 provision_oc_net_mtu: 1500
