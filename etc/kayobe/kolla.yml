@@ -39,6 +39,7 @@ kolla_ansible_source_url: https://github.com/RSE-Cambridge/kolla-ansible
 # Version (branch, tag, etc.) of Kolla Ansible source code repository if type
 # is 'source'.
 #kolla_ansible_source_version: refs/tags/cumulus/7.0.1.7
+#kolla_ansible_source_version: cumulus/rocky
 kolla_ansible_source_version: upstream-sync-june6
 
 # Path to virtualenv in which to install kolla-ansible.
@@ -234,18 +235,18 @@ kolla_enable_grafana: True
 kolla_enable_heat: True
 kolla_enable_horizon: True
 #kolla_enable_influxdb:
-kolla_enable_ironic: False
-kolla_enable_ironic_ipxe: False
+#kolla_enable_ironic: False
+kolla_enable_ironic_ipxe: True
 #kolla_enable_ironic_pxe_uefi:
 #kolla_enable_iscsid:
 #kolla_enable_karbor:
 #kolla_enable_kuryr:
 kolla_enable_magnum: True
-kolla_enable_manila: True
+kolla_enable_manila: False
 #kolla_enable_manila_backend_generic:
 #kolla_enable_manila_backend_hnas:
-kolla_enable_manila_backend_cephfs_native: True
-kolla_enable_manila_backend_cephfs_nfs: True
+kolla_enable_manila_backend_cephfs_native: False
+kolla_enable_manila_backend_cephfs_nfs: False
 #kolla_enable_mistral:
 #kolla_enable_monasca:
 #kolla_enable_mongodb:
@@ -271,7 +272,7 @@ kolla_enable_prometheus: True
 #kolla_enable_sahara:
 #kolla_enable_searchlight:
 #kolla_enable_senlin:
-#kolla_enable_skydive:
+kolla_enable_skydive: True
 #kolla_enable_solum:
 #kolla_enable_storm:
 #kolla_enable_swift:

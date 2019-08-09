@@ -23,10 +23,10 @@ kolla_neutron_ml2_tenant_network_types:
 #kolla_neutron_ml2_network_vlan_ranges:
 kolla_neutron_ml2_network_vlan_ranges:
   - physical_network: "physnet1"
-    range: 400:401
 
 # List of Neutron ML2 extention drivers to use.
-#kolla_neutron_ml2_extension_drivers:
+kolla_neutron_ml2_extension_drivers:
+  - dns
 
 ###############################################################################
 # Neutron ML2 generic switch driver configuration.
