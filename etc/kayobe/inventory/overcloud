@@ -22,6 +22,7 @@ compute-preprod
 #[network]
 #net1 ipmi_address=10.202.0.4 bmc_type=idrac
 #net2 ipmi_address=10.202.0.7 bmc_type=idrac
+
 [network:children]
 controllers
 
@@ -29,3 +30,6 @@ controllers
 cpu-e-1041 ipmi_address=10.202.0.30 bmc_type=idrac
 
 [storage]
+
+[hs-switches]
+ethsw-dr17-u42
