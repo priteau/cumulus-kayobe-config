@@ -32,4 +32,4 @@ cpu-e-1041 ipmi_address=10.202.0.30 bmc_type=idrac
 [storage]
 
 [hs-switches]
-ethsw-dr17-u42
+ethsw-dr17-u41

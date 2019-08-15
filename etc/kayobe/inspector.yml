@@ -76,6 +76,7 @@ inspector_add_ports: all
 # Ironic inspector default network interface name on which to check for an LLDP
 # switch port description to use as the node's name.
 #inspector_lldp_switch_port_interface_default:
+inspector_lldp_switch_port_interface_default: p4p2
 
 # Ironic inspector map from hostname to network interface name on which to
 # check for an LLDP switch port description to use as the node's name.
@@ -136,6 +137,7 @@ inspector_add_ports: all
 # Ansible group containing switch hosts to which the workaround should be
 # applied.
 #inspector_dell_switch_lldp_workaround_group:
+inspector_dell_switch_lldp_workaround_group: "hs-switches"
 
 ###############################################################################
 # Inspection store configuration.
