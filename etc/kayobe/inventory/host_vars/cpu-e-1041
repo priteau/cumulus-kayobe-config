@@ -511,6 +511,10 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'fluentd' in docker container 'fluentd'"
+  - interface: "{{ inspection_net_interface }}"
+    port: 67
+    proto: udp
+    comment: "hint: used by 'dnsmasq' in docker container 'ironic_dnsmasq'"
   - interface: "{{ tunnel_net_name | net_interface }}"
     port: 4789
     proto: udp

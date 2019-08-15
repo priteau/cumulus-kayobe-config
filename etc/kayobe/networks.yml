@@ -21,10 +21,10 @@ oob_wl_net_name: oob_oc_net
 
 # Name of the network used by the overcloud hosts to provision the bare metal
 # workload hosts.
-provision_wl_net_name: provision_wl_net
+provision_wl_net_name: cumulus_prv
 
 # Name of the network used to expose the internal OpenStack API endpoints.
-#internal_net_name:
+internal_net_name: cumulus_prv
 
 # List of names of networks used to provide external network access via
 # Neutron.
@@ -48,11 +48,11 @@ tunnel_net_name: tunnel_net
 
 # Name of the network used to perform hardware introspection on the bare metal
 # workload hosts.
-inspection_net_name: inspection_net
+inspection_net_name: cumulus_prv
 
 # Name of the network used to perform cleaning on the bare metal workload
 # hosts
-cleaning_net_name: cleaning_net
+cleaning_net_name: cumulus_prv
 
 # Name of the network used for admin access to the deployment
 ilab_net_name: ilab_net
@@ -92,17 +92,22 @@ provision_oc_net_inspection_allocation_pool_end: "10.{{ provision_oc_net_vlan }}
 # provision_oc_net_routes:
 
 # Workload provisioning network IP information.
-provision_wl_net_vlan: 311
-provision_wl_net_octet: 231
-provision_wl_net_cidr: "10.{{ provision_wl_net_octet }}.0.0/16"
-provision_wl_net_allocation_pool_start: "10.{{ provision_wl_net_octet }}.1.0"
-provision_wl_net_allocation_pool_end: "10.{{ provision_wl_net_octet }}.3.255"
-provision_wl_net_neutron_allocation_pool_start: "10.{{ provision_wl_net_octet }}.100.0"
-provision_wl_net_neutron_allocation_pool_end: "10.{{ provision_wl_net_octet }}.102.255"
-provision_wl_net_physical_interface: "{{ hs_eth_physical_network }}"
-# provision_wl_net_gateway:
-# provision_wl_net_mtu:
-# provision_wl_net_routes:
+cumulus_prv_octet: 225
+cumulus_prv_vlan: 311
+cumulus_prv_cidr: "10.{{ cumulus_prv_octet }}.0.0/16"
+# Pool for use by kayobe.
+cumulus_prv_allocation_pool_start: "10.{{ cumulus_prv_octet }}.0.2"
+cumulus_prv_allocation_pool_end: "10.{{ cumulus_prv_octet }}.0.22"
+# Pool for use by ironic inspector during hardware inspection.
+cumulus_prv_inspection_allocation_pool_start: "10.{{ cumulus_prv_octet }}.0.13"
+cumulus_prv_inspection_allocation_pool_end: "10.{{ cumulus_prv_octet }}.0.123"
+# Pool for use by neutron during baremetal provisioning.
+cumulus_prv_neutron_allocation_pool_start: "10.{{ cumulus_prv_octet }}.0.124"
+cumulus_prv_neutron_allocation_pool_end: "10.{{ cumulus_prv_octet }}.0.254"
+# VIP address for internal API endpoints.
+cumulus_prv_vip_address: "10.{{ cumulus_prv_octet }}.0.1"
+cumulus_prv_mtu: 1500
+cumulus_prv_physical_network: "{{ hs_eth_physical_network }}"
 
 # Tunnel (i.e. vxlan) network IP information.
 # tunnel_net_fqdn: tunnel.cumulus.hpc.cam.ac.uk
@@ -114,18 +119,6 @@ tunnel_net_allocation_pool_end: "10.{{ tunnel_net_octet }}.3.255"
 # tunnel_net_gateway:
 # tunnel_net_mtu:
 # tunnel_net_routes:
-
-# Internal network IP information.
-#internal_net_fqdn: private.cumulus.hpc.cam.ac.uk
-internal_net_vlan: 305
-internal_net_octet: 225
-internal_net_vip_address: "10.{{ internal_net_octet }}.0.1"
-internal_net_cidr: "10.{{ internal_net_octet }}.0.0/16"
-internal_net_allocation_pool_start: "10.{{ internal_net_octet }}.1.0"
-internal_net_allocation_pool_end: "10.{{ internal_net_octet }}.3.255"
-# internal_net_gateway:
-# internal_net_mtu:
-# internal_net_routes:
 
 # External network IP information.
 # external_net_vip_address:
@@ -149,50 +142,6 @@ public_net_cidr: "128.232.224.0/23"
 public_net_gateway: 128.232.225.254
 public_net_allocation_pool_start: 128.232.224.80
 public_net_allocation_pool_end: 128.232.224.83
-
-# Storage network IP information.
-#storage_net_vlan: 306
-#storage_net_cidr: "10.{{ storage_net_vlan }}.0.0/16"
-#storage_net_allocation_pool_start: "10.{{ storage_net_vlan }}.1.0"
-#storage_net_allocation_pool_end: "10.{{ storage_net_vlan }}.3.255"
-# storage_net_gateway:
-# storage_net_mtu:
-# storage_net_routes:
-
-# Storage management network IP information.
-#storage_mgmt_net_vlan: 307
-#storage_mgmt_net_cidr: "10.{{ storage_mgmt_net_vlan }}.0.0/16"
-#storage_mgmt_net_allocation_pool_start: "10.{{ storage_mgmt_net_vlan }}.1.0"
-#storage_mgmt_net_allocation_pool_end: "10.{{ storage_mgmt_net_vlan }}.3.255"
-# storage_mgmt_net_gateway:
-# storage_mgmt_net_mtu:
-# storage_mgmt_net_routes:
-
-# Workload cleaning network IP information.
-cleaning_net_vlan: 313
-cleaning_net_octet: 233
-cleaning_net_cidr: "10.{{ cleaning_net_octet }}.0.0/16"
-cleaning_net_allocation_pool_start: "10.{{ cleaning_net_octet }}.1.0"
-cleaning_net_allocation_pool_end: "10.{{ cleaning_net_octet }}.3.255"
-cleaning_net_neutron_allocation_pool_start: "10.{{ cleaning_net_octet }}.100.0"
-cleaning_net_neutron_allocation_pool_end: "10.{{ cleaning_net_octet }}.102.255"
-cleaning_net_physical_interface: "{{ hs_eth_physical_network }}"
-# cleaning_net_gateway:
-# cleaning_net_mtu:
-# cleaning_net_routes:
-
-# Workload inspection network IP information.
-inspection_net_vlan: 310
-inspection_net_octet: 230
-inspection_net_cidr: "10.{{ inspection_net_octet }}.0.0/16"
-inspection_net_allocation_pool_start: "10.{{ inspection_net_octet }}.1.0"
-inspection_net_allocation_pool_end: "10.{{ inspection_net_octet }}.3.255"
-inspection_net_inspection_allocation_pool_start: "10.{{ inspection_net_octet }}.100.0"
-inspection_net_inspection_allocation_pool_end: "10.{{ inspection_net_octet }}.102.255"
-inspection_net_physical_interface: "{{ hs_eth_physical_network }}"
-# inspection_net_gateway:
-# inspection_net_mtu:
-# inspection_net_routes:
 
 # Cambridge ilab network IP information.
 ilab_net_vlan: 60
