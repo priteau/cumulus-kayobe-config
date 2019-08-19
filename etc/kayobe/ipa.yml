@@ -32,6 +32,7 @@ ipa_build_dib_elements_extra:
   - "devuser"
   - "disable-selinux"
   - "dynamic-login"
+  - "ql41k"
 
 # List of Diskimage Builder (DIB) elements to use when building IPA images.
 #ipa_build_dib_elements:
@@ -47,6 +48,8 @@ ipa_build_dib_env_extra:
   DIB_DEV_USER_PASSWORD: "password"
   DIB_DEV_USER_PWDLESS_SUDO: 1
   DIB_DHCP_TIMEOUT: 60
+  DIB_QL41K_REPO: "https://cumulus-repo.vss.cloud.cam.ac.uk/ql41k"
+  DIB_QL41K_VERSION: "8.37.30.0-1.rhel7u6.x86_64"
 
 # Dictionary of environment variables to provide to Diskimage Builder (DIB)
 # during IPA image build.
@@ -55,10 +58,10 @@ ipa_build_dib_env_extra:
 # List of git repositories containing Diskimage Builder (DIB) elements. See
 # stackhpc.os-images role for usage.
 ipa_build_dib_git_elements:
-  - repo: "https://github.com/stackhpc/stackhpc-image-elements"                
-    local: "{{ source_checkout_path }}/stackhpc-image-elements"                
-    version: "master"                                                          
-    elements_path: "elements"  
+  - repo: "https://github.com/RSE-Cambridge/stackhpc-image-elements"
+    local: "{{ source_checkout_path }}/stackhpc-image-elements"
+    version: "cumulus-dev"
+    elements_path: "elements"
 
 ###############################################################################
 # Ironic Python Agent (IPA) images configuration.

@@ -15,6 +15,7 @@ controller_network_interfaces: >
       "bond0_net",
       "br_net",
       "external_net",
+      oob_wl_net_name,
       public_net_name,
       tunnel_net_name,
       internal_net_name,

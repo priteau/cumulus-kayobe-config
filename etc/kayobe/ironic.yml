@@ -16,7 +16,8 @@
 #kolla_ironic_default_boot_interface:
 
 # Specify the list of console interfaces to load during service initialization.
-#kolla_ironic_enabled_console_interfaces:
+kolla_ironic_enabled_console_interfaces:
+  - ipmitool-socat
 
 # Default console interface to be used for nodes that do not have
 # console_interface field set.

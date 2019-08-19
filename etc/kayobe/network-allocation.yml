@@ -21,7 +21,7 @@ internal_net_ips:
   cpu-e-1041: 10.225.1.1
   cpu-e-1042: 10.225.1.2
   cpu-e-1043: 10.225.1.3
-  cumulus-seed: 10.225.1.100
+  cumulus-seed: 10.225.250.100
 oob_oc_net_ips:
   cpu-e-1041: 10.202.4.0
   cpu-e-1042: 10.202.4.1
