@@ -29,12 +29,21 @@ oob_oc_net_interface: "{{ br_net_interface }}.{{ oob_oc_net_vlan }}"
 
 # Workload provisioning network IP information.
 provision_wl_net_interface: "{{ br_net_interface }}.{{ provision_wl_net_vlan }}"
+provision_wl_net_routes:
+  - cidr: "10.231.100.0/23"
+    gateway: "10.225.0.2"
 
 # Workload cleaning network IP information.
 cleaning_net_interface: "{{ br_net_interface }}.{{ cleaning_net_vlan }}"
+cleaning_net_routes:
+  - cidr: "10.233.100.0/23"
+    gateway: "10.225.0.3"
 
 # Workload cleaning network IP information.
 inspection_net_interface: "{{ br_net_interface }}.{{ inspection_net_vlan }}"
+inspection_net_routes:
+  - cidr: "10.230.100.0/23"
+    gateway: "10.225.0.4"
 
 # Internal network IP information.
 internal_net_interface: "{{ br_net_interface }}.{{ internal_net_vlan }}"
