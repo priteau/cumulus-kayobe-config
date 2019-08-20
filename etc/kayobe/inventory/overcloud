@@ -30,5 +30,8 @@ cpu-e-1041 ipmi_address=10.202.0.30 bmc_type=idrac
 
 [storage]
 
+[switches:children]
+hs-switches
+
 [hs-switches]
 ethsw-dr17-u41
