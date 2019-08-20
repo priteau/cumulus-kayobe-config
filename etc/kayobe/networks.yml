@@ -102,7 +102,9 @@ provision_wl_net_neutron_allocation_pool_end: "10.{{ provision_wl_net_octet }}.1
 provision_wl_net_physical_network: "{{ hs_eth_physical_network }}"
 provision_wl_neutron_gateway: "10.{{ provision_wl_net_octet }}.0.1"
 provision_wl_net_mtu: 1500
-#provision_wl_net_routes:
+provision_wl_net_routes:
+  - cidr: "10.231.100.0/23"
+    gateway: "10.225.0.2"
 
 # Tunnel (i.e. vxlan) network IP information.
 # tunnel_net_fqdn: tunnel.cumulus.hpc.cam.ac.uk
@@ -182,7 +184,9 @@ cleaning_net_neutron_allocation_pool_end: "10.{{ cleaning_net_octet }}.101.255"
 cleaning_net_physical_network: "{{ hs_eth_physical_network }}"
 cleaning_net_neutron_gateway: "10.{{ cleaning_net_octet }}.0.1"
 cleaning_net_mtu: 1500
-# cleaning_net_routes:
+cleaning_net_routes:
+  - cidr: "10.233.100.0/23"
+    gateway: "10.225.0.3"
 
 # Workload inspection network IP information.
 inspection_net_vlan: 310
@@ -195,7 +199,9 @@ inspection_net_inspection_allocation_pool_end: "10.{{ inspection_net_octet }}.10
 inspection_net_physical_network: "{{ hs_eth_physical_network }}"
 inspection_net_inspection_gateway: "10.{{ inspection_net_octet }}.0.1"
 inspection_net_mtu: 1500
-# inspection_net_routes:
+inspection_net_routes:
+  - cidr: "10.230.100.0/23"
+    gateway: "10.225.0.4"
 
 # Cambridge ilab network IP information.
 ilab_net_vlan: 60
