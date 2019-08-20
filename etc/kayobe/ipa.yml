@@ -45,7 +45,7 @@ ipa_build_dib_elements_extra:
 # Builder (DIB) during IPA image build.
 ipa_build_dib_env_extra:
   DIB_DEV_USER_USERNAME: "dev"
-  DIB_DEV_USER_PASSWORD: "password"
+  DIB_DEV_USER_PASSWORD: "{{ secrets_ipa_dev_user_password }}"
   DIB_DEV_USER_PWDLESS_SUDO: 1
   DIB_DHCP_TIMEOUT: 60
   DIB_QL41K_REPO: "https://cumulus-repo.vss.cloud.cam.ac.uk/ql41k"
