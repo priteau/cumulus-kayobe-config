@@ -4,7 +4,10 @@
 
 # List of Neutron ML2 mechanism drivers to use. If unset the kolla-ansible
 # defaults will be used.
-#kolla_neutron_ml2_mechanism_drivers:
+kolla_neutron_ml2_mechanism_drivers:
+  - openvswitch
+  - genericswitch
+  - l2population
 
 # List of Neutron ML2 type drivers to use.
 kolla_neutron_ml2_type_drivers:
