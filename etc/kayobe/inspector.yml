@@ -113,11 +113,23 @@ inspector_lldp_switch_port_interface_default: p4p2
 # Ironic inspector rule to save introspection data to the node.
 #inspector_rule_save_data:
 
-# List of default ironic insepctor rules.
+# List of default ironic inspector rules.
 #inspector_rules_default:
 
 # List of additional ironic inspector rules.
-#inspector_rules_extra:
+inspector_rules_extra:
+  - description: "Save system BIOS version in Ironic node metadata"
+    conditions:
+    - field: "data://inventory.system_vendor"
+      op: "is-empty"
+      invert: True
+    - field: "data://inventory.system_vendor.bios_version"
+      op: "is-empty"
+      invert: True
+    actions:
+    - action: "set-attribute"
+      path: "extra/system_vendor/bios_version"
+      value: "{data[inventory][system_vendor][bios_version]}"
 
 # List of all ironic inspector rules.
 #inspector_rules:
