@@ -92,6 +92,11 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'beam.smp' in docker container 'rabbitmq'"
   - interface: "{{ internal_net_interface }}"
+    port: 5900
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'qemu-kvm'"
+  - interface: "{{ internal_net_interface }}"
     port: 6080
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
@@ -101,6 +106,16 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ internal_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for nova_novncproxy"
+  - interface: "{{ internal_net_interface }}"
+    port: 6083
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'nova-serialproxy' in docker container 'nova_serialproxy'"
+  - interface: "{{ internal_net_interface }}"
+    port: 6083
+    proto: tcp
+    destination: "{{ internal_net_name | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for nova_serialconsole_proxy"
   - interface: "{{ internal_net_interface }}"
     port: 6385
     proto: tcp
@@ -147,10 +162,20 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'sshd' in docker container 'keystone_ssh'"
   - interface: "{{ internal_net_interface }}"
+    port: 8085
+    proto: tcp
+    destination: "{{ internal_net_name | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for skydive_server"
+  - interface: "{{ internal_net_interface }}"
     port: 8089
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'httpd' in docker container 'ironic_ipxe'"
+  - interface: "{{ internal_net_interface }}"
+    port: 8090
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'skydive' in docker container 'skydive_agent'"
   - interface: "{{ internal_net_interface }}"
     port: 8774
     proto: tcp
@@ -257,6 +282,11 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for neutron_server"
   - interface: "{{ internal_net_interface }}"
+    port: 10000
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'qemu-kvm'"
+  - interface: "{{ internal_net_interface }}"
     port: 11211
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
@@ -310,11 +340,6 @@ firewallgen_ipv4_input_allow_rules:
     port: 6080
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
-    comment: "novnc console proxy (internal)"
-  - interface: "{{ internal_net_name | net_interface }}"
-    port: 6083
-    proto: tcp
-    destination: "{{ internal_net_name | net_ip }}"
     comment: "serial console proxy (internal)"
   - interface: "{{ internal_net_name | net_interface }}"
     port: 9191
@@ -341,16 +366,6 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "libvirt serial consoles"
-  - interface: "{{ internal_net_name | net_interface }}"
-    port: 8085
-    proto: tcp
-    destination: "{{ internal_net_name | net_ip }}"
-    comment: "skydive-analyzer internal"
-  - interface: "{{ internal_net_name | net_interface }}"
-    port: 8090
-    proto: tcp
-    destination: "{{ internal_net_name | net_ip }}"
-    comment: "skydive-agent internal"
   - interface: "{{ public_net_interface }}"
     port: 80
     proto: tcp
@@ -379,8 +394,13 @@ firewallgen_ipv4_input_allow_rules:
   - interface: "{{ public_net_interface }}"
     port: 6080
     proto: tcp
-    destination: "{{ public_net_name | net_vip_address }}"
+    destination: "{{ 'public_net' | net_vip_address }}"
     comment: "hint: used by 'haproxy' for nova_novncproxy_external"
+  - interface: "{{ public_net_interface }}"
+    port: 6083
+    proto: tcp
+    destination: "{{ 'public_net' | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for nova_serialconsole_proxy_external"
   - interface: "{{ public_net_interface }}"
     port: 6385
     proto: tcp
@@ -401,6 +421,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ public_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for heat_api_external"
+  - interface: "{{ public_net_interface }}"
+    port: 8085
+    proto: tcp
+    destination: "{{ 'public_net' | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for skydive_server_external"
   - interface: "{{ public_net_interface }}"
     port: 8774
     proto: tcp
@@ -434,12 +459,7 @@ firewallgen_ipv4_input_allow_rules:
   - interface: "{{ public_net_name | net_interface }}"
     port: 6080
     proto: tcp
-    destination: "{{ public_net_name | net_vip_address }}"
-    comment: "novnc console proxy (public)"
-  - interface: "{{ public_net_name | net_interface }}"
-    port: 6083
-    proto: tcp
-    destination: "{{ public_net_name | net_vip_address }}"
+    destination: "{{ public_net_name | net_ip }}"
     comment: "serial console proxy (public)"
   - interface: "docker0"
     port: 123
@@ -464,6 +484,11 @@ firewallgen_ipv4_input_allow_rules:
     port: 123
     proto: udp
     destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'ntpd'"
+  - interface: "{{ internal_net_interface }}"
+    port: 123
+    proto: udp
+    destination: "{{ internal_net_name | net_vip_address }}"
     comment: "hint: used by 'ntpd'"
   - interface: "{{ internal_net_interface }}"
     port: 5140
