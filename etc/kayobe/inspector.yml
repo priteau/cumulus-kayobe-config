@@ -121,11 +121,13 @@ inspector_rules_extra:
   - description: "Save system BIOS version in Ironic node metadata"
     conditions:
     - field: "data://inventory.system_vendor"
-      op: "is-empty"
       invert: True
+      multiple: "any"
+      op: "is-empty"
     - field: "data://inventory.system_vendor.bios_version"
-      op: "is-empty"
       invert: True
+      multiple: "any"
+      op: "is-empty"
     actions:
     - action: "set-attribute"
       path: "extra/system_vendor/bios_version"
