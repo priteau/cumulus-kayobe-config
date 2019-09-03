@@ -108,7 +108,7 @@ kolla_ironic_enabled_console_interfaces:
 #kolla_ironic_pxe_append_params:
 
 # Whether or not to enable the serial consoles on post configure
-ironic_serial_console_autoenable: true
+ironic_serial_console_autoenable: false
 
 # This defines the start of the range of TCP ports to used for the IPMI socat
 # serial consoles
