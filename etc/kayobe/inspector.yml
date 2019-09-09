@@ -120,18 +120,18 @@ inspector_lldp_switch_port_interface_default: p4p2
 inspector_rules_extra:
   - description: "Save system BIOS version in Ironic node metadata"
     conditions:
-    - field: "data://inventory.system_vendor"
+    - field: "data://extra.firmware.bios"
       invert: True
       multiple: "any"
       op: "is-empty"
-    - field: "data://inventory.system_vendor.bios_version"
+    - field: "data://extra.firmware.bios.version"
       invert: True
       multiple: "any"
       op: "is-empty"
     actions:
     - action: "set-attribute"
       path: "extra/system_vendor/bios_version"
-      value: "{data[inventory][system_vendor][bios_version]}"
+      value: "{data[extra][firmware][bios][version]}"
 
 # List of all ironic inspector rules.
 #inspector_rules:
