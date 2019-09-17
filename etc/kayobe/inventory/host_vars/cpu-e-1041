@@ -36,6 +36,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     comment: "hint: used by 'sshd'"
   - interface: "{{ internal_net_interface }}"
+    port: 53
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'named' in docker container 'designate_backend_bind9'"
+  - interface: "{{ internal_net_interface }}"
     port: 80
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
@@ -45,6 +50,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ internal_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for horizon"
+  - interface: "{{ internal_net_interface }}"
+    port: 953
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'named' in docker container 'designate_backend_bind9'"
   - interface: "{{ internal_net_interface }}"
     port: 1984
     proto: tcp
@@ -134,16 +144,36 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ internal_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for nova_novncproxy"
+  - interface: "{{ internal_net_name | net_interface }}"
+    port: 6080
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "serial console proxy (internal)"
+  - interface: "{{ public_net_interface }}"
+    port: 6080
+    proto: tcp
+    destination: "{{ 'public_net' | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for nova_novncproxy_external"
+  - interface: "{{ public_net_name | net_interface }}"
+    port: 6080
+    proto: tcp
+    destination: "{{ public_net_name | net_ip }}"
+    comment: "serial console proxy (public)"
   - interface: "{{ internal_net_interface }}"
     port: 6083
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
-    comment: "hint: used by 'nova-serialproxy' in docker container 'nova_serialproxy'"
+    comment: "hint: used by 'nova-serialprox' in docker container 'nova_serialproxy'"
   - interface: "{{ internal_net_interface }}"
     port: 6083
     proto: tcp
     destination: "{{ internal_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for nova_serialconsole_proxy"
+  - interface: "{{ public_net_interface }}"
+    port: 6083
+    proto: tcp
+    destination: "{{ 'public_net' | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for nova_serialconsole_proxy_external"
   - interface: "{{ internal_net_interface }}"
     port: 6385
     proto: tcp
@@ -238,6 +268,16 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ internal_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for placement_api"
+  - interface: "{{ internal_net_interface }}"
+    port: 9001
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'designate-api' in docker container 'designate_api'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9001
+    proto: tcp
+    destination: "{{ internal_net_name | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for designate_api"
   - interface: "{{ internal_net_interface }}"
     port: 9091
     proto: tcp
@@ -364,6 +404,11 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'beam.smp' in docker container 'rabbitmq'"
   - interface: "{{ internal_net_interface }}"
+    port: 30044
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'socat' in docker container 'ironic_conductor'"
+  - interface: "{{ internal_net_interface }}"
     port: 35357
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
@@ -383,11 +428,6 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "Galera: Incremental State Transfer"
-  - interface: "{{ internal_net_name | net_interface }}"
-    port: 6080
-    proto: tcp
-    destination: "{{ internal_net_name | net_ip }}"
-    comment: "serial console proxy (internal)"
   - interface: "{{ internal_net_name | net_interface }}"
     port: 9191
     proto: tcp
@@ -424,20 +464,15 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ public_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for ironic_inspector_external"
   - interface: "{{ public_net_interface }}"
+    port: 5354
+    proto: tcp
+    destination: "{{ 'public_net' | net_ip }}"
+    comment: "hint: used by 'designate-mdns' in docker container 'designate_mdns'"
+  - interface: "{{ public_net_interface }}"
     port: 5601
     proto: tcp
     destination: "{{ public_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for kibana_external"
-  - interface: "{{ public_net_interface }}"
-    port: 6080
-    proto: tcp
-    destination: "{{ public_net_name | net_vip_address }}"
-    comment: "hint: used by 'haproxy' for nova_novncproxy_external"
-  - interface: "{{ public_net_interface }}"
-    port: 6083
-    proto: tcp
-    destination: "{{ 'public_net' | net_vip_address }}"
-    comment: "hint: used by 'haproxy' for nova_serialconsole_proxy_external"
   - interface: "{{ public_net_interface }}"
     port: 6385
     proto: tcp
@@ -479,6 +514,11 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ public_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for placement_api_external"
   - interface: "{{ public_net_interface }}"
+    port: 9001
+    proto: tcp
+    destination: "{{ 'public_net' | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for designate_api_external"
+  - interface: "{{ public_net_interface }}"
     port: 9292
     proto: tcp
     destination: "{{ public_net_name | net_vip_address }}"
@@ -493,11 +533,6 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ public_net_name | net_vip_address }}"
     comment: "hint: used by 'haproxy' for neutron_server_external"
-  - interface: "{{ public_net_name | net_interface }}"
-    port: 6080
-    proto: tcp
-    destination: "{{ public_net_name | net_ip }}"
-    comment: "serial console proxy (public)"
   - interface: "all"
     port: 9094
     proto: udp
@@ -522,6 +557,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     comment: "hint: used by 'dnsmasq' in docker container 'ironic_dnsmasq'"
   - interface: "{{ internal_net_interface }}"
+    port: 53
+    proto: udp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'named' in docker container 'designate_backend_bind9'"
+  - interface: "{{ internal_net_interface }}"
     port: 69
     proto: udp
     comment: "hint: used by 'in.tftpd' in docker container 'ironic_pxe'"
@@ -545,6 +585,11 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'skydive' in docker container 'skydive_analyzer'"
+  - interface: "{{ public_net_interface }}"
+    port: 5354
+    proto: udp
+    destination: "{{ 'public_net' | net_ip }}"
+    comment: "hint: used by 'designate-mdns' in docker container 'designate_mdns'"
   - interface: "{{ tunnel_net_name | net_interface }}"
     port: 4789
     proto: udp
