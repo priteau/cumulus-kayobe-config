@@ -121,7 +121,8 @@ ipa_collectors_extra:
 #ipa_kernel_options_default:
 
 # List of additional kernel parameters for Ironic python agent.
-#ipa_kernel_options_extra:
+ipa_kernel_options_extra:
+  - "ipa-debug=1"
 
 # List of kernel parameters for Ironic python agent.
 #ipa_kernel_options:
