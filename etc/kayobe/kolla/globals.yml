@@ -41,6 +41,10 @@ prometheus_jiralert_default_receiver_name: 'default'
 #  - iris
 #  - iris-euclid
 
+# Designate (DNSaaS) configuration
+designate_backend: "bind9"
+designate_ns_record: "cpu-e-1041.iris.staging.cumulus.local"
+
 # Container image tags.
 # These should be allowed to change independently, as services are updated.
 bifrost_tag: 7.0.1.10
@@ -49,6 +53,7 @@ cron_tag: 7.0.1.10
 ceph_tag: 7.0.1.10
 cinder_tag: 7.0.1.10
 chrony_tag: 7.0.1.10
+designate_tag: 7.0.1.10
 elasticsearch_tag: 7.0.1.10
 fluentd_tag: 7.0.1.10
 glance_tag: 7.0.1.10

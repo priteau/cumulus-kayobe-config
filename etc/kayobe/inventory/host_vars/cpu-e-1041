@@ -554,3 +554,43 @@ firewallgen_ipv4_input_allow_rules:
     proto: vrrp
     destination: "224.0.0.18"
     comment: "used by keepalived for vrrp"
+  - interface: "{{ internal_net_interface }}"
+    port: 53
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'named' in docker container 'designate_backend_bind9'"
+  - interface: "{{ internal_net_interface }}"
+    port: 953
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'named' in docker container 'designate_backend_bind9'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9001
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'designate-api' in docker container 'designate_api'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9001
+    proto: tcp
+    destination: "{{ internal_net_name | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for designate_api"
+  - interface: "{{ public_net_interface }}"
+    port: 5354
+    proto: tcp
+    destination: "{{ 'public_net' | net_ip }}"
+    comment: "hint: used by 'designate-mdns' in docker container 'designate_mdns'"
+  - interface: "{{ public_net_interface }}"
+    port: 9001
+    proto: tcp
+    destination: "{{ 'public_net' | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for designate_api_external"
+  - interface: "{{ internal_net_interface }}"
+    port: 53
+    proto: udp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'named' in docker container 'designate_backend_bind9'"
+  - interface: "{{ public_net_interface }}"
+    port: 5354
+    proto: udp
+    destination: "{{ 'public_net' | net_ip }}"
+    comment: "hint: used by 'designate-mdns' in docker container 'designate_mdns'"
