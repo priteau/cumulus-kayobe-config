@@ -88,6 +88,7 @@ prometheus_elasticsearch_exporter_tag: 7.0.1.6
 prometheus_libvirt_exporter_tag: 7.0.1.6
 prometheus_jiralert_tag: 7.0.1.7
 rabbitmq_tag: 7.0.1.6
+skydive_tag: 7.0.1.10
 storm_tag: 7.0.1.6
 zookeeper_tag: 7.0.1.6
 

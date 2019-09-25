@@ -93,6 +93,8 @@ kolla_openstack_release: 7.0.1.10
 # Dict mapping Jinja2 block names in kolla's Docker images to their contents.
 #kolla_build_blocks:
 kolla_build_blocks:
+  neutron_server_footer: |
+    RUN pip install git+https://github.com/stackhpc/networking-generic-switch@stackhpc/1.2.0.2
   prometheus_server_repository_version: |
     # Avoid the pain of porting 1.x rules and migrating data to 2.x
     ARG prometheus_version='2.8.0'
@@ -234,8 +236,8 @@ kolla_enable_grafana: True
 kolla_enable_heat: True
 kolla_enable_horizon: True
 #kolla_enable_influxdb:
-kolla_enable_ironic: False
-kolla_enable_ironic_ipxe: False
+#kolla_enable_ironic: False
+kolla_enable_ironic_ipxe: True
 #kolla_enable_ironic_pxe_uefi:
 #kolla_enable_iscsid:
 #kolla_enable_karbor:
@@ -261,7 +263,7 @@ kolla_enable_neutron_provider_networks: True
 #kolla_enable_neutron_segments:
 #kolla_enable_neutron_sriov:
 #kolla_enable_neutron_vpnaas:
-#kolla_enable_nova_serialconsole_proxy:
+kolla_enable_nova_serialconsole_proxy: True
 #kolla_enable_octavia:
 #kolla_enable_osprofiler:
 #kolla_enable_panko:
@@ -271,7 +273,7 @@ kolla_enable_prometheus: True
 #kolla_enable_sahara:
 #kolla_enable_searchlight:
 #kolla_enable_senlin:
-#kolla_enable_skydive:
+kolla_enable_skydive: True
 #kolla_enable_solum:
 #kolla_enable_storm:
 #kolla_enable_swift:
