@@ -86,7 +86,7 @@ prometheus_tag: 7.0.1.10
 prometheus_server_tag: 7.0.1.10
 prometheus_mtail_tag: 7.0.1.10
 prometheus_elasticsearch_exporter_tag: 7.0.1.10
-prometheus_libvirt_exporter_tag: 7.0.1.6
+prometheus_libvirt_exporter_tag: 7.0.1.10
 prometheus_jiralert_tag: 7.0.1.10
 rabbitmq_tag: 7.0.1.10
 skydive_tag: 7.0.1.10
