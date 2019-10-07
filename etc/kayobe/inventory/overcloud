@@ -7,9 +7,6 @@ cpu-e-1041 ipmi_address=10.202.0.30 bmc_type=idrac
 cpu-e-1042 ipmi_address=10.202.0.31 bmc_type=idrac
 cpu-e-1043 ipmi_address=10.202.0.32 bmc_type=idrac
 
-[baremetal-compute]
-cpu-e-1044 ipmi_address=10.202.0.33 bmc_type=idrac
-
 [compute-preprod]
 # two controllers are also hypervisors, for now
 cpu-e-1042 ipmi_address=10.202.0.31 bmc_type=idrac
