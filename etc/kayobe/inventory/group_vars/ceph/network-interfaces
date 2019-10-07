@@ -36,6 +36,12 @@ internal_net_interface: "{{ br_net_interface }}.{{ internal_net_vlan }}"
 # Storage network IP information.
 storage_net_interface: "{{ br_net_interface }}.{{ storage_net_vlan }}"
 
+storage_net_routes:
+  - cidr: "10.215.215.0/24"
+    gateway: "10.206.0.1"
+  - cidr: "10.218.0.0/16"
+    gateway: "10.206.0.1"
+
 # Storage management network IP information.
 storage_mgmt_net_interface: "{{ br_net_interface }}.{{ storage_mgmt_net_vlan }}"
 
