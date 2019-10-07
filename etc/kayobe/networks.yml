@@ -160,7 +160,9 @@ storage_net_allocation_pool_start: "10.{{ storage_net_vlan }}.1.0"
 storage_net_allocation_pool_end: "10.{{ storage_net_vlan }}.3.255"
 # storage_net_gateway:
 # storage_net_mtu:
-# storage_net_routes:
+storage_net_routes:
+  - cidr: "10.215.215.0/24"
+    gateway: "10.206.0.1"
 
 # Storage management network IP information.
 storage_mgmt_net_vlan: 207
