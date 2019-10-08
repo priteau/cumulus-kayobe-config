@@ -1,0 +1,23 @@
+---
+- name: Converge caso and SSM containers
+  hosts: monitoring 
+  vars:
+    pip_install_packages:
+      - name: docker
+    ssm_sender_enabled: true
+    ssm_outgoing_volume: caso_ssm_outgoing
+  pre_tasks:
+    - name: install dependencies
+      package:
+        name: "{{ item }}"
+      with_items:
+        - git
+  roles:
+##    - geerlingguy.pip
+##    - geerlingguy.docker
+    - role: stackhpc.ssm
+      vars:
+        ssm_action: build
+    - role: stackhpc.ssm
+      vars:
+        ssm_action: deploy
