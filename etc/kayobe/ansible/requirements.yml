@@ -2,6 +2,6 @@
   version: master
   name: stackhpc.firewallgen
 
-- src: https://github.com/stackhpc/stackhpc.ssm
-  version: master
+- src: https://github.com/paulbrowne/stackhpc.ssm
+  version: small_fixes
   name: stackhpc.ssm

@@ -4,14 +4,22 @@
   vars:
     pip_install_packages:
       - name: docker
+    ssm_image: "stfc/ssm"
     ssm_sender_enabled: true
     ssm_outgoing_volume: caso_ssm_outgoing
+    ssm_protocol: "AMS"
+    ssm_auto_broker: false
+    ams_host: msg-devel.argo.grnet.gr
+    ams_destination: "IRIS-cloud"
+    ams_project: "accounting"
+
   pre_tasks:
     - name: install dependencies
       package:
         name: "{{ item }}"
       with_items:
         - git
+
   roles:
 ##    - geerlingguy.pip
 ##    - geerlingguy.docker
