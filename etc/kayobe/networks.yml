@@ -17,11 +17,11 @@ admin_oc_net_name: admin_oc_net
 
 # Name of the network used by the overcloud hosts to manage the bare metal
 # compute hosts via their out-of-band management controllers.
-#oob_wl_net_name:
+oob_wl_net_name: oob_oc_net
 
 # Name of the network used by the overcloud hosts to provision the bare metal
 # workload hosts.
-#provision_wl_net_name:
+provision_wl_net_name: provision_wl_net
 
 # Name of the network used to expose the internal OpenStack API endpoints.
 #internal_net_name:
@@ -67,17 +67,17 @@ admin_oc_net_allocation_pool_start: "10.{{ admin_oc_net_vlan }}.1.0"
 admin_oc_net_allocation_pool_end: "10.{{ admin_oc_net_vlan }}.3.255"
 # Make the seed node the default route out, but on the seed default is iLab
 #admin_oc_net_gateway: "10.{{ admin_oc_net_vlan }}.0.1"
-# admin_oc_net_mtu:
-# admin_oc_net_routes:
+#admin_oc_net_mtu:
+#admin_oc_net_routes:
 
 # Overcloud out-of-band management network IP information.
 oob_oc_net_vlan: 202
 oob_oc_net_cidr: "10.{{ oob_oc_net_vlan }}.0.0/16"
 oob_oc_net_allocation_pool_start: "10.{{ oob_oc_net_vlan }}.1.0"
 oob_oc_net_allocation_pool_end: "10.{{ oob_oc_net_vlan }}.3.255"
-# oob_oc_net_gateway:
-# oob_oc_net_mtu:
-# oob_oc_net_routes:
+#oob_oc_net_gateway:
+#oob_oc_net_mtu:
+#oob_oc_net_routes:
 
 # Overcloud provisioning network IP information.
 provision_oc_net_vlan: 201
@@ -86,17 +86,8 @@ provision_oc_net_allocation_pool_start: "10.{{ provision_oc_net_vlan }}.1.0"
 provision_oc_net_allocation_pool_end: "10.{{ provision_oc_net_vlan }}.3.255"
 provision_oc_net_inspection_allocation_pool_start: "10.{{ provision_oc_net_vlan }}.10.0"
 provision_oc_net_inspection_allocation_pool_end: "10.{{ provision_oc_net_vlan }}.12.255"
-# provision_oc_net_gateway:
-# provision_oc_net_routes:
-
-# Workload out-of-band management network IP information.
-oob_wl_net_vlan: 212
-oob_wl_net_cidr: "10.{{ oob_wl_net_vlan }}.0.0/16"
-oob_wl_net_allocation_pool_start: "10.{{ oob_wl_net_vlan }}.1.0"
-oob_wl_net_allocation_pool_end: "10.{{ oob_wl_net_vlan }}.3.255"
-# oob_wl_net_gateway:
-# oob_wl_net_mtu:
-# oob_wl_net_routes:
+#provision_oc_net_gateway:
+#provision_oc_net_routes:
 
 # Workload provisioning network IP information.
 provision_wl_net_vlan: 211
@@ -105,9 +96,12 @@ provision_wl_net_allocation_pool_start: "10.{{ provision_wl_net_vlan }}.1.0"
 provision_wl_net_allocation_pool_end: "10.{{ provision_wl_net_vlan }}.3.255"
 provision_wl_net_neutron_allocation_pool_start: "10.{{ provision_wl_net_vlan }}.100.0"
 provision_wl_net_neutron_allocation_pool_end: "10.{{ provision_wl_net_vlan }}.102.255"
-# provision_wl_net_gateway:
-# provision_wl_net_mtu:
-# provision_wl_net_routes:
+provision_wl_net_physical_network: "{{ hs_eth_physical_network }}"
+provision_wl_net_neutron_gateway: "10.{{ provision_wl_net_vlan }}.0.1"
+provision_wl_net_mtu: 1500
+provision_wl_net_routes:
+  - cidr: "10.211.100.0/23"
+    gateway: "10.205.0.2"
 
 # Tunnel (i.e. vxlan) network IP information.
 # tunnel_net_fqdn: tunnel.cumulus.hpc.cam.ac.uk
@@ -115,9 +109,9 @@ tunnel_net_vlan: 217
 tunnel_net_cidr: "10.{{ tunnel_net_vlan }}.0.0/16"
 tunnel_net_allocation_pool_start: "10.{{ tunnel_net_vlan }}.1.0"
 tunnel_net_allocation_pool_end: "10.{{ tunnel_net_vlan }}.3.255"
-# tunnel_net_gateway:
-# tunnel_net_mtu:
-# tunnel_net_routes:
+#tunnel_net_gateway:
+#tunnel_net_mtu:
+#tunnel_net_routes:
 
 # Internal network IP information.
 #internal_net_fqdn: private.cumulus.hpc.cam.ac.uk
@@ -126,9 +120,12 @@ internal_net_vip_address: "10.{{ internal_net_vlan }}.0.1"
 internal_net_cidr: "10.{{ internal_net_vlan }}.0.0/16"
 internal_net_allocation_pool_start: "10.{{ internal_net_vlan }}.1.0"
 internal_net_allocation_pool_end: "10.{{ internal_net_vlan }}.3.255"
-# internal_net_gateway:
-# internal_net_mtu:
-# internal_net_routes:
+internal_provision_wl_gateway: "10.{{ internal_net_vlan }}.0.2"
+internal_cleaning_net_gateway: "10.{{ internal_net_vlan }}.0.3"
+internal_inspection_net_gateway: "10.{{ internal_net_vlan }}.0.4"
+#internal_net_gateway:
+#internal_net_mtu:
+#internal_net_routes:
 
 # External network IP information.
 # external_net_vip_address:
@@ -137,9 +134,9 @@ external_net_vlan: 219
 external_net_cidr: "10.{{ external_net_vlan }}.0.0/16"
 external_net_allocation_pool_start: "10.{{ external_net_vlan }}.1.0"
 external_net_allocation_pool_end: "10.{{ external_net_vlan }}.3.255"
-# external_net_gateway:
-# external_net_mtu:
-# external_net_routes:
+#external_net_gateway:
+#external_net_mtu:
+#external_net_routes:
 
 # Public network IP information.
 #public_net_vlan: 215
@@ -163,7 +160,11 @@ storage_net_allocation_pool_start: "10.{{ storage_net_vlan }}.1.0"
 storage_net_allocation_pool_end: "10.{{ storage_net_vlan }}.3.255"
 # storage_net_gateway:
 # storage_net_mtu:
-# storage_net_routes:
+storage_net_routes:
+  - cidr: "10.215.215.0/24"
+    gateway: "10.206.0.1"
+  - cidr: "10.218.0.0/16"
+    gateway: "10.206.0.1"
 
 # Storage management network IP information.
 storage_mgmt_net_vlan: 207
@@ -181,9 +182,15 @@ cleaning_net_allocation_pool_start: "10.{{ cleaning_net_vlan }}.1.0"
 cleaning_net_allocation_pool_end: "10.{{ cleaning_net_vlan }}.3.255"
 cleaning_net_neutron_allocation_pool_start: "10.{{ cleaning_net_vlan }}.100.0"
 cleaning_net_neutron_allocation_pool_end: "10.{{ cleaning_net_vlan }}.102.255"
-# cleaning_net_gateway:
-# cleaning_net_mtu:
-# cleaning_net_routes:
+cleaning_net_physical_network: "{{ hs_eth_physical_network }}"
+cleaning_net_neutron_gateway: "10.{{ cleaning_net_vlan }}.0.1"
+cleaning_net_mtu: 1500
+cleaning_net_routes:
+  - cidr: "10.213.100.0/23"
+    gateway: "10.205.0.3"
+#cleaning_net_gateway:
+#cleaning_net_mtu:
+#cleaning_net_routes:
 
 # Workload inspection network IP information.
 inspection_net_vlan: 210
@@ -192,9 +199,15 @@ inspection_net_allocation_pool_start: "10.{{ inspection_net_vlan }}.1.0"
 inspection_net_allocation_pool_end: "10.{{ inspection_net_vlan }}.3.255"
 inspection_net_inspection_allocation_pool_start: "10.{{ inspection_net_vlan }}.100.0"
 inspection_net_inspection_allocation_pool_end: "10.{{ inspection_net_vlan }}.102.255"
-# inspection_net_gateway:
-# inspection_net_mtu:
-# inspection_net_routes:
+inspection_net_physical_network: "{{ hs_eth_physical_network }}"
+inspection_net_inspection_gateway: "10.{{ inspection_net_vlan }}.0.1"
+inspection_net_mtu: 1500
+inspection_net_routes:
+  - cidr: "10.210.100.0/23"
+    gateway: "10.205.0.4"
+#inspection_net_gateway:
+#inspection_net_mtu:
+#inspection_net_routes:
 
 # Cambridge ilab network IP information.
 ilab_net_vlan: 60
@@ -231,7 +244,7 @@ mgmt_physical_network: physnet2
 # Not currently used at all
 lln_physical_network: physnet3
 
-###############################################################################
+##############################################################################
 # Network virtual patch link configuration.
 
 # Suffix for Open vSwitch bridge names.

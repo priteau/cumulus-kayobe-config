@@ -4,7 +4,7 @@
 
 # User with which to access the controllers via SSH during bootstrap, in order
 # to setup the Kayobe user account.
-#controller_bootstrap_user:
+controller_bootstrap_user: centos
 
 ###############################################################################
 # Network interface attachments.
@@ -15,9 +15,13 @@ controller_network_interfaces: >
       "bond0_net",
       "br_net",
       "external_net",
+      oob_wl_net_name,
       public_net_name,
       tunnel_net_name,
       internal_net_name,
+      cleaning_net_name,
+      inspection_net_name,
+      provision_wl_net_name,
       storage_net_name,
       storage_mgmt_net_name] | unique | list }}
 
