@@ -21,8 +21,8 @@
         - git
 
   roles:
-##    - geerlingguy.pip
-##    - geerlingguy.docker
+    - geerlingguy.pip
+    - geerlingguy.docker
     - role: stackhpc.ssm
       vars:
         ssm_action: build
