@@ -28,6 +28,11 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'node' in docker container 'kibana'"
   - interface: "{{ internal_net_interface }}"
+    port: 8085
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'skydive-analyzer' in docker container 'skydive_analyzer'"
+  - interface: "{{ internal_net_interface }}"
     port: 9091
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"

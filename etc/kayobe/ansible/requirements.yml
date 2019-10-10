@@ -2,3 +2,6 @@
   version: master
   name: stackhpc.firewallgen
 
+- src: https://github.com/paulbrowne/stackhpc.ssm
+  version: auth_token 
+  name: stackhpc.ssm
