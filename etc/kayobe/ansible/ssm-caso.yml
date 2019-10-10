@@ -12,6 +12,7 @@
     ams_host: msg-devel.argo.grnet.gr
     ams_destination: "IRIS-cloud"
     ams_project: "accounting"
+    ams_token: "{{ secrets_apel_ams_token }}"
 
   pre_tasks:
     - name: install dependencies
@@ -19,10 +20,14 @@
         name: "{{ item }}"
       with_items:
         - git
+  
+    - name: Include secrets
+      include_vars:
+        file: '../secrets.yml'
 
   roles:
-    - geerlingguy.pip
-    - geerlingguy.docker
+#    - geerlingguy.pip
+#    - geerlingguy.docker
     - role: stackhpc.ssm
       vars:
         ssm_action: build
