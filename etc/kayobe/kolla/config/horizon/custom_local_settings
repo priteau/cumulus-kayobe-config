@@ -86,10 +86,9 @@ LAUNCH_INSTANCE_DEFAULTS = {
 WEBSSO_ENABLED = True
 WEBSSO_CHOICES = (
     ("credentials", "Local Login"),
-    ("mapped", "EGI AAI"),
-    ("oidc", "IRIS IAM"),
+    ("mapped", "IRIS IAM"),
 )
-WEBSSO_INITIAL_CHOICE = "oidc"
+WEBSSO_INITIAL_CHOICE = "mapped"
 
 OPENSTACK_KEYSTONE_FEDERATION_MANAGEMENT = True
 OPENSTACK_KEYSTONE_URL = "https://cumulus-dev.openstack.hpc.cam.ac.uk:5000/v3"
