@@ -116,7 +116,7 @@ ironic_serial_console_tcp_pool_start: 30000
 
 # This defines the end of the range of TCP ports to used for the IPMI socat
 # serial consoles
-ironic_serial_console_tcp_pool_end: 31000
+ironic_serial_console_tcp_pool_end: 32000
 
 ###############################################################################
 # Dummy variable to allow Ansible to accept this file.
