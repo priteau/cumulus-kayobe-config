@@ -1,0 +1,97 @@
+[
+    {
+        "local": [
+            {
+                "user": {
+                    "email": "{1}", 
+                    "name": "{2} {3} (Iris)"
+                }, 
+                "projects": [
+                    {
+                        "name": "euclid-test", 
+                        "roles": [
+                            {
+                                "name": "member"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ], 
+        "remote": [
+            {
+                "type": "OIDC-sub"
+            }, 
+            {
+                "type": "OIDC-email"
+            }, 
+            {
+                "type": "OIDC-given_name"
+            }, 
+            {
+                "type": "OIDC-family_name"
+            }, 
+            {
+                "type": "OIDC-preferred_username"
+            }, 
+            {
+                "type": "HTTP_OIDC_ISS", 
+                "any_one_of": [
+                    "https://iris-iam.stfc.ac.uk/"
+                ]
+            }, 
+            {
+                "regex": true, 
+                "type": "OIDC-groups", 
+                "any_one_of": [
+                    "euclid/stfccloud", 
+                    "euclid", 
+                    "euclid/camcloud"
+                ]
+            }
+        ]
+    }, 
+    {
+        "local": [
+            {
+                "user": {
+                    "email": "{1}", 
+                    "name": "{2} {3} (Iris)"
+                }, 
+                "projects": [
+                    {
+                        "name": "iris", 
+                        "roles": [
+                            {
+                                "name": "reader"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ], 
+        "remote": [
+            {
+                "type": "OIDC-sub"
+            }, 
+            {
+                "type": "OIDC-email"
+            }, 
+            {
+                "type": "OIDC-given_name"
+            }, 
+            {
+                "type": "OIDC-family_name"
+            }, 
+            {
+                "type": "OIDC-preferred_username"
+            }, 
+            {
+                "type": "HTTP_OIDC_ISS", 
+                "any_one_of": [
+                    "https://iris-iam.stfc.ac.uk/"
+                ]
+            }
+        ]
+    }
+]

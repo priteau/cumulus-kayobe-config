@@ -85,10 +85,10 @@ LAUNCH_INSTANCE_DEFAULTS = {
 
 WEBSSO_ENABLED = True
 WEBSSO_CHOICES = (
-    ("credentials", "Local Login"),
-    ("mapped", "Federated Login"),
+    ("mapped", "IRIS AAI"),
+    ("credentials", "Admin")
 )
 WEBSSO_INITIAL_CHOICE = "mapped"
 
 OPENSTACK_KEYSTONE_FEDERATION_MANAGEMENT = True
-OPENSTACK_KEYSTONE_URL = "https://cumulus-dev.openstack.hpc.cam.ac.uk:5000/v3"
+OPENSTACK_KEYSTONE_URL = "https://{% raw %}{{ kolla_external_fqdn }}{% endraw %}:5000/v3"
