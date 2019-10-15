@@ -86,7 +86,7 @@ LAUNCH_INSTANCE_DEFAULTS = {
 WEBSSO_ENABLED = True
 WEBSSO_CHOICES = (
     ("mapped", "IRIS AAI"),
-    ("credentials", "Admin"),
+    ("credentials", "Admin")
 )
 WEBSSO_INITIAL_CHOICE = "mapped"
 
