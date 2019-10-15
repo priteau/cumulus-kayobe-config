@@ -65,6 +65,14 @@ users_default:
     ssh_key:
       - "{{ lookup('file', kayobe_config_path ~ '/ssh-keys/id_rsa_stackhpc-will.pub') }}"
 
+  - username: bharat
+    name: Bharat Kunwar
+    groups:
+      - wheel
+    append: True
+    ssh_key:
+      - "{{ lookup('file', kayobe_config_path ~ '/ssh-keys/id_rsa_stackhpc-bharat.pub') }}"
+
 ###############################################################################
 # Dummy variable to allow Ansible to accept this file.
 workaround_ansible_issue_8743: yes
