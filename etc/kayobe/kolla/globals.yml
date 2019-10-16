@@ -104,5 +104,5 @@ enable_host_ntp: true
 es_heap_size: "24g"
 
 # Use upstream images for these
-magnum_api_image: !unsafe "{{ docker_namespace }}/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-api"
-magnum_conductor_image: !unsafe "{{ docker_namespace }}/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-conductor"
+magnum_api_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-api{% endraw %}"
+magnum_conductor_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-conductor{% endraw %}"
