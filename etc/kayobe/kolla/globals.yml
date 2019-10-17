@@ -94,3 +94,7 @@ zookeeper_tag: 7.0.1.10
 # Kayobe currently configures ntpd on each node in the overcloud
 enable_chrony: false
 enable_host_ntp: true
+
+# Use upstream images for these
+magnum_api_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-api{% endraw %}"
+magnum_conductor_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-conductor{% endraw %}"
