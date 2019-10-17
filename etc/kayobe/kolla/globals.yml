@@ -75,7 +75,7 @@ keystone_tag: 7.0.1.10
 kibana_tag: 7.0.1.10
 kolla_toolbox_tag: 7.0.1.10
 logstash_tag: 7.0.1.10
-magnum_tag: 7.0.1.10
+magnum_tag: stein
 manila_tag: 7.0.1.10
 mariadb_tag: 7.0.1.10
 memcached_tag: 7.0.1.10
@@ -102,3 +102,7 @@ enable_host_ntp: true
 
 # Default size causes ES to fall over very easily
 es_heap_size: "24g"
+
+# Use upstream images for these
+magnum_api_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-api{% endraw %}"
+magnum_conductor_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-conductor{% endraw %}"
