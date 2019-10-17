@@ -54,10 +54,6 @@ cpu-e-1084 ipmi_address=10.202.0.37 bmc_type=idrac
 compute-apr19
 compute-jun19
 compute-aug19
-compute-oct19-remove
-
-[compute-oct19-remove]
-cpu-e-1081 ipmi_address=10.202.0.34 bmc_type=idrac
 
 # only put monitoring on ceph nodes
 # as we use ceph-ansible
