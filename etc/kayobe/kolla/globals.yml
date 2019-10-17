@@ -70,6 +70,7 @@ keystone_tag: 7.0.1.10
 kibana_tag: 7.0.1.10
 kolla_toolbox_tag: 7.0.1.10
 logstash_tag: 7.0.1.10
+octavia_tag: stein
 magnum_tag: stein
 manila_tag: 7.0.1.10
 mariadb_tag: 7.0.1.10
@@ -95,6 +96,12 @@ zookeeper_tag: 7.0.1.10
 enable_chrony: false
 enable_host_ntp: true
 
-# Use upstream images for these
+# Use upstream magnum images for these
 magnum_api_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-api{% endraw %}"
 magnum_conductor_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-conductor{% endraw %}"
+
+# Use upstream octavia images for these
+octavia_api_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_type }}-octavia-api{% endraw %}"
+octavia_housekeeping_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_type }}-octavia-housekeeping{% endraw %}"
+octavia_worker_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_type }}-octavia-worker{% endraw %}"
+octavia_health_manager_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_type }}-octavia-health-manager{% endraw %}"
