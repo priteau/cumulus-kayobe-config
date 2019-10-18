@@ -562,7 +562,7 @@ firewallgen_ipv4_input_allow_rules:
   - interface: "{{ internal_net_interface }}"
     port: 5555
     proto: udp
-    destination: "{{ internal_net_name | net_ip }}"
+    destination: "{{ octavia_net_name | net_ip }}"
     comment: "hint: used by 'octavia-health-' in docker container 'octavia_health_manager'"
   - interface: "{{ public_net_interface }}"
     port: 9876
