@@ -151,8 +151,8 @@ external_net_allocation_pool_end: "10.{{ external_net_octet }}.3.255"
 public_net_vlan: 111
 public_net_vip_address: 128.232.224.80
 public_net_fqdn: cumulus-dev.openstack.hpc.cam.ac.uk
-public_net_routes:
-  - cidr: "128.232.224.0/23"
+#public_net_routes:
+#  - cidr: "128.232.224.0/23"
 public_net_cidr: "128.232.224.0/23"
 public_net_gateway: 128.232.225.254
 public_net_allocation_pool_start: 128.232.224.80
@@ -217,9 +217,9 @@ ilab_net_routes:
 # Octavia Load Balancer network IP information
 octavia_net_vlan: 303
 octavia_net_octet: 228
-octavia_net_cidr: "10.{{ tunnel_net_octet }}.0.0/16"
-octavia_net_allocation_pool_start: "10.{{ tunnel_net_octet }}.1.0"
-octavia_net_allocation_pool_end: "10.{{ tunnel_net_octet }}.3.255"
+octavia_net_cidr: "10.{{ octavia_net_octet }}.0.0/16"
+octavia_net_allocation_pool_start: "10.{{ octavia_net_octet }}.1.0"
+octavia_net_allocation_pool_end: "10.{{ octavia_net_octet }}.3.255"
 octavia_net_physical_network: "{{ hs_eth_physical_network }}"
 octavia_net_mtu: 1500
 
