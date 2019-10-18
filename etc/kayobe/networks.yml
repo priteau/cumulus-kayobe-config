@@ -57,6 +57,9 @@ cleaning_net_name: cleaning_net
 # Name of the network used for admin access to the deployment
 ilab_net_name: ilab_net
 
+# Name of the network used for Octavia amphorae sync
+octavia_net_name: octavia_net
+
 ###############################################################################
 # Network definitions.
 
@@ -210,6 +213,15 @@ ilab_net_routes:
   # Default route onto the Cambridge ilab network
   - cidr: "0.0.0.0/0"
     gateway: "10.60.255.1"
+
+# Octavia Load Balancer network IP information
+octavia_net_vlan: 303
+octavia_net_octet: 228
+octavia_net_cidr: "10.{{ tunnel_net_octet }}.0.0/16"
+octavia_net_allocation_pool_start: "10.{{ tunnel_net_octet }}.1.0"
+octavia_net_allocation_pool_end: "10.{{ tunnel_net_octet }}.3.255"
+octavia_net_physical_network: "{{ hs_eth_physical_network }}"
+octavia_net_mtu: 1500
 
 # 1G and external stays on default mtu
 provision_oc_net_mtu: 1500
