@@ -47,6 +47,7 @@ designate_ns_record: "cpu-e-1041.iris.staging.cumulus.local"
 
 # Container image tags.
 # These should be allowed to change independently, as services are updated.
+barbican_tag: stein
 bifrost_tag: 7.0.1.10
 caso_tag: 7.0.1.10
 cron_tag: 7.0.1.10
@@ -105,3 +106,9 @@ octavia_api_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_ty
 octavia_housekeeping_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_type }}-octavia-housekeeping{% endraw %}"
 octavia_worker_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_type }}-octavia-worker{% endraw %}"
 octavia_health_manager_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_type }}-octavia-health-manager{% endraw %}"
+
+# Use upstream barbican images for these
+barbican_api_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ barbican_install_type }}-barbican-api{% endraw %}"
+barbican_keystone_listener_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ barbican_install_type }}-barbican-keystone-listener{% endraw %}"
+barbican_worker_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ barbican_install_type }}-barbican-worker{% endraw %}"
+
