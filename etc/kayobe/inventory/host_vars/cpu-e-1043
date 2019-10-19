@@ -564,3 +564,18 @@ firewallgen_ipv4_input_allow_rules:
     proto: tcp
     destination: "{{ 'public_net' | net_vip_address }}"
     comment: "hint: used by 'haproxy' for octavia_api_external"
+  - interface: "{{ internal_net_interface }}"
+    port: 9311
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'uwsgi' in docker container 'barbican_api'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9311
+    proto: tcp
+    destination: "{{ internal_net_name | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for barbican_api"
+  - interface: "{{ public_net_interface }}"
+    port: 9311
+    proto: tcp
+    destination: "{{ 'public_net' | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for barbican_api_external"
