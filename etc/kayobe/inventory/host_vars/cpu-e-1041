@@ -594,3 +594,39 @@ firewallgen_ipv4_input_allow_rules:
     proto: udp
     destination: "{{ 'public_net' | net_ip }}"
     comment: "hint: used by 'designate-mdns' in docker container 'designate_mdns'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9876
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'octavia-api' in docker container 'octavia_api'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9876
+    proto: tcp
+    destination: "{{ internal_net_name | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for octavia_api"
+  - interface: "{{ octavia_net_interface }}"
+    port: 5555
+    proto: udp
+    destination: "{{ octavia_net_name | net_ip }}"
+    comment: "hint: used by 'octavia-health-' in docker container 'octavia_health_manager'"
+  - interface: "{{ public_net_interface }}"
+    port: 9876
+    proto: tcp
+    destination: "{{ 'public_net' | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for octavia_api_external"
+  - interface: "{{ internal_net_interface }}"
+    port: 9311
+    proto: tcp
+    destination: "{{ internal_net_name | net_ip }}"
+    comment: "hint: used by 'uwsgi' in docker container 'barbican_api'"
+  - interface: "{{ internal_net_interface }}"
+    port: 9311
+    proto: tcp
+    destination: "{{ internal_net_name | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for barbican_api"
+  - interface: "{{ public_net_interface }}"
+    port: 9311
+    proto: tcp
+    destination: "{{ 'public_net' | net_vip_address }}"
+    comment: "hint: used by 'haproxy' for barbican_api_external"
+
