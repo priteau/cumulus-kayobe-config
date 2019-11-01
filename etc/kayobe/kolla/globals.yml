@@ -52,6 +52,7 @@ caso_site_name: "UK-CAM-CUMULUS"
 
 # Container image tags.
 # These should be allowed to change independently, as services are updated.
+barbican_tag: stein
 bifrost_tag: 7.0.1.10
 caso_tag: 7.0.1.10
 cron_tag: 7.0.1.10
@@ -84,6 +85,7 @@ monasca_notification_tag: 7.0.1.10
 monasca_persister_tag: 7.0.1.10
 neutron_tag: 7.0.1.10
 nova_tag: 7.0.1.10
+octavia_tag: stein
 openvswitch_tag: 7.0.1.10
 prometheus_tag: 7.0.1.10
 prometheus_server_tag: 7.0.1.10
@@ -103,6 +105,17 @@ enable_host_ntp: true
 # Default size causes ES to fall over very easily
 es_heap_size: "24g"
 
-# Use upstream images for these
+# Use upstream magnum images for these
 magnum_api_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-api{% endraw %}"
 magnum_conductor_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ magnum_install_type }}-magnum-conductor{% endraw %}"
+
+# Use upstream octavia images for these
+octavia_api_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_type }}-octavia-api{% endraw %}"
+octavia_housekeeping_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_type }}-octavia-housekeeping{% endraw %}"
+octavia_worker_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_type }}-octavia-worker{% endraw %}"
+octavia_health_manager_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ octavia_install_type }}-octavia-health-manager{% endraw %}"
+
+# Use upstream barbican images for these
+barbican_api_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ barbican_install_type }}-barbican-api{% endraw %}"
+barbican_keystone_listener_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ barbican_install_type }}-barbican-keystone-listener{% endraw %}"
+barbican_worker_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ barbican_install_type }}-barbican-worker{% endraw %}"
