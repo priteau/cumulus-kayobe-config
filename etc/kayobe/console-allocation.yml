@@ -2,3 +2,4 @@
 ---
 serial_console_allocations:
   cpu-e-1044: 31044
+  cpu-e-1081: 31081
