@@ -40,7 +40,7 @@ kolla_ansible_source_url: https://github.com/RSE-Cambridge/kolla-ansible
 # is 'source'.
 #kolla_ansible_source_version: refs/tags/cumulus/7.0.1.7
 #kolla_ansible_source_version: upstream-sync-june6
-kolla_ansible_source_version: octavia_dual_ca
+kolla_ansible_source_version:  cumulus/rocky
 
 # Path to virtualenv in which to install kolla-ansible.
 #kolla_ansible_venv:
