@@ -1,5 +1,8 @@
 ---
 
+firewallgen_ironic_serial_range_start: 30001
+firewallgen_ironic_serial_range_end: 32000
+
 firewallgen_ipv4_input_allow_rewrite_rules_controllers:
   - '. |= map( if .processes[].name == "epmd" and .processes[].docker_hint == "rabbitmq" then .interface = "{% raw %}{{ internal_net_interface }}{% endraw %}" else . end)'
   - '. |= map( if .processes[].name == "nginx" and .processes[].docker_hint == "inspection_store" then .interface = "{% raw %}{{ internal_net_interface }}{% endraw %}" else . end)'
@@ -61,4 +64,10 @@ firewallgen_ipv4_input_allow_custom_rules_extra:
     proto: vrrp
     destination: 224.0.0.18
     comment: used by keepalived for vrrp
+
+  - interface: "{{ firewallgen_interface_tmpl % 'internal_net_name' }}"
+    port: "{{ firewallgen_ironic_serial_range_start }}:{{ firewallgen_ironic_serial_range_end }}"
+    proto: tcp
+    destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
+    comment: ironic nova serial consoles
 
