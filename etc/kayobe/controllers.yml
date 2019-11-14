@@ -21,6 +21,7 @@ controller_network_interfaces: >
       internal_net_name,
       cleaning_net_name,
       inspection_net_name,
+      octavia_net_name,
       provision_wl_net_name,
       storage_net_name,
       storage_mgmt_net_name] | unique | list }}
