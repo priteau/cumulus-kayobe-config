@@ -69,5 +69,4 @@ firewallgen_ipv4_input_allow_custom_rules_extra:
     port: "{{ firewallgen_ironic_serial_range_start }}:{{ firewallgen_ironic_serial_range_end }}"
     proto: tcp
     destination: "{% raw %}{{ internal_net_name | net_ip }}{% endraw %}"
-    comment: ironic nova serial consoles
-
+    comment: ironic nova serial consoles 

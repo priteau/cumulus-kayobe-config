@@ -325,11 +325,6 @@ firewallgen_ipv4_input_allow_rules:
     destination: "{{ internal_net_name | net_ip }}"
     comment: "hint: used by 'beam.smp' in docker container 'rabbitmq'"
   - interface: "{{ internal_net_interface }}"
-    port: 31044
-    proto: tcp
-    destination: "{{ internal_net_name | net_ip }}"
-    comment: "hint: used by 'socat' in docker container 'ironic_conductor'"
-  - interface: "{{ internal_net_interface }}"
     port: 35357
     proto: tcp
     destination: "{{ internal_net_name | net_ip }}"
