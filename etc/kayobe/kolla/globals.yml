@@ -49,6 +49,7 @@ designate_ns_record: "cpu-e-1041.iris.staging.cumulus.local"
 # These should be allowed to change independently, as services are updated.
 barbican_tag: stein
 bifrost_tag: 7.0.1.10
+blazar_tag: 7.0.1.10
 caso_tag: 7.0.1.10
 cron_tag: 7.0.1.10
 ceph_tag: 7.0.1.10
@@ -112,3 +113,8 @@ barbican_api_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ barbican_install_
 barbican_keystone_listener_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ barbican_install_type }}-barbican-keystone-listener{% endraw %}"
 barbican_worker_image: "{% raw %}kolla/{{ kolla_base_distro }}-{{ barbican_install_type }}-barbican-worker{% endraw %}"
 
+# Use source build for blazar images as packages are not available
+blazar_install_type: "source"
+
+# Use source build for nova images so that blazar-nova is included
+nova_install_type: "source"
